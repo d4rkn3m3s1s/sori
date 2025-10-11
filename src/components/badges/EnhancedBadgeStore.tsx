@@ -40,12 +40,7 @@ function EnhancedBadgeStore({ userPoints, onPurchase }: BadgeStoreProps) {
   const [showPurchaseHistory, setPurchaseHistory] = useState(false)
 
   // Debug state changes (geliştirme amaçlı)
-  if (process.env.NODE_ENV === 'development') {
-    console.log('EnhancedBadgeStore render:', { 
-      showPreview, 
-      selectedItem: selectedItem?.name || 'null' 
-    })
-  }
+  // Removed console.log for production build
 
   const storeItems: StoreItem[] = [
     // Çerçeveler
@@ -492,10 +487,10 @@ function EnhancedBadgeStore({ userPoints, onPurchase }: BadgeStoreProps) {
                   {/* Badges */}
                   <div className="absolute top-2 right-2 flex flex-col space-y-1">
                     {item.isNew && (
-                      <UIBadge content="YENİ" color="success" size="sm" />
+                      <UIBadge color="success" size="sm">YENİ</UIBadge>
                     )}
                     {item.isOnSale && (
-                      <UIBadge content="İNDİRİM" color="danger" size="sm" />
+                      <UIBadge color="danger" size="sm">İNDİRİM</UIBadge>
                     )}
                   </div>
 

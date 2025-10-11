@@ -425,4 +425,5 @@ function LiveLeaderboardPage() {
   )
 }
 
-export def
+export default LiveLeaderboardPage
+

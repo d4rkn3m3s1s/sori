@@ -749,9 +749,9 @@ export const SPECIAL_BADGES: Badge[] = [
     color: '#DC2626',
     gradient: 'from-red-600 via-orange-500 to-yellow-400',
     privileges: [
-      { type: 'fire_comments', description: 'Yorumların ateş efekti ile öne çıkar', active: true },
-      { type: 'dragon_power', description: 'Ejder gücü - Özel avatar çerçevesi', active: true },
-      { type: 'legendary_status', description: 'Efsanevi durum - Özel renk ve efektler', active: true }
+      { type: 'special_emoji', description: 'Yorumların ateş efekti ile öne çıkar', active: true },
+      { type: 'custom_avatar', description: 'Ejder gücü - Özel avatar çerçevesi', active: true },
+      { type: 'exclusive_features', description: 'Efsanevi durum - Özel renk ve efektler', active: true }
     ]
   },
   {

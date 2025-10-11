@@ -256,17 +256,9 @@ function LeaderboardPage() {
                         className="min-w-[150px]"
                         variant="bordered"
                         startContent={<Trophy className="w-4 h-4 text-gray-400" />}
+                        items={[{ key: 'all', label: 'Tüm Ligler' }, ...BADGE_LEVELS.map(l => ({ key: l.name, label: `${l.icon} ${l.name}` }))]}
                       >
-                        <SelectItem key="all" value="all">Tüm Ligler</SelectItem>
-                        {BADGE_LEVELS.map((league) => (
-                          <SelectItem 
-                            key={league.name} 
-                            value={league.name}
-                            startContent={<span>{league.icon}</span>}
-                          >
-                            {league.name}
-                          </SelectItem>
-                        ))}
+                        {(item: any) => <SelectItem key={item.key}>{item.label}</SelectItem>}
                       </Select>
 
                       <Select

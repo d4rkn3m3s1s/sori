@@ -413,3 +413,4 @@ function TrendsPage() {
 }
 
 export default TrendsPage
+
