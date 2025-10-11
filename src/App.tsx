@@ -1,6 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { ThemeProvider } from './contexts/ThemeContext'
 import Preloader from './components/ui/Preloader'
 import LandingPage from './pages/LandingPage'
 import DealerLogin from './pages/auth/DealerLogin'
@@ -14,12 +13,33 @@ import AnalyticsPage from './pages/dealer/AnalyticsPage'
 import AIInsightsPage from './pages/dealer/AIInsightsPage'
 import BadgesPage from './pages/badges/BadgesPage'
 import LeaderboardPage from './pages/badges/LeaderboardPage'
+import TVShowBadgesPage from './pages/badges/TVShowBadgesPage'
+import LeagueSystemPage from './pages/badges/LeagueSystemPage'
+import LiveLeaderboardPage from './pages/customer/LiveLeaderboardPage'
+import VIPClubPage from './pages/customer/VIPClubPage'
+import StatsDashboardPage from './pages/customer/StatsDashboardPage'
+import DonationPage from './pages/customer/DonationPage'
 import CustomerFeedbackPage from './pages/customer/FeedbackPage'
 import EnhancedCustomerFeedbackPage from './pages/customer/EnhancedFeedbackPage'
 import CustomerAnalyticsPage from './pages/customer/AnalyticsPage'
+import EnhancedAnalyticsPage from './pages/customer/EnhancedAnalyticsPage'
+import GoalsPage from './pages/customer/GoalsPage'
+import ProfileCustomizationPage from './pages/customer/ProfileCustomizationPage'
+import AchievementsPage from './pages/customer/AchievementsPage'
+import RewardStorePage from './pages/customer/RewardStorePage'
+import QuestsPage from './pages/customer/QuestsPage'
+import ActivityLogPage from './pages/customer/ActivityLogPage'
+import EnhancedNotificationsPage from './pages/customer/EnhancedNotificationsPage'
+import TrendsPage from './pages/customer/TrendsPage'
+import EventsPage from './pages/customer/EventsPage'
+import BusinessTrackingPage from './pages/customer/BusinessTrackingPage'
+import MiniGamesPage from './pages/customer/MiniGamesPage'
 import CustomerScannerPage from './pages/customer/ScannerPage'
 import CustomerNotificationsPage from './pages/customer/NotificationsPage'
 import CustomerSettingsPage from './pages/customer/SettingsPage'
+import ReceiptsPage from './pages/customer/ReceiptsPage'
+import ReceiptAnalyticsPage from './pages/customer/ReceiptAnalyticsPage'
+import RewardPoolPage from './pages/customer/RewardPoolPage'
 import UsersPage from './pages/dealer/UsersPage'
 import QRCodesPage from './pages/dealer/QRCodesPage'
 import CommentsPage from './pages/dealer/CommentsPage'
@@ -47,7 +67,7 @@ function App() {
   }
 
   return (
-    <ThemeProvider>
+    <>
       <Preloader 
         isLoading={isLoading} 
         onComplete={handlePreloaderComplete}
@@ -77,16 +97,37 @@ function App() {
         <Route path="/customer/dashboard" element={<CustomerDashboard />} />
         <Route path="/customer/feedback" element={<EnhancedCustomerFeedbackPage />} />
         <Route path="/customer/analytics" element={<CustomerAnalyticsPage />} />
+        <Route path="/customer/enhanced-analytics" element={<EnhancedAnalyticsPage />} />
+        <Route path="/customer/goals" element={<GoalsPage />} />
+        <Route path="/customer/profile-customize" element={<ProfileCustomizationPage />} />
+        <Route path="/customer/achievements" element={<AchievementsPage />} />
+        <Route path="/customer/reward-store" element={<RewardStorePage />} />
+        <Route path="/customer/quests" element={<QuestsPage />} />
+        <Route path="/customer/activity-log" element={<ActivityLogPage />} />
+        <Route path="/customer/enhanced-notifications" element={<EnhancedNotificationsPage />} />
+        <Route path="/customer/trends" element={<TrendsPage />} />
+        <Route path="/customer/events" element={<EventsPage />} />
+        <Route path="/customer/business-tracking" element={<BusinessTrackingPage />} />
+        <Route path="/customer/mini-games" element={<MiniGamesPage />} />
         <Route path="/customer/scanner" element={<CustomerScannerPage />} />
         <Route path="/customer/notifications" element={<CustomerNotificationsPage />} />
         <Route path="/customer/settings" element={<CustomerSettingsPage />} />
+        <Route path="/customer/receipts" element={<ReceiptsPage />} />
+        <Route path="/customer/receipt-analytics" element={<ReceiptAnalyticsPage />} />
+        <Route path="/customer/reward-pool" element={<RewardPoolPage />} />
         <Route path="/customer/badges" element={<BadgesPage />} />
         <Route path="/customer/leaderboard" element={<LeaderboardPage />} />
+        <Route path="/customer/live-leaderboard" element={<LiveLeaderboardPage />} />
+        <Route path="/customer/vip-club" element={<VIPClubPage />} />
+        <Route path="/customer/stats-dashboard" element={<StatsDashboardPage />} />
+        <Route path="/customer/donations" element={<DonationPage />} />
+        <Route path="/customer/tv-badges" element={<TVShowBadgesPage />} />
+        <Route path="/customer/league" element={<LeagueSystemPage />} />
         <Route path="/test" element={<TestDashboard />} />
           </Routes>
         </div>
       )}
-    </ThemeProvider>
+    </>
   )
 }
 

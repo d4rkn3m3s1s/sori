@@ -852,12 +852,66 @@ export const ALL_BADGES = [
   ...SPECIAL_BADGES
 ]
 
+// Yeni Lig Sistemi
 export const BADGE_LEVELS = [
-  { level: 1, requiredPoints: 0, name: 'Yeni Başlayan', color: '#6B7280' },
-  { level: 2, requiredPoints: 100, name: 'Deneyimli', color: '#10B981' },
-  { level: 3, requiredPoints: 300, name: 'Uzman', color: '#3B82F6' },
-  { level: 4, requiredPoints: 600, name: 'Usta', color: '#8B5CF6' },
-  { level: 5, requiredPoints: 1000, name: 'Efsane', color: '#F59E0B' },
-  { level: 6, requiredPoints: 1500, name: 'Efsane+', color: '#EF4444' },
-  { level: 7, requiredPoints: 2500, name: 'Tanrı', color: '#EC4899' }
+  { 
+    level: 1, 
+    requiredPoints: 0, 
+    name: 'Kör', 
+    color: '#78716C',
+    gradient: 'from-stone-500 to-stone-600',
+    icon: '🔥',
+    description: 'Yeni başlayan ama potansiyeli yüksek',
+    benefits: ['Temel rozetler', 'Standart puanlar']
+  },
+  { 
+    level: 2, 
+    requiredPoints: 150, 
+    name: 'Ezgi', 
+    color: '#10B981',
+    gradient: 'from-emerald-400 to-green-500',
+    icon: '🎵',
+    description: 'Ritmi yakalamaya başladın',
+    benefits: ['%10 bonus puan', 'Özel rozetler', 'Ezgi badge']
+  },
+  { 
+    level: 3, 
+    requiredPoints: 400, 
+    name: 'Parıltı', 
+    color: '#3B82F6',
+    gradient: 'from-blue-400 to-cyan-500',
+    icon: '✨',
+    description: 'Parlayan bir yıldız gibi',
+    benefits: ['%20 bonus puan', 'Parıltı efektleri', 'VIP desteği']
+  },
+  { 
+    level: 4, 
+    requiredPoints: 800, 
+    name: 'Ahenk', 
+    color: '#8B5CF6',
+    gradient: 'from-purple-400 to-violet-500',
+    icon: '🎼',
+    description: 'Mükemmel uyum ve denge',
+    benefits: ['%30 bonus puan', 'Öncelikli görünürlük', 'Özel avatar']
+  },
+  { 
+    level: 5, 
+    requiredPoints: 1500, 
+    name: 'Yücelik', 
+    color: '#F59E0B',
+    gradient: 'from-amber-400 to-orange-500',
+    icon: '👑',
+    description: 'Saygın ve etkili bir konum',
+    benefits: ['%40 bonus puan', 'Premium özellikler', 'Altın avatar çerçevesi']
+  },
+  { 
+    level: 6, 
+    requiredPoints: 2500, 
+    name: 'Efsanevi', 
+    color: '#EC4899',
+    gradient: 'from-pink-400 to-rose-500',
+    icon: '🌟',
+    description: 'Efsaneler arasında efsane',
+    benefits: ['%50 bonus puan', 'Tüm premium özellikler', 'Efsanevi rozetler', 'Topluluk lideri']
+  }
 ]

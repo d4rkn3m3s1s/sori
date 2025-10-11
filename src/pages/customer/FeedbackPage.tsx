@@ -75,20 +75,20 @@ function FeedbackPage() {
             </motion.div>
 
             {/* Stats Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
               >
                 <Card>
-                  <CardBody className="p-6">
-                    <div className="flex items-center justify-between">
+                  <CardBody className="p-4 md:p-5">
+                    <div className="flex flex-col space-y-2">
+                      <MessageSquare className="w-7 h-7 md:w-8 md:h-8 text-blue-500" />
                       <div>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">Toplam Geri Bildirim</p>
-                        <p className="text-2xl font-bold text-gray-900 dark:text-white">47</p>
+                        <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 mb-1">Toplam Geri Bildirim</p>
+                        <p className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">47</p>
                       </div>
-                      <MessageSquare className="w-8 h-8 text-blue-500" />
                     </div>
                   </CardBody>
                 </Card>
@@ -100,13 +100,13 @@ function FeedbackPage() {
                 transition={{ delay: 0.2 }}
               >
                 <Card>
-                  <CardBody className="p-6">
-                    <div className="flex items-center justify-between">
+                  <CardBody className="p-4 md:p-5">
+                    <div className="flex flex-col space-y-2">
+                      <Star className="w-7 h-7 md:w-8 md:h-8 text-yellow-500" />
                       <div>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">Ortalama Puan</p>
-                        <p className="text-2xl font-bold text-gray-900 dark:text-white">4.2</p>
+                        <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 mb-1">Ortalama Puan</p>
+                        <p className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">4.2</p>
                       </div>
-                      <Star className="w-8 h-8 text-yellow-500" />
                     </div>
                   </CardBody>
                 </Card>
@@ -118,13 +118,13 @@ function FeedbackPage() {
                 transition={{ delay: 0.3 }}
               >
                 <Card>
-                  <CardBody className="p-6">
-                    <div className="flex items-center justify-between">
+                  <CardBody className="p-4 md:p-5">
+                    <div className="flex flex-col space-y-2">
+                      <CheckCircle className="w-7 h-7 md:w-8 md:h-8 text-green-500" />
                       <div>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">Yanıtlanan</p>
-                        <p className="text-2xl font-bold text-gray-900 dark:text-white">32</p>
+                        <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 mb-1">Yanıtlanan</p>
+                        <p className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">32</p>
                       </div>
-                      <CheckCircle className="w-8 h-8 text-green-500" />
                     </div>
                   </CardBody>
                 </Card>
@@ -136,13 +136,13 @@ function FeedbackPage() {
                 transition={{ delay: 0.4 }}
               >
                 <Card>
-                  <CardBody className="p-6">
-                    <div className="flex items-center justify-between">
+                  <CardBody className="p-4 md:p-5">
+                    <div className="flex flex-col space-y-2">
+                      <Clock className="w-7 h-7 md:w-8 md:h-8 text-orange-500" />
                       <div>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">Bekleyen</p>
-                        <p className="text-2xl font-bold text-gray-900 dark:text-white">15</p>
+                        <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 mb-1">Bekleyen</p>
+                        <p className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">15</p>
                       </div>
-                      <Clock className="w-8 h-8 text-orange-500" />
                     </div>
                   </CardBody>
                 </Card>

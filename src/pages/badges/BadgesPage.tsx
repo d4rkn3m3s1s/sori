@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 import { Card, CardBody, Button, Progress, Chip, Tabs, Tab } from '@nextui-org/react'
-import { Trophy, Crown, Star, TrendingUp, Award, Zap, ShoppingBag, BarChart3 } from 'lucide-react'
+import { Trophy, Crown, Star, TrendingUp, Award, Zap, ShoppingBag, BarChart3, Tv, Sparkles } from 'lucide-react'
 import Sidebar from '../../components/dashboard/Sidebar'
 import Header from '../../components/dashboard/Header'
 import BadgeCollection from '../../components/badges/BadgeCollection'
@@ -15,6 +16,7 @@ import { Badge } from '../../types/badge'
 import { BADGE_LEVELS } from '../../data/badges'
 
 function BadgesPage() {
+  const navigate = useNavigate()
   const { 
     userBadges, 
     userStats, 
@@ -90,11 +92,47 @@ function BadgesPage() {
         
         <main className="flex-1 overflow-y-auto p-3 sm:p-4 md:p-6">
           <div className="max-w-7xl mx-auto space-y-4 sm:space-y-6">
+            {/* TV Show Badges Promo Banner */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Card className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 border-2 border-white/20">
+                <CardBody className="p-6">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                        <Tv className="w-8 h-8 text-white animate-pulse" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                          <Sparkles className="w-5 h-5" />
+                          YENİ: TV Dizi & Genel Rozetler!
+                        </h3>
+                        <p className="text-white/90 text-sm">
+                          80+ rozet: TV karakterleri + Genel emoji rozetleri koleksiyonu
+                        </p>
+                      </div>
+                    </div>
+                    <Button
+                      size="lg"
+                      className="bg-white text-purple-600 font-bold hover:scale-105 transition-transform"
+                      endContent={<Tv className="w-5 h-5" />}
+                      onClick={() => navigate('/customer/tv-badges')}
+                    >
+                      Keşfet
+                    </Button>
+                  </div>
+                </CardBody>
+              </Card>
+            </motion.div>
+
             {/* User Level & Progress */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
             >
               <Card className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
                 <CardBody className="p-6">
@@ -106,6 +144,13 @@ function BadgesPage() {
                       <div>
                         <h2 className="text-2xl font-bold">Seviye {currentLevel.level}</h2>
                         <p className="text-white/90">{currentLevel.name}</p>
+                        <Button
+                          size="sm"
+                          className="bg-white/20 text-white mt-2 hover:bg-white/30"
+                          onClick={() => navigate('/customer/league')}
+                        >
+                          ⚔️ Lig Sistemini Gör
+                        </Button>
                       </div>
                     </div>
                     

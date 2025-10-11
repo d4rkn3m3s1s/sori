@@ -7,6 +7,7 @@ import Header from '../../components/dashboard/Header'
 import { useBadgeSystem } from '../../hooks/useBadgeSystem'
 import BadgeCard from '../../components/badges/BadgeCard'
 import { Badge } from '../../types/badge'
+import { BADGE_LEVELS } from '../../data/badges'
 
 interface UserProfile {
   userId: string
@@ -38,6 +39,7 @@ function LeaderboardPage() {
   const [showCompareModal, setShowCompareModal] = useState(false)
   const [compareUser, setCompareUser] = useState<UserProfile | null>(null)
   const [categoryFilter, setCategoryFilter] = useState<string>('all')
+  const [leagueFilter, setLeagueFilter] = useState<string>('all')
 
   const timeFilters = [
     { key: 'all-time', label: 'Tüm Zamanlar' },
@@ -76,6 +78,25 @@ function LeaderboardPage() {
     return 'text-gray-600 dark:text-gray-400'
   }
 
+  // Yeni lig sistemi fonksiyonları
+  const getLeagueInfo = (points: number) => {
+    const league = [...BADGE_LEVELS].reverse().find(level => points >= level.requiredPoints) || BADGE_LEVELS[0]
+    return league
+  }
+
+  const getLeagueBadge = (points: number) => {
+    const league = getLeagueInfo(points)
+    return (
+      <Chip 
+        size="sm"
+        className={`bg-gradient-to-r ${league.gradient} text-white font-bold`}
+        startContent={<span className="text-sm">{league.icon}</span>}
+      >
+        {league.name}
+      </Chip>
+    )
+  }
+
   const handleViewProfile = (user: any) => {
     // Mock olarak detaylı profil oluştur
     const detailedProfile: UserProfile = {
@@ -112,8 +133,16 @@ function LeaderboardPage() {
     setShowCompareModal(true)
   }
 
-  const topUsers = leaderboard.slice(0, 3)
-  const otherUsers = leaderboard.slice(3)
+  // Lig filtreleme
+  const filteredLeaderboard = leagueFilter === 'all' 
+    ? leaderboard 
+    : leaderboard.filter(user => {
+        const userLeague = getLeagueInfo(user.totalPoints)
+        return userLeague.name === leagueFilter
+      })
+
+  const topUsers = filteredLeaderboard.slice(0, 3)
+  const otherUsers = filteredLeaderboard.slice(3)
 
   const categoryLeaders = {
     activity: leaderboard[0],
@@ -187,8 +216,8 @@ function LeaderboardPage() {
                       <div className="text-xs text-white/80">Puanın</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-xl font-bold">{userStats?.level || 1}</div>
-                      <div className="text-xs text-white/80">Seviye</div>
+                      <div className="text-xl font-bold flex items-center justify-center">{getLeagueBadge(userStats?.totalPoints || 0)}</div>
+                      <div className="text-xs text-white/80">Ligin</div>
                     </div>
                   </div>
                 </CardBody>
@@ -219,20 +248,42 @@ function LeaderboardPage() {
                       <Tab key="monthly" title="Aylık" />
                     </Tabs>
 
-                    <Select
-                      placeholder="Zaman Filtresi"
-                      selectedKeys={timeFilter ? [timeFilter] : []}
-                      onSelectionChange={(keys) => setTimeFilter(Array.from(keys)[0] as string)}
-                      className="min-w-[150px]"
-                      variant="bordered"
-                      startContent={<Filter className="w-4 h-4 text-gray-400" />}
-                    >
-                      {timeFilters.map((filter) => (
-                        <SelectItem key={filter.key} value={filter.key}>
-                          {filter.label}
-                        </SelectItem>
-                      ))}
-                    </Select>
+                    <div className="flex gap-3">
+                      <Select
+                        placeholder="Lig Filtresi"
+                        selectedKeys={leagueFilter ? [leagueFilter] : []}
+                        onSelectionChange={(keys) => setLeagueFilter(Array.from(keys)[0] as string)}
+                        className="min-w-[150px]"
+                        variant="bordered"
+                        startContent={<Trophy className="w-4 h-4 text-gray-400" />}
+                      >
+                        <SelectItem key="all" value="all">Tüm Ligler</SelectItem>
+                        {BADGE_LEVELS.map((league) => (
+                          <SelectItem 
+                            key={league.name} 
+                            value={league.name}
+                            startContent={<span>{league.icon}</span>}
+                          >
+                            {league.name}
+                          </SelectItem>
+                        ))}
+                      </Select>
+
+                      <Select
+                        placeholder="Zaman Filtresi"
+                        selectedKeys={timeFilter ? [timeFilter] : []}
+                        onSelectionChange={(keys) => setTimeFilter(Array.from(keys)[0] as string)}
+                        className="min-w-[150px]"
+                        variant="bordered"
+                        startContent={<Filter className="w-4 h-4 text-gray-400" />}
+                      >
+                        {timeFilters.map((filter) => (
+                          <SelectItem key={filter.key} value={filter.key}>
+                            {filter.label}
+                          </SelectItem>
+                        ))}
+                      </Select>
+                    </div>
                   </div>
                 </CardBody>
               </Card>
@@ -444,8 +495,7 @@ function LeaderboardPage() {
                             </div>
                             <div className="flex items-center space-x-3 text-sm text-gray-600 dark:text-gray-400">
                               <span className="flex items-center">
-                                <Award className="w-3 h-3 mr-1" />
-                                Seviye {user.level}
+                                {getLeagueBadge(user.totalPoints)}
                               </span>
                               <span className="flex items-center">
                                 <Trophy className="w-3 h-3 mr-1" />
@@ -629,7 +679,9 @@ function LeaderboardPage() {
                         <span className="flex items-center">
                           {getRankIcon(selectedUser.rank)} Sıralama: #{selectedUser.rank}
                         </span>
-                        <span>Seviye {selectedUser.level}</span>
+                        <span className="flex items-center gap-2">
+                          Lig: {getLeagueBadge(selectedUser.totalPoints)}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -818,8 +870,8 @@ function LeaderboardPage() {
                           <span className="font-bold text-gray-900 dark:text-white">{userStats.totalBadges}</span>
                         </div>
                         <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                          <span className="text-sm text-gray-600 dark:text-gray-400">Seviye</span>
-                          <span className="font-bold text-gray-900 dark:text-white">{userStats.level}</span>
+                          <span className="text-sm text-gray-600 dark:text-gray-400">Lig</span>
+                          <span>{getLeagueBadge(userStats.totalPoints)}</span>
                         </div>
                       </div>
                     </div>
@@ -844,8 +896,8 @@ function LeaderboardPage() {
                           <span className="font-bold text-gray-900 dark:text-white">{compareUser.totalBadges}</span>
                         </div>
                         <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                          <span className="text-sm text-gray-600 dark:text-gray-400">Seviye</span>
-                          <span className="font-bold text-gray-900 dark:text-white">{compareUser.level}</span>
+                          <span className="text-sm text-gray-600 dark:text-gray-400">Lig</span>
+                          <span>{getLeagueBadge(compareUser.totalPoints)}</span>
                         </div>
                       </div>
                     </div>

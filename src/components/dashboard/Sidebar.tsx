@@ -19,7 +19,18 @@ import {
   Trophy,
   Award,
   Menu,
-  X
+  X,
+  Target,
+  Palette,
+  TrendingUp,
+  Gift,
+  Zap,
+  Clock,
+  Calendar,
+  Heart,
+  Gamepad2,
+  Receipt,
+  Crown
 } from 'lucide-react'
 import Logo from '../ui/Logo'
 import { useState, useEffect } from 'react'
@@ -74,9 +85,26 @@ function Sidebar({ userType }: SidebarProps) {
     { icon: MessageSquare, label: 'My Feedback', path: '/customer/feedback' },
     { icon: Trophy, label: 'Rozetler', path: '/customer/badges', badge: 'New' },
     { icon: Award, label: 'Liderlik Tablosu', path: '/customer/leaderboard' },
+    { icon: TrendingUp, label: 'Canlı Liderlik', path: '/customer/live-leaderboard', badge: 'Hot' },
+    { icon: BarChart3, label: 'İstatistik Dashboard', path: '/customer/stats-dashboard', badge: 'New' },
+    { icon: Crown, label: 'VIP Kulübü', path: '/customer/vip-club', badge: 'Premium' },
+    { icon: Heart, label: 'Sosyal Sorumluluk', path: '/customer/donations', badge: 'Hot' },
+    { icon: Gift, label: 'Ödül Havuzu', path: '/customer/reward-pool', badge: 'Hot' },
+    { icon: Receipt, label: 'Fişlerim', path: '/customer/receipts', badge: 'New' },
     { icon: BarChart3, label: 'Analytics', path: '/customer/analytics' },
+    { icon: TrendingUp, label: 'Gelişmiş Analitik', path: '/customer/enhanced-analytics', badge: 'New' },
+    { icon: Target, label: 'Hedeflerim', path: '/customer/goals', badge: 'New' },
+    { icon: Palette, label: 'Profil Özelleştir', path: '/customer/profile-customize', badge: 'New' },
+    { icon: Trophy, label: 'Başarılar', path: '/customer/achievements', badge: 'New' },
+    { icon: Gift, label: 'Ödül Dükkanı', path: '/customer/reward-store', badge: 'New' },
+    { icon: Zap, label: 'Günlük Görevler', path: '/customer/quests', badge: 'New' },
+    { icon: Clock, label: 'Etkinlik Geçmişi', path: '/customer/activity-log', badge: 'New' },
+    { icon: Bell, label: 'Gelişmiş Bildirimler', path: '/customer/enhanced-notifications', badge: 'New' },
+    { icon: TrendingUp, label: 'Trend Analizi', path: '/customer/trends', badge: 'New' },
+    { icon: Calendar, label: 'Etkinlikler', path: '/customer/events', badge: 'New' },
+    { icon: Heart, label: 'İşletme Takibi', path: '/customer/business-tracking', badge: 'New' },
+    { icon: Gamepad2, label: 'Mini Oyunlar', path: '/customer/mini-games', badge: 'New' },
     { icon: QrCode, label: 'QR Scanner', path: '/customer/scanner' },
-    { icon: Bell, label: 'Notifications', path: '/customer/notifications' },
     { icon: Settings, label: 'Settings', path: '/customer/settings' }
   ]
 
@@ -227,7 +255,15 @@ function Sidebar({ userType }: SidebarProps) {
                     <span className="text-sm font-medium">{item.label}</span>
                     <div className="flex items-center space-x-2">
                       {item.badge && (
-                        <span className="px-2 py-1 text-xs bg-green-100 text-green-800 rounded-full">
+                        <span className={`px-2 py-1 text-xs rounded-full font-bold ${
+                          item.badge === 'Hot'
+                            ? 'bg-gradient-to-r from-orange-400 to-red-500 text-white animate-pulse'
+                            : item.badge === 'Premium'
+                            ? 'bg-gradient-to-r from-yellow-400 via-yellow-500 to-amber-500 text-white animate-pulse shadow-lg'
+                            : item.badge === 'New'
+                            ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                            : 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
+                        }`}>
                           {item.badge}
                         </span>
                       )}

@@ -13,7 +13,8 @@ import {
   Flame, Calendar, Eye, Heart, ThumbsUp, Share2,
   Bell, Download, Filter, RefreshCw, Maximize2, Minimize2,
   Plus, ChevronRight, Sparkles, Crown, Rocket, TrendingDown,
-  Coffee, ShoppingBag, MapPin, Check, X, Info, AlertCircle
+  Coffee, ShoppingBag, MapPin, Check, X, Info, AlertCircle,
+  User, Palette
 } from 'lucide-react'
 import Sidebar from '../../components/dashboard/Sidebar'
 import Header from '../../components/dashboard/Header'
@@ -784,16 +785,119 @@ function AdvancedCustomerDashboard() {
                     <Button
                       size="lg"
                       className="bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm h-auto py-4"
+                      onPress={() => navigate('/customer/goals')}
                     >
                       <div className="flex flex-col items-center space-y-2">
-                        <Gift className="w-8 h-8" />
-                        <span>Ödüller</span>
+                        <Target className="w-8 h-8" />
+                        <span>Hedefler</span>
                       </div>
                     </Button>
                   </div>
                 </CardBody>
               </Card>
             </motion.div>
+
+            {/* New Feature Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Enhanced Analytics */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                whileHover={{ scale: 1.05 }}
+                className="cursor-pointer"
+                onClick={() => navigate('/customer/enhanced-analytics')}
+              >
+                <Card className="bg-gradient-to-br from-blue-500 to-cyan-500 hover:shadow-2xl transition-shadow">
+                  <CardBody className="p-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                        <BarChart3 className="w-7 h-7 text-white" />
+                      </div>
+                      <Chip size="sm" className="bg-white/20 text-white font-bold">
+                        YENİ
+                      </Chip>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      📊 Gelişmiş Analitik
+                    </h3>
+                    <p className="text-white/90 text-sm mb-4">
+                      Detaylı istatistikler, grafik ler ve performans analizin
+                    </p>
+                    <div className="flex items-center text-white/80 text-xs">
+                      <Eye className="w-4 h-4 mr-1" />
+                      <span>Aktivite takibi, kategori analizi, içgörüler</span>
+                    </div>
+                  </CardBody>
+                </Card>
+              </motion.div>
+
+              {/* Goals System */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                whileHover={{ scale: 1.05 }}
+                className="cursor-pointer"
+                onClick={() => navigate('/customer/goals')}
+              >
+                <Card className="bg-gradient-to-br from-purple-500 to-pink-500 hover:shadow-2xl transition-shadow">
+                  <CardBody className="p-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                        <Target className="w-7 h-7 text-white" />
+                      </div>
+                      <Chip size="sm" className="bg-white/20 text-white font-bold">
+                        YENİ
+                      </Chip>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      🎯 Hedef Sistemi
+                    </h3>
+                    <p className="text-white/90 text-sm mb-4">
+                      Günlük, haftalık hedefler belirle, ilerle, ödül kazan
+                    </p>
+                    <div className="flex items-center text-white/80 text-xs">
+                      <Sparkles className="w-4 h-4 mr-1" />
+                      <span>Özel hedefler, takip, bonus puanlar</span>
+                    </div>
+                  </CardBody>
+                </Card>
+              </motion.div>
+
+              {/* Profile Customization */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                whileHover={{ scale: 1.05 }}
+                className="cursor-pointer"
+                onClick={() => navigate('/customer/profile-customize')}
+              >
+                <Card className="bg-gradient-to-br from-orange-500 to-red-500 hover:shadow-2xl transition-shadow">
+                  <CardBody className="p-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                        <Palette className="w-7 h-7 text-white" />
+                      </div>
+                      <Chip size="sm" className="bg-white/20 text-white font-bold">
+                        YENİ
+                      </Chip>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      🎨 Profil Özelleştirme
+                    </h3>
+                    <p className="text-white/90 text-sm mb-4">
+                      Avatar, tema, vitrin rozetleri ve daha fazlası
+                    </p>
+                    <div className="flex items-center text-white/80 text-xs">
+                      <User className="w-4 h-4 mr-1" />
+                      <span>Kişisel stil, gizlilik, bildirimler</span>
+                    </div>
+                  </CardBody>
+                </Card>
+              </motion.div>
+            </div>
 
             {/* Super Features Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

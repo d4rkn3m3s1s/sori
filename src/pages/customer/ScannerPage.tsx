@@ -780,95 +780,14 @@ function ScannerPage() {
 
               <ModalBody className="max-h-[70vh] overflow-y-auto">
                 <div className="space-y-4">
-                  {/* Purchase Receipt */}
-                  {selectedBusiness.purchaseItems && selectedBusiness.purchaseItems.length > 0 && (
-                    <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-lg p-4 border-2 border-blue-200 dark:border-blue-800">
-                      <div className="flex items-center justify-between mb-4">
-                        <h4 className="text-lg font-bold text-gray-900 dark:text-white flex items-center">
-                          <ShoppingBag className="w-5 h-5 mr-2 text-blue-600" />
-                          Alışveriş Detayları
-                        </h4>
-                        <Chip size="sm" color="primary" variant="flat">
-                          {selectedBusiness.purchaseItems.length} ürün
-                        </Chip>
-                      </div>
-
-                      {/* Purchase Items List */}
-                      <div className="space-y-2 mb-4">
-                        {selectedBusiness.purchaseItems.map((item) => (
-                          <div
-                            key={item.id}
-                            className="flex items-center justify-between p-3 bg-white dark:bg-gray-800 rounded-lg hover:shadow-md transition-shadow"
-                          >
-                            <div className="flex items-center space-x-3 flex-1">
-                              <div className="text-3xl">{item.emoji}</div>
-                              <div className="flex-1">
-                                <p className="font-semibold text-gray-900 dark:text-white">
-                                  {item.name}
-                                </p>
-                                <p className="text-sm text-gray-600 dark:text-gray-400">
-                                  {item.category}
-                                </p>
-                              </div>
-                            </div>
-                            <div className="text-right">
-                              <p className="text-sm text-gray-600 dark:text-gray-400">
-                                {item.quantity} x ₺{item.price.toFixed(2)}
-                              </p>
-                              <p className="font-bold text-gray-900 dark:text-white">
-                                ₺{(item.quantity * item.price).toFixed(2)}
-                              </p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Total Amount */}
-                      <div className="border-t-2 border-blue-200 dark:border-blue-800 pt-3 space-y-2">
-                        <div className="flex items-center justify-between">
-                          <span className="text-sm text-gray-600 dark:text-gray-400">Ara Toplam</span>
-                          <span className="font-medium">₺{selectedBusiness.totalAmount?.toFixed(2)}</span>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <span className="text-sm text-gray-600 dark:text-gray-400">KDV (%18)</span>
-                          <span className="font-medium">₺{((selectedBusiness.totalAmount || 0) * 0.18).toFixed(2)}</span>
-                        </div>
-                        <div className="flex items-center justify-between pt-2 border-t border-blue-200 dark:border-blue-700">
-                          <span className="text-lg font-bold text-gray-900 dark:text-white">Toplam</span>
-                          <span className="text-2xl font-bold text-blue-600">
-                            ₺{((selectedBusiness.totalAmount || 0) * 1.18).toFixed(2)}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Payment Info */}
-                      <div className="mt-4 pt-4 border-t border-blue-200 dark:border-blue-700">
-                        <div className="grid grid-cols-2 gap-3 text-sm">
-                          <div>
-                            <p className="text-gray-600 dark:text-gray-400">Ödeme Yöntemi</p>
-                            <p className="font-semibold text-gray-900 dark:text-white">
-                              {selectedBusiness.paymentMethod}
-                            </p>
-                          </div>
-                          <div>
-                            <p className="text-gray-600 dark:text-gray-400">İşlem Tarihi</p>
-                            <p className="font-semibold text-gray-900 dark:text-white">
-                              {selectedBusiness.purchaseDate}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Rating */}
-                  <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                  {/* Business Header Info */}
+                  <div className="flex items-center justify-between p-3 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-lg">
                     <div className="flex items-center space-x-3">
                       <div className="flex">
                         {[...Array(5)].map((_, i) => (
                           <Star
                             key={i}
-                            className={`w-6 h-6 ${
+                            className={`w-5 h-5 ${
                               i < Math.floor(selectedBusiness.rating)
                                 ? 'text-yellow-500 fill-yellow-500'
                                 : 'text-gray-300'
@@ -877,24 +796,114 @@ function ScannerPage() {
                         ))}
                       </div>
                       <div>
-                        <p className="text-lg font-bold text-gray-900 dark:text-white">
+                        <p className="text-sm font-bold text-gray-900 dark:text-white">
                           {selectedBusiness.rating}
                         </p>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
                           {selectedBusiness.totalReviews} yorum
                         </p>
                       </div>
                     </div>
-                    <Chip color="primary" size="lg">
+                    <Chip color="success" variant="flat" size="sm">
                       {selectedBusiness.distance} uzakta
                     </Chip>
                   </div>
 
+                  {/* Purchase Receipt */}
+                  {selectedBusiness.purchaseItems && selectedBusiness.purchaseItems.length > 0 && (
+                    <div className="bg-white dark:bg-gray-800 rounded-xl p-5 border-2 border-gray-200 dark:border-gray-700 shadow-lg">
+                      <div className="flex items-center justify-between mb-4 pb-3 border-b-2 border-dashed border-gray-300 dark:border-gray-600">
+                        <h4 className="text-xl font-bold text-gray-900 dark:text-white flex items-center">
+                          <ShoppingBag className="w-6 h-6 mr-2 text-blue-600" />
+                          Alışveriş Fişi
+                        </h4>
+                        <Chip size="sm" color="primary" variant="shadow">
+                          {selectedBusiness.purchaseItems.length} ürün
+                        </Chip>
+                      </div>
+
+                      {/* Purchase Items List */}
+                      <div className="space-y-3 mb-4">
+                        {selectedBusiness.purchaseItems.map((item) => (
+                          <div
+                            key={item.id}
+                            className="flex items-center justify-between p-3 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-600 rounded-lg hover:shadow-md transition-all hover:scale-[1.02]"
+                          >
+                            <div className="flex items-center space-x-3 flex-1">
+                              <div className="w-12 h-12 bg-white dark:bg-gray-800 rounded-lg flex items-center justify-center text-3xl shadow-sm">
+                                {item.emoji}
+                              </div>
+                              <div className="flex-1">
+                                <p className="font-bold text-gray-900 dark:text-white text-base">
+                                  {item.name}
+                                </p>
+                                <div className="flex items-center gap-2 mt-1">
+                                  <Chip size="sm" variant="flat" color="default" className="text-xs">
+                                    {item.category}
+                                  </Chip>
+                                  <span className="text-sm text-gray-600 dark:text-gray-400">
+                                    {item.quantity} adet
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">
+                                {item.quantity} x ₺{item.price.toFixed(2)}
+                              </p>
+                              <p className="font-bold text-gray-900 dark:text-white text-lg">
+                                ₺{(item.quantity * item.price).toFixed(2)}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Total Amount */}
+                      <div className="border-t-2 border-dashed border-gray-300 dark:border-gray-600 pt-4 mt-4 space-y-3">
+                        <div className="flex items-center justify-between text-base">
+                          <span className="text-gray-600 dark:text-gray-400">Ara Toplam</span>
+                          <span className="font-semibold text-gray-900 dark:text-white">₺{selectedBusiness.totalAmount?.toFixed(2)}</span>
+                        </div>
+                        <div className="flex items-center justify-between text-base">
+                          <span className="text-gray-600 dark:text-gray-400">KDV (%18)</span>
+                          <span className="font-semibold text-gray-900 dark:text-white">₺{((selectedBusiness.totalAmount || 0) * 0.18).toFixed(2)}</span>
+                        </div>
+                        <div className="flex items-center justify-between pt-3 border-t-2 border-gray-300 dark:border-gray-600">
+                          <span className="text-xl font-bold text-gray-900 dark:text-white">Toplam</span>
+                          <span className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                            ₺{((selectedBusiness.totalAmount || 0) * 1.18).toFixed(2)}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Payment Info */}
+                      <div className="mt-5 pt-4 border-t-2 border-dashed border-gray-300 dark:border-gray-600">
+                        <div className="grid grid-cols-2 gap-4">
+                          <div className="p-3 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg">
+                            <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">Ödeme Yöntemi</p>
+                            <p className="font-bold text-gray-900 dark:text-white text-sm">
+                              {selectedBusiness.paymentMethod}
+                            </p>
+                          </div>
+                          <div className="p-3 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-lg">
+                            <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">İşlem Tarihi</p>
+                            <p className="font-bold text-gray-900 dark:text-white text-sm">
+                              {selectedBusiness.purchaseDate}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   {/* Address */}
-                  <div className="flex items-start space-x-3 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                    <MapPin className="w-5 h-5 text-gray-600 flex-shrink-0 mt-0.5" />
+                  <div className="flex items-start space-x-3 p-4 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-lg border border-gray-200 dark:border-gray-600">
+                    <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-5 h-5 text-blue-600" />
+                    </div>
                     <div>
-                      <p className="font-medium text-gray-900 dark:text-white">Adres</p>
+                      <p className="font-bold text-gray-900 dark:text-white mb-1">Adres</p>
                       <p className="text-sm text-gray-600 dark:text-gray-400">
                         {selectedBusiness.address}
                       </p>
@@ -902,11 +911,14 @@ function ScannerPage() {
                   </div>
 
                   {/* Badges */}
-                  <div>
-                    <p className="font-medium text-gray-900 dark:text-white mb-2">Özellikler</p>
+                  <div className="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg border border-purple-200 dark:border-purple-700">
+                    <p className="font-bold text-gray-900 dark:text-white mb-3 flex items-center">
+                      <Sparkles className="w-4 h-4 mr-2 text-purple-600" />
+                      Özellikler
+                    </p>
                     <div className="flex flex-wrap gap-2">
                       {selectedBusiness.badges.map((badge, i) => (
-                        <Chip key={i} color="secondary" variant="flat">
+                        <Chip key={i} color="secondary" variant="shadow" size="sm">
                           {badge}
                         </Chip>
                       ))}
@@ -915,14 +927,16 @@ function ScannerPage() {
 
                   {/* Special Offer */}
                   {selectedBusiness.specialOffer && (
-                    <div className="bg-gradient-to-r from-orange-100 to-red-100 dark:from-orange-900/30 dark:to-red-900/30 rounded-lg p-4 border-2 border-orange-300 dark:border-orange-700">
-                      <div className="flex items-start space-x-3">
-                        <Gift className="w-6 h-6 text-orange-600 flex-shrink-0" />
-                        <div>
-                          <p className="font-bold text-orange-900 dark:text-orange-300 mb-1">
-                            Özel Teklif! 🎉
+                    <div className="bg-gradient-to-r from-orange-100 to-red-100 dark:from-orange-900/30 dark:to-red-900/30 rounded-xl p-5 border-2 border-orange-400 dark:border-orange-600 shadow-lg">
+                      <div className="flex items-start space-x-4">
+                        <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 animate-pulse">
+                          <Gift className="w-7 h-7 text-white" />
+                        </div>
+                        <div className="flex-1">
+                          <p className="font-bold text-orange-900 dark:text-orange-200 mb-2 text-lg">
+                            🎉 Özel Teklif!
                           </p>
-                          <p className="text-sm text-orange-800 dark:text-orange-400">
+                          <p className="text-base text-orange-800 dark:text-orange-300 font-medium">
                             {selectedBusiness.specialOffer}
                           </p>
                         </div>
@@ -932,13 +946,18 @@ function ScannerPage() {
                 </div>
               </ModalBody>
 
-              <ModalFooter>
-                <Button variant="flat" onPress={() => setShowBusinessModal(false)}>
+              <ModalFooter className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700">
+                <Button variant="flat" onPress={() => setShowBusinessModal(false)} size="lg">
                   Kapat
                 </Button>
-                <Button color="primary" onPress={handleOpenCommentModal}>
+                <Button 
+                  color="primary" 
+                  onPress={handleOpenCommentModal}
+                  size="lg"
+                  className="bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold"
+                  endContent={<ArrowRight className="w-5 h-5" />}
+                >
                   Yorum Yap ve Puan Kazan
-                  <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </ModalFooter>
             </ModalContent>
@@ -1128,15 +1147,17 @@ function ScannerPage() {
                 </div>
               </ModalBody>
 
-              <ModalFooter>
-                <Button variant="flat" onPress={() => setShowCommentModal(false)}>
+              <ModalFooter className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700">
+                <Button variant="flat" onPress={() => setShowCommentModal(false)} size="lg">
                   İptal
                 </Button>
                 <Button
-                  color="primary"
+                  color="success"
                   onPress={handleSubmitComment}
                   isDisabled={commentForm.rating === 0 || commentForm.comment.length < 20}
                   startContent={<Send className="w-4 h-4" />}
+                  size="lg"
+                  className="bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold"
                 >
                   Yorumu Gönder ve Puan Kazan
                 </Button>

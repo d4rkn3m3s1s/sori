@@ -21,6 +21,8 @@ export interface Badge {
   brandId?: string
   isCustom?: boolean
   privileges?: BadgePrivilege[]
+  showName?: string  // TV Show name
+  genre?: string     // TV Show genre (KOMEDİ, FANTASTİK, etc.)
 }
 
 export interface BadgePrivilege {
