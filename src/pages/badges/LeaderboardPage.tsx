@@ -40,6 +40,7 @@ function LeaderboardPage() {
   const [compareUser, setCompareUser] = useState<UserProfile | null>(null)
   const [categoryFilter, setCategoryFilter] = useState<string>('all')
   const [leagueFilter, setLeagueFilter] = useState<string>('all')
+  const [regionFilter, setRegionFilter] = useState<'all' | 'turkey' | 'global'>('all')
 
   const timeFilters = [
     { key: 'all-time', label: 'Tüm Zamanlar' },
@@ -134,12 +135,23 @@ function LeaderboardPage() {
   }
 
   // Lig filtreleme
-  const filteredLeaderboard = leagueFilter === 'all' 
-    ? leaderboard 
-    : leaderboard.filter(user => {
-        const userLeague = getLeagueInfo(user.totalPoints)
-        return userLeague.name === leagueFilter
-      })
+  const filteredLeaderboard = leaderboard.filter(user => {
+    // League filter
+    if (leagueFilter !== 'all') {
+      const userLeague = getLeagueInfo(user.totalPoints)
+      if (userLeague.name !== leagueFilter) return false
+    }
+    
+    // Region filter (Mock - gerçekte backend'den gelecek)
+    if (regionFilter !== 'all') {
+      // Mock: username'e göre basit bir region ataması
+      const isTurkish = user.username.includes('TR') || Math.random() > 0.5
+      if (regionFilter === 'turkey' && !isTurkish) return false
+      if (regionFilter === 'global' && isTurkish) return false
+    }
+    
+    return true
+  })
 
   const topUsers = filteredLeaderboard.slice(0, 3)
   const otherUsers = filteredLeaderboard.slice(3)
@@ -248,7 +260,23 @@ function LeaderboardPage() {
                       <Tab key="monthly" title="Aylık" />
                     </Tabs>
 
-                    <div className="flex gap-3">
+                    <div className="flex gap-3 flex-wrap">
+                      <Select
+                        placeholder="Bölge Seçimi"
+                        selectedKeys={regionFilter ? [regionFilter] : []}
+                        onSelectionChange={(keys) => setRegionFilter(Array.from(keys)[0] as 'all' | 'turkey' | 'global')}
+                        className="min-w-[150px]"
+                        variant="bordered"
+                        startContent={<Users className="w-4 h-4 text-gray-400" />}
+                        items={[
+                          { key: 'all', label: '🌐 Tüm Bölgeler' },
+                          { key: 'turkey', label: '🇹🇷 Türkiye Ligi' },
+                          { key: 'global', label: '🌍 Global Lig' }
+                        ]}
+                      >
+                        {(item: any) => <SelectItem key={item.key}>{item.label}</SelectItem>}
+                      </Select>
+                      
                       <Select
                         placeholder="Lig Filtresi"
                         selectedKeys={leagueFilter ? [leagueFilter] : []}

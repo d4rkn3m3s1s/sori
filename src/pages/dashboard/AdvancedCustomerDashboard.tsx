@@ -408,7 +408,7 @@ function AdvancedCustomerDashboard() {
             )}
 
             {/* Main Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
               {/* Left Column - Stats & Charts */}
               <div className="lg:col-span-2 space-y-6">
                 {/* Performance Chart */}
@@ -418,13 +418,13 @@ function AdvancedCustomerDashboard() {
                   transition={{ delay: 0.1 }}
                 >
                   <Card className="border-2 border-gray-200 dark:border-gray-700">
-                    <CardBody className="p-6">
-                      <div className="flex items-center justify-between mb-6">
+                    <CardBody className="p-4 sm:p-6">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0 mb-4 sm:mb-6">
                         <div>
-                          <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                          <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
                             Haftalık Performans
                           </h3>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">
+                          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
                             Son 7 günün özeti
                           </p>
                         </div>
@@ -432,23 +432,23 @@ function AdvancedCustomerDashboard() {
                           <Chip size="sm" color="primary" variant="flat">
                             +24% artış
                           </Chip>
-                          <Button size="sm" isIconOnly variant="flat">
+                          <Button size="sm" isIconOnly variant="flat" className="hidden sm:flex">
                             <Maximize2 className="w-4 h-4" />
                           </Button>
                         </div>
                       </div>
 
                       {/* Chart */}
-                      <div className="h-64">
-                        <div className="flex items-end justify-between h-full space-x-2">
+                      <div className="h-64 relative">
+                        <div className="flex items-end justify-between h-full space-x-1 sm:space-x-2">
                           {performanceData.map((data, index) => (
-                            <div key={index} className="flex-1 flex flex-col items-center group">
+                            <div key={index} className="flex-1 flex flex-col items-center group relative">
                               {/* Tooltip */}
-                              <div className="absolute -top-20 bg-gray-900 text-white px-3 py-2 rounded-lg text-xs opacity-0 group-hover:opacity-100 transition-opacity z-10 whitespace-nowrap">
-                                <p className="font-bold">{data.day}</p>
-                                <p>💬 {data.comments} yorum</p>
-                                <p>⭐ {data.points} puan</p>
-                                <p>🏆 {data.badges} rozet</p>
+                              <div className="absolute -top-24 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg text-xs opacity-0 group-hover:opacity-100 transition-opacity z-10 whitespace-nowrap pointer-events-none">
+                                <p className="font-bold text-xs">{data.day}</p>
+                                <p className="text-xs">💬 {data.comments}</p>
+                                <p className="text-xs">⭐ {data.points}</p>
+                                <p className="text-xs">🏆 {data.badges}</p>
                               </div>
 
                               {/* Bar */}
@@ -456,11 +456,11 @@ function AdvancedCustomerDashboard() {
                                 initial={{ height: 0 }}
                                 animate={{ height: `${(data.comments / maxPerformance) * 100}%` }}
                                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                                className="w-full bg-gradient-to-t from-purple-500 to-pink-500 rounded-t-lg cursor-pointer hover:from-purple-600 hover:to-pink-600 transition-colors"
+                                className="w-full bg-gradient-to-t from-purple-500 to-pink-500 rounded-t-lg cursor-pointer hover:from-purple-600 hover:to-pink-600 transition-colors min-h-[20px]"
                               />
 
                               {/* Label */}
-                              <span className="text-sm text-gray-600 dark:text-gray-400 mt-2">
+                              <span className="text-[10px] sm:text-xs md:text-sm text-gray-600 dark:text-gray-400 mt-1 sm:mt-2 truncate w-full text-center">
                                 {data.day}
                               </span>
                             </div>
@@ -469,14 +469,14 @@ function AdvancedCustomerDashboard() {
                       </div>
 
                       {/* Legend */}
-                      <div className="flex items-center justify-center space-x-6 mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-700">
                         <div className="flex items-center space-x-2">
                           <div className="w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded" />
-                          <span className="text-sm text-gray-600 dark:text-gray-400">Yorumlar</span>
+                          <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Yorumlar</span>
                         </div>
                         <div className="flex items-center space-x-2">
                           <TrendingUp className="w-4 h-4 text-green-500" />
-                          <span className="text-sm text-green-600">
+                          <span className="text-xs sm:text-sm text-green-600">
                             Ortalama: {(performanceData.reduce((sum, d) => sum + d.comments, 0) / 7).toFixed(1)}
                           </span>
                         </div>
@@ -798,12 +798,45 @@ function AdvancedCustomerDashboard() {
             </motion.div>
 
             {/* New Feature Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Enhanced Analytics */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Surprise Gift Boxes */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
+                whileHover={{ scale: 1.05 }}
+                className="cursor-pointer"
+                onClick={() => navigate('/customer/surprise-gifts')}
+              >
+                <Card className="bg-gradient-to-br from-yellow-500 via-orange-500 to-red-500 hover:shadow-2xl transition-shadow">
+                  <CardBody className="p-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm animate-pulse">
+                        <Gift className="w-7 h-7 text-white" />
+                      </div>
+                      <Chip size="sm" className="bg-white/20 text-white font-bold animate-pulse">
+                        YENİ
+                      </Chip>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      🎁 Sürpriz Hediye Kutuları
+                    </h3>
+                    <p className="text-white/90 text-sm mb-4">
+                      Kutular aç, rastgele ödüller ve sürprizler kazan!
+                    </p>
+                    <div className="flex items-center text-white/80 text-xs">
+                      <Sparkles className="w-4 h-4 mr-1" />
+                      <span>6 farklı kutu, nadir ödüller, günlük şanslar</span>
+                    </div>
+                  </CardBody>
+                </Card>
+              </motion.div>
+
+              {/* Enhanced Analytics */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
                 whileHover={{ scale: 1.05 }}
                 className="cursor-pointer"
                 onClick={() => navigate('/customer/enhanced-analytics')}
@@ -836,7 +869,7 @@ function AdvancedCustomerDashboard() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
+                transition={{ delay: 0.5 }}
                 whileHover={{ scale: 1.05 }}
                 className="cursor-pointer"
                 onClick={() => navigate('/customer/goals')}
@@ -869,7 +902,7 @@ function AdvancedCustomerDashboard() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
+                transition={{ delay: 0.6 }}
                 whileHover={{ scale: 1.05 }}
                 className="cursor-pointer"
                 onClick={() => navigate('/customer/profile-customize')}

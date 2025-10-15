@@ -3,14 +3,14 @@ export interface Badge {
   name: string
   description: string
   icon: string
-  category: 'activity' | 'behavior' | 'brand' | 'special'
+  category: 'activity' | 'behavior' | 'brand' | 'special' | 'mysterious'
   subcategory?: string
   requirement: {
-    type: 'comment_count' | 'behavior_pattern' | 'brand_loyalty' | 'special_action'
+    type: 'comment_count' | 'behavior_pattern' | 'brand_loyalty' | 'special_action' | 'mysterious_action'
     value: number | string
     condition?: string
   }
-  rarity: 'common' | 'rare' | 'epic' | 'legendary'
+  rarity: 'common' | 'rare' | 'epic' | 'legendary' | 'mythical'
   points: number
   unlocked: boolean
   unlockedAt?: Date
@@ -20,13 +20,21 @@ export interface Badge {
   gradient: string
   brandId?: string
   isCustom?: boolean
+  isHidden?: boolean  // Gizemli rozetler için - Kilit açılana kadar görünmez
+  unlockedBy?: number  // Kullanıcı yüzdesi - Ne kadar nadir (örn: 0.01 = %0.01)
   privileges?: BadgePrivilege[]
   showName?: string  // TV Show name
   genre?: string     // TV Show genre (KOMEDİ, FANTASTİK, etc.)
 }
 
 export interface BadgePrivilege {
-  type: 'vip_comments' | 'early_access' | 'exclusive_features' | 'priority_support' | 'custom_avatar' | 'special_emoji'
+  type: 'vip_comments' | 'early_access' | 'exclusive_features' | 'priority_support' | 'custom_avatar' | 'special_emoji' | 
+        'resurrection' | 'legendary_frame' | 'rainbow_effect' | 'space_badge' | 'exclusive_sounds' | 
+        'time_badge' | 'future_insights' | 'historical_rewards' | 'dragon_power' | 'fire_effect' | 
+        'legendary_status' | 'invisibility' | 'stealth_bonus' | 'magic_spells' | 'transformation' | 
+        'spell_bonus' | 'crystal_theme' | 'purity_bonus' | 'stealth_mode' | 'speed_bonus' | 
+        'halo_effect' | 'blessing_bonus' | 'divine_protection' | 'automation' | 'efficiency_boost' | 
+        'royal_authority' | 'supreme_bonus' | 'vip_access' | 'exclusive_events'
   description: string
   active: boolean
 }
@@ -42,6 +50,7 @@ export interface UserBadgeStats {
     behavior: number
     brand: number
     special: number
+    mysterious: number
   }
   recentUnlocks: Badge[]
   favoriteCategory: string

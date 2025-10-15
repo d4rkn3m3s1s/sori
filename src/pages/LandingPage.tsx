@@ -82,7 +82,7 @@ function LandingPage() {
       <motion.header 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative z-10 p-6"
+        className="relative z-10 p-4 sm:p-6"
       >
         <nav className="flex justify-between items-center max-w-7xl mx-auto">
           <Logo size="md" animated={true} showText={true} />
@@ -165,22 +165,22 @@ function LandingPage() {
       </motion.header>
 
       {/* Hero Section */}
-      <section className="relative z-10 px-6 py-20">
+      <section className="relative z-10 px-4 sm:px-6 py-12 sm:py-16 md:py-20">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-5xl lg:text-6xl font-bold mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
                 <span className="text-gray-900 dark:text-white">Transform Feedback Into </span>
                 <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
                   Actionable Intelligence
                 </span>
               </h1>
               
-              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                 AI ile müşteri geri bildiriminizi anlayın, geliştirin, büyütün. 
                 QR tabanlı hızlı geri bildirim toplama ve gerçek zamanlı analiz platformu.
               </p>
@@ -389,7 +389,7 @@ function LandingPage() {
       </section>
 
       {/* Features Section */}
-      <section className="relative z-10 px-6 py-20 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
+      <section className="relative z-10 px-4 sm:px-6 py-12 sm:py-16 md:py-20 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -397,16 +397,16 @@ function LandingPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               Intelligent Feedback Management
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Gelişmiş AI yetenekleri ile müşteri geri bildirimlerinizi nasıl topladığınızı, 
               analiz ettiğinizi ve harekete geçirdiğinizi dönüştürün.
             </p>
           </motion.div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
@@ -438,7 +438,7 @@ function LandingPage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="relative z-10 px-6 py-20">
+      <section className="relative z-10 px-4 sm:px-6 py-12 sm:py-16 md:py-20">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -446,15 +446,15 @@ function LandingPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               Müşterilerimiz Ne Diyor?
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300">
               Binlerce işletme Qratex ile müşteri deneyimini geliştiriyor.
             </p>
           </motion.div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.name}
@@ -494,17 +494,17 @@ function LandingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative z-10 px-6 py-20 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600">
+      <section className="relative z-10 px-4 sm:px-6 py-12 sm:py-16 md:py-20 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl font-bold text-white mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
               Ready to Transform Your Feedback Strategy?
             </h2>
-            <p className="text-xl text-white/90 mb-8">
+            <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8">
               Binlerce şirket Qratex kullanarak müşteri geri bildirimlerini 
               rekabet avantajına dönüştürüyor.
             </p>
@@ -531,9 +531,9 @@ function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="relative z-10 bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-8">
+      <footer className="relative z-10 bg-gray-900 text-white py-8 sm:py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             <div>
               <div className="mb-4">
                 <Logo size="sm" animated={false} showText={true} />

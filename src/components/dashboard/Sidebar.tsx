@@ -90,6 +90,7 @@ function Sidebar({ userType }: SidebarProps) {
     { icon: Crown, label: 'VIP Kulübü', path: '/customer/vip-club', badge: 'Premium' },
     { icon: Heart, label: 'Sosyal Sorumluluk', path: '/customer/donations', badge: 'Hot' },
     { icon: Gift, label: 'Ödül Havuzu', path: '/customer/reward-pool', badge: 'Hot' },
+    { icon: Gift, label: 'Sürpriz Kutular', path: '/customer/surprise-gifts', badge: 'New' },
     { icon: Receipt, label: 'Fişlerim', path: '/customer/receipts', badge: 'New' },
     { icon: BarChart3, label: 'Analytics', path: '/customer/analytics' },
     { icon: TrendingUp, label: 'Gelişmiş Analitik', path: '/customer/enhanced-analytics', badge: 'New' },

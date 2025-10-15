@@ -150,52 +150,52 @@ function TVShowBadgesPage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="grid grid-cols-1 md:grid-cols-4 gap-4"
+              className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4"
             >
               <Card className="bg-gradient-to-br from-purple-500 to-pink-500">
-                <CardBody className="p-6">
+                <CardBody className="p-4 sm:p-5 md:p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-white/80 text-sm">Toplam Rozet</p>
-                      <p className="text-3xl font-bold text-white">{TOTAL_TV_BADGES}</p>
+                      <p className="text-white/80 text-xs sm:text-sm">Toplam Rozet</p>
+                      <p className="text-xl sm:text-2xl md:text-3xl font-bold text-white">{TOTAL_TV_BADGES}</p>
                     </div>
-                    <Tv className="w-12 h-12 text-white/20" />
+                    <Tv className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white/20" />
                   </div>
                 </CardBody>
               </Card>
 
               <Card className="bg-gradient-to-br from-blue-500 to-cyan-500">
-                <CardBody className="p-6">
+                <CardBody className="p-4 sm:p-5 md:p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-white/80 text-sm">Kazanılan</p>
-                      <p className="text-3xl font-bold text-white">{totalUnlocked}</p>
+                      <p className="text-white/80 text-xs sm:text-sm">Kazanılan</p>
+                      <p className="text-xl sm:text-2xl md:text-3xl font-bold text-white">{totalUnlocked}</p>
                     </div>
-                    <Trophy className="w-12 h-12 text-white/20" />
+                    <Trophy className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white/20" />
                   </div>
                 </CardBody>
               </Card>
 
               <Card className="bg-gradient-to-br from-green-500 to-emerald-500">
-                <CardBody className="p-6">
+                <CardBody className="p-4 sm:p-5 md:p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-white/80 text-sm">Toplam Puan</p>
-                      <p className="text-3xl font-bold text-white">{totalPoints}</p>
+                      <p className="text-white/80 text-xs sm:text-sm">Toplam Puan</p>
+                      <p className="text-xl sm:text-2xl md:text-3xl font-bold text-white">{totalPoints}</p>
                     </div>
-                    <Star className="w-12 h-12 text-white/20" />
+                    <Star className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white/20" />
                   </div>
                 </CardBody>
               </Card>
 
               <Card className="bg-gradient-to-br from-orange-500 to-red-500">
-                <CardBody className="p-6">
+                <CardBody className="p-4 sm:p-5 md:p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-white/80 text-sm">Tamamlanma</p>
-                      <p className="text-3xl font-bold text-white">{completionPercentage}%</p>
+                      <p className="text-white/80 text-xs sm:text-sm">Tamamlanma</p>
+                      <p className="text-xl sm:text-2xl md:text-3xl font-bold text-white">{completionPercentage}%</p>
                     </div>
-                    <Award className="w-12 h-12 text-white/20" />
+                    <Award className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white/20" />
                   </div>
                 </CardBody>
               </Card>

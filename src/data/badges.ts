@@ -845,11 +845,251 @@ export const SPECIAL_BADGES: Badge[] = [
   }
 ]
 
+// GİZEMLİ ROZETLER - Çok nadir ve özel rozetler (herkeste bulunmaz)
+export const MYSTERIOUS_BADGES: Badge[] = [
+  {
+    id: 'mysterious-phoenix',
+    name: 'Anka Kuşu',
+    description: '??? Gizli başarım - Küllerinden yeniden doğmak',
+    icon: '🔥🦅',
+    category: 'mysterious',
+    requirement: { type: 'mysterious_action', value: 'phoenix_rebirth' },
+    rarity: 'mythical',
+    points: 2000,
+    unlocked: false,
+    color: '#FF6B35',
+    gradient: 'from-orange-600 via-red-600 to-purple-600',
+    isHidden: true,
+    unlockedBy: 0.01, // Sadece %0.01 kullanıcıda var
+    privileges: [
+      { type: 'resurrection', description: 'Puan kaybında 1 kez kurtarma hakkı', active: true },
+      { type: 'legendary_frame', description: 'Efsanevi avatar çerçevesi', active: true },
+      { type: 'priority_support', description: 'Özel destek hattı', active: true }
+    ]
+  },
+  {
+    id: 'mysterious-unicorn',
+    name: 'Tek Boynuzlu At',
+    description: '??? Efsanevi Varlık - Nadir ve büyülü',
+    icon: '🦄',
+    category: 'mysterious',
+    requirement: { type: 'mysterious_action', value: 'magical_encounter' },
+    rarity: 'mythical',
+    points: 1500,
+    unlocked: false,
+    color: '#A78BFA',
+    gradient: 'from-purple-400 via-pink-400 to-blue-400',
+    isHidden: true,
+    unlockedBy: 0.05,
+    privileges: [
+      { type: 'rainbow_effect', description: 'Gökkuşağı efektleri', active: true },
+      { type: 'special_emoji', description: 'Özel emoji paketi', active: true }
+    ]
+  },
+  {
+    id: 'mysterious-alien',
+    name: 'Gezgin',
+    description: '??? Bilinmeyenlerden Gelen - Başka dünyalardan ziyaretçi',
+    icon: '👽',
+    category: 'mysterious',
+    requirement: { type: 'mysterious_action', value: 'otherworldly_visit' },
+    rarity: 'mythical',
+    points: 1800,
+    unlocked: false,
+    color: '#10B981',
+    gradient: 'from-green-400 via-cyan-400 to-blue-500',
+    isHidden: true,
+    unlockedBy: 0.02,
+    privileges: [
+      { type: 'space_badge', description: 'Uzay teması', active: true },
+      { type: 'exclusive_sounds', description: 'Özel ses efektleri', active: true }
+    ]
+  },
+  {
+    id: 'mysterious-time-traveler',
+    name: 'Zaman Yolcusu',
+    description: '??? Zamanın Efendisi - Geçmiş, şimdi ve gelecekte aktif',
+    icon: '⏰',
+    category: 'mysterious',
+    requirement: { type: 'mysterious_action', value: 'time_paradox' },
+    rarity: 'mythical',
+    points: 2500,
+    unlocked: false,
+    color: '#3B82F6',
+    gradient: 'from-blue-600 via-indigo-600 to-purple-600',
+    isHidden: true,
+    unlockedBy: 0.003,
+    privileges: [
+      { type: 'time_badge', description: 'Zaman kontrolü teması', active: true },
+      { type: 'future_insights', description: 'Gelecek etkinlik bildirimleri', active: true },
+      { type: 'historical_rewards', description: 'Geçmiş ödül erişimi', active: true }
+    ]
+  },
+  {
+    id: 'mysterious-dragon',
+    name: 'Ejderha Efendisi',
+    description: '??? Efsanevi Güç - Ejderha gücünü ele geçirmek',
+    icon: '🐉',
+    category: 'mysterious',
+    requirement: { type: 'mysterious_action', value: 'dragon_master' },
+    rarity: 'mythical',
+    points: 3000,
+    unlocked: false,
+    color: '#DC2626',
+    gradient: 'from-red-600 via-orange-600 to-yellow-600',
+    isHidden: true,
+    unlockedBy: 0.001,
+    privileges: [
+      { type: 'dragon_power', description: '%100 puan bonusu', active: true },
+      { type: 'fire_effect', description: 'Ateş efektleri', active: true },
+      { type: 'legendary_status', description: 'Efsanevi durum', active: true }
+    ]
+  },
+  {
+    id: 'mysterious-ghost',
+    name: 'Hayalet Kullanıcı',
+    description: '??? Görünmez Güç - Var ama görünmez',
+    icon: '👻',
+    category: 'mysterious',
+    requirement: { type: 'mysterious_action', value: 'ghost_mode' },
+    rarity: 'legendary',
+    points: 1200,
+    unlocked: false,
+    color: '#E5E7EB',
+    gradient: 'from-gray-200 via-gray-400 to-gray-600',
+    isHidden: true,
+    unlockedBy: 0.1,
+    privileges: [
+      { type: 'invisibility', description: 'Gizli mod (istege bağlı)', active: true },
+      { type: 'stealth_bonus', description: 'Sessiz puan kazanımı', active: true }
+    ]
+  },
+  {
+    id: 'mysterious-wizard',
+    name: 'Büyücü',
+    description: '??? Sihir Ustası - Büyülü yetenekler',
+    icon: '🧙',
+    category: 'mysterious',
+    requirement: { type: 'mysterious_action', value: 'magic_mastery' },
+    rarity: 'legendary',
+    points: 1600,
+    unlocked: false,
+    color: '#8B5CF6',
+    gradient: 'from-purple-600 via-violet-600 to-indigo-600',
+    isHidden: true,
+    unlockedBy: 0.02,
+    privileges: [
+      { type: 'magic_spells', description: 'Özel sihirli özellikler', active: true },
+      { type: 'transformation', description: 'Avatar dönüşümleri', active: true },
+      { type: 'spell_bonus', description: 'Rastgele bonus puanlar', active: true }
+    ]
+  },
+  {
+    id: 'mysterious-crystal',
+    name: 'Kristal Kalp',
+    description: '??? Saf Enerji - Kristal berraklığında katkılar',
+    icon: '💎',
+    category: 'mysterious',
+    requirement: { type: 'mysterious_action', value: 'crystal_pure' },
+    rarity: 'legendary',
+    points: 1400,
+    unlocked: false,
+    color: '#06B6D4',
+    gradient: 'from-cyan-400 via-blue-400 to-purple-400',
+    isHidden: true,
+    unlockedBy: 0.03,
+    privileges: [
+      { type: 'crystal_theme', description: 'Kristal temalı UI', active: true },
+      { type: 'purity_bonus', description: 'Temiz içerik bonusu', active: true }
+    ]
+  },
+  {
+    id: 'mysterious-ninja',
+    name: 'Gölge Savaşçısı',
+    description: '??? Gizli Usta - Sessiz ama etkili',
+    icon: '🥷',
+    category: 'mysterious',
+    requirement: { type: 'mysterious_action', value: 'ninja_skills' },
+    rarity: 'legendary',
+    points: 1300,
+    unlocked: false,
+    color: '#1F2937',
+    gradient: 'from-gray-800 via-gray-700 to-red-900',
+    isHidden: true,
+    unlockedBy: 0.04,
+    privileges: [
+      { type: 'stealth_mode', description: 'Gizlilik özellikleri', active: true },
+      { type: 'speed_bonus', description: 'Hızlı işlem bonusu', active: true }
+    ]
+  },
+  {
+    id: 'mysterious-angel',
+    name: 'Melek',
+    description: '??? Kutsal Varlık - İyiliğin simgesi',
+    icon: '😇',
+    category: 'mysterious',
+    requirement: { type: 'mysterious_action', value: 'angelic_deeds' },
+    rarity: 'legendary',
+    points: 2000,
+    unlocked: false,
+    color: '#FCD34D',
+    gradient: 'from-yellow-200 via-amber-300 to-orange-400',
+    isHidden: true,
+    unlockedBy: 0.01,
+    privileges: [
+      { type: 'halo_effect', description: 'Hale efekti', active: true },
+      { type: 'blessing_bonus', description: 'Diğer kullanıcılara bonus verebilme', active: true },
+      { type: 'divine_protection', description: 'Ekstra koruma', active: true }
+    ]
+  },
+  {
+    id: 'mysterious-robot',
+    name: 'Yapay Zeka',
+    description: '??? Gelecekten Gelen - Teknoloji ustası',
+    icon: '🤖',
+    category: 'mysterious',
+    requirement: { type: 'mysterious_action', value: 'ai_efficiency' },
+    rarity: 'legendary',
+    points: 1700,
+    unlocked: false,
+    color: '#6B7280',
+    gradient: 'from-gray-500 via-blue-500 to-cyan-500',
+    isHidden: true,
+    unlockedBy: 0.015,
+    privileges: [
+      { type: 'automation', description: 'Otomatik özellikler', active: true },
+      { type: 'efficiency_boost', description: '%50 verimlilik artışı', active: true }
+    ]
+  },
+  {
+    id: 'mysterious-crown',
+    name: 'Görünmez Kral',
+    description: '??? Gizli Hükümdar - Tac olmadan egemen',
+    icon: '👑',
+    category: 'mysterious',
+    requirement: { type: 'mysterious_action', value: 'hidden_ruler' },
+    rarity: 'mythical',
+    points: 5000,
+    unlocked: false,
+    color: '#FFD700',
+    gradient: 'from-yellow-400 via-amber-500 to-orange-600',
+    isHidden: true,
+    unlockedBy: 0.0001,
+    privileges: [
+      { type: 'royal_authority', description: 'Kraliyet yetkileri', active: true },
+      { type: 'supreme_bonus', description: '%200 puan bonusu', active: true },
+      { type: 'vip_access', description: 'Tüm özelliklere sınırsız erişim', active: true },
+      { type: 'exclusive_events', description: 'Özel etkinliklere davet', active: true }
+    ]
+  }
+]
+
 export const ALL_BADGES = [
   ...ACTIVITY_BADGES,
   ...BEHAVIOR_BADGES,
   ...BRAND_BADGES,
-  ...SPECIAL_BADGES
+  ...SPECIAL_BADGES,
+  ...MYSTERIOUS_BADGES
 ]
 
 // Yeni Lig Sistemi

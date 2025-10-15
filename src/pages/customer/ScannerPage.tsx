@@ -167,21 +167,34 @@ function ScannerPage() {
     }
   ]
 
-  // Quick emojis
-  const quickEmojis = ['😊', '😍', '🤩', '👍', '❤️', '🔥', '💯', '🎉', '😋', '🙌']
+  // Quick emojis - Daha zengin ve kategorize edilmiş emoji seçenekleri
+  const quickEmojis = [
+    // Pozitif duygular
+    '😊', '😍', '🤩', '😎', '🥳', 
+    // Onay ve takdir
+    '👍', '👏', '🙌', '💪', '✨',
+    // Kalp ve sevgi
+    '❤️', '💚', '💙', '💜', '🧡',
+    // Özel semboller
+    '🔥', '💯', '⭐', '🎉', '🏆',
+    // Yiyecek ve içecek
+    '😋', '🤤', '☕', '🍕', '🍔'
+  ]
   
-  // Quick tags
+  // Quick tags - Daha detaylı ve emoji'li etiket seçenekleri
   const quickTags = [
-    'Harika Hizmet',
-    'Temiz',
-    'Lezzetli',
-    'Hızlı',
-    'Güler Yüzlü',
-    'Uygun Fiyat',
-    'Kaliteli',
-    'Rahat Ortam',
-    'Tavsiye Ederim',
-    'Tekrar Geleceğim'
+    '⚡ Harika Hizmet',
+    '✨ Çok Temiz',
+    '😋 Muhteşem Lezzet',
+    '🚀 Hızlı Servis',
+    '😊 Güler Yüzlü Ekip',
+    '💰 Uygun Fiyat',
+    '👌 Kaliteli Ürünler',
+    '🛋️ Rahat Ortam',
+    '🎯 Kesinlikle Tavsiye',
+    '🔄 Tekrar Geleceğim',
+    '🌟 Harika Atmosfer',
+    '💎 Premium Kalite'
   ]
 
   // Scanner simulation

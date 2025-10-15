@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
-import { Card, CardBody, Button, Progress } from '@nextui-org/react'
-import { ArrowLeft, Trophy, TrendingUp, Crown, Star, Zap } from 'lucide-react'
+import { Card, CardBody, Button, Progress, Chip, Tabs, Tab } from '@nextui-org/react'
+import { ArrowLeft, Trophy, TrendingUp, Crown, Star, Zap, Globe, Flag } from 'lucide-react'
 import Sidebar from '../../components/dashboard/Sidebar'
 import Header from '../../components/dashboard/Header'
 import LeagueLevelCard from '../../components/badges/LeagueLevelCard'
@@ -13,6 +13,9 @@ function LeagueSystemPage() {
   
   // Mock user data
   const [currentPoints] = useState(1250)
+  
+  // League Selection State
+  const [selectedLeague, setSelectedLeague] = useState<'global' | 'turkey'>('turkey')
   
   // Find current level
   const currentLevel = [...BADGE_LEVELS]
@@ -51,6 +54,84 @@ function LeagueSystemPage() {
               >
                 Rozet Sayfasına Dön
               </Button>
+            </motion.div>
+
+            {/* League Selection */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              <Card>
+                <CardBody className="p-6">
+                  <div className="flex items-center justify-between flex-wrap gap-4">
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center gap-2">
+                        <Trophy className="w-5 h-5 text-yellow-500" />
+                        Lig Seçimi
+                      </h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                        Rekabet etmek istediğin ligi seç
+                      </p>
+                    </div>
+                    
+                    <div className="flex gap-3">
+                      <Button
+                        color={selectedLeague === 'turkey' ? 'primary' : 'default'}
+                        variant={selectedLeague === 'turkey' ? 'solid' : 'bordered'}
+                        startContent={<Flag className="w-4 h-4" />}
+                        onClick={() => setSelectedLeague('turkey')}
+                        className="min-w-[140px]"
+                      >
+                        🇹🇷 Türkiye Ligi
+                      </Button>
+                      
+                      <Button
+                        color={selectedLeague === 'global' ? 'secondary' : 'default'}
+                        variant={selectedLeague === 'global' ? 'solid' : 'bordered'}
+                        startContent={<Globe className="w-4 h-4" />}
+                        onClick={() => setSelectedLeague('global')}
+                        className="min-w-[140px]"
+                      >
+                        🌍 Global Lig
+                      </Button>
+                    </div>
+                  </div>
+                  
+                  {/* League Info */}
+                  <div className="mt-4 p-4 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
+                    {selectedLeague === 'turkey' ? (
+                      <div className="flex items-start gap-3">
+                        <Flag className="w-5 h-5 text-blue-600 mt-0.5" />
+                        <div>
+                          <p className="font-semibold text-gray-900 dark:text-white">Türkiye Ligi</p>
+                          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                            Türkiye genelindeki kullanıcılarla yarış. Yerel başarılar ve ödüller.
+                          </p>
+                          <div className="flex gap-2 mt-2">
+                            <Chip size="sm" color="primary" variant="flat">İlan Bazlı Ödüller</Chip>
+                            <Chip size="sm" color="success" variant="flat">Yerel Etkinlikler</Chip>
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="flex items-start gap-3">
+                        <Globe className="w-5 h-5 text-purple-600 mt-0.5" />
+                        <div>
+                          <p className="font-semibold text-gray-900 dark:text-white">Global Lig</p>
+                          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                            Dünya genelindeki kullanıcılarla rekabet et. Uluslararası ödüller ve prestij.
+                          </p>
+                          <div className="flex gap-2 mt-2">
+                            <Chip size="sm" color="secondary" variant="flat">Prestijli Ödüller</Chip>
+                            <Chip size="sm" color="warning" variant="flat">Global Etkinlikler</Chip>
+                            <Chip size="sm" color="danger" variant="flat">Yüksek Rekabet</Chip>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </CardBody>
+              </Card>
             </motion.div>
 
             {/* Current Level Overview */}
@@ -259,6 +340,7 @@ function LeagueSystemPage() {
 }
 
 export default LeagueSystemPage
+
 
 
 

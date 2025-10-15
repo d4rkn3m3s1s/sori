@@ -19,6 +19,7 @@ import LiveLeaderboardPage from './pages/customer/LiveLeaderboardPage'
 import VIPClubPage from './pages/customer/VIPClubPage'
 import StatsDashboardPage from './pages/customer/StatsDashboardPage'
 import DonationPage from './pages/customer/DonationPage'
+import SSPGoodnessLeaderboard from './pages/customer/SSPGoodnessLeaderboard'
 import CustomerFeedbackPage from './pages/customer/FeedbackPage'
 import EnhancedCustomerFeedbackPage from './pages/customer/EnhancedFeedbackPage'
 import CustomerAnalyticsPage from './pages/customer/AnalyticsPage'
@@ -40,6 +41,7 @@ import CustomerSettingsPage from './pages/customer/SettingsPage'
 import ReceiptsPage from './pages/customer/ReceiptsPage'
 import ReceiptAnalyticsPage from './pages/customer/ReceiptAnalyticsPage'
 import RewardPoolPage from './pages/customer/RewardPoolPage'
+import SurpriseGiftBoxPage from './pages/customer/SurpriseGiftBoxPage'
 import UsersPage from './pages/dealer/UsersPage'
 import QRCodesPage from './pages/dealer/QRCodesPage'
 import CommentsPage from './pages/dealer/CommentsPage'
@@ -115,12 +117,14 @@ function App() {
         <Route path="/customer/receipts" element={<ReceiptsPage />} />
         <Route path="/customer/receipt-analytics" element={<ReceiptAnalyticsPage />} />
         <Route path="/customer/reward-pool" element={<RewardPoolPage />} />
+        <Route path="/customer/surprise-gifts" element={<SurpriseGiftBoxPage />} />
         <Route path="/customer/badges" element={<BadgesPage />} />
         <Route path="/customer/leaderboard" element={<LeaderboardPage />} />
         <Route path="/customer/live-leaderboard" element={<LiveLeaderboardPage />} />
         <Route path="/customer/vip-club" element={<VIPClubPage />} />
         <Route path="/customer/stats-dashboard" element={<StatsDashboardPage />} />
         <Route path="/customer/donations" element={<DonationPage />} />
+        <Route path="/customer/ssp-leaderboard" element={<SSPGoodnessLeaderboard />} />
         <Route path="/customer/tv-badges" element={<TVShowBadgesPage />} />
         <Route path="/customer/league" element={<LeagueSystemPage />} />
         <Route path="/test" element={<TestDashboard />} />
