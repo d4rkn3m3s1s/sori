@@ -60,7 +60,7 @@ function SettingsPage() {
                       <Input
                         label="Ad Soyad"
                         placeholder="Adınızı girin"
-                        defaultValue="Ahmet Yılmaz"
+                        defaultValue="Didar Mıhçı"
                         startContent={<User className="w-4 h-4 text-gray-400" />}
                       />
                       

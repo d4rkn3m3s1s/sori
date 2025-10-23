@@ -28,9 +28,10 @@ import {
   Clock,
   Calendar,
   Heart,
-  Gamepad2,
   Receipt,
-  Crown
+  Bot,
+  Camera,
+  MapPin
 } from 'lucide-react'
 import Logo from '../ui/Logo'
 import { useState, useEffect } from 'react'
@@ -87,24 +88,23 @@ function Sidebar({ userType }: SidebarProps) {
     { icon: Award, label: 'Liderlik Tablosu', path: '/customer/leaderboard' },
     { icon: TrendingUp, label: 'Canlı Liderlik', path: '/customer/live-leaderboard', badge: 'Hot' },
     { icon: BarChart3, label: 'İstatistik Dashboard', path: '/customer/stats-dashboard', badge: 'New' },
-    { icon: Crown, label: 'VIP Kulübü', path: '/customer/vip-club', badge: 'Premium' },
     { icon: Heart, label: 'Sosyal Sorumluluk', path: '/customer/donations', badge: 'Hot' },
     { icon: Gift, label: 'Ödül Havuzu', path: '/customer/reward-pool', badge: 'Hot' },
     { icon: Gift, label: 'Sürpriz Kutular', path: '/customer/surprise-gifts', badge: 'New' },
+    { icon: Bot, label: 'AI Asistan', path: '/customer/ai-assistant', badge: 'AI' },
+    { icon: Camera, label: 'AR Tarayıcı', path: '/customer/ar-scanner', badge: 'AR' },
+    { icon: MapPin, label: 'Harita & Keşif', path: '/customer/map-explorer', badge: 'New' },
+    { icon: Brain, label: 'AI Trainer', path: '/customer/ai-trainer', badge: 'AI' },
     { icon: Receipt, label: 'Fişlerim', path: '/customer/receipts', badge: 'New' },
     { icon: BarChart3, label: 'Analytics', path: '/customer/analytics' },
     { icon: TrendingUp, label: 'Gelişmiş Analitik', path: '/customer/enhanced-analytics', badge: 'New' },
     { icon: Target, label: 'Hedeflerim', path: '/customer/goals', badge: 'New' },
-    { icon: Palette, label: 'Profil Özelleştir', path: '/customer/profile-customize', badge: 'New' },
-    { icon: Trophy, label: 'Başarılar', path: '/customer/achievements', badge: 'New' },
+    { icon: Palette, label: 'Profil Özelleştir', path: '/customer/profile-customization', badge: 'New' },
     { icon: Gift, label: 'Ödül Dükkanı', path: '/customer/reward-store', badge: 'New' },
     { icon: Zap, label: 'Günlük Görevler', path: '/customer/quests', badge: 'New' },
     { icon: Clock, label: 'Etkinlik Geçmişi', path: '/customer/activity-log', badge: 'New' },
     { icon: Bell, label: 'Gelişmiş Bildirimler', path: '/customer/enhanced-notifications', badge: 'New' },
-    { icon: TrendingUp, label: 'Trend Analizi', path: '/customer/trends', badge: 'New' },
-    { icon: Calendar, label: 'Etkinlikler', path: '/customer/events', badge: 'New' },
-    { icon: Heart, label: 'İşletme Takibi', path: '/customer/business-tracking', badge: 'New' },
-    { icon: Gamepad2, label: 'Mini Oyunlar', path: '/customer/mini-games', badge: 'New' },
+    { icon: TrendingUp, label: 'Analiz & Takip', path: '/customer/trends', badge: 'Hot' },
     { icon: QrCode, label: 'QR Scanner', path: '/customer/scanner' },
     { icon: Settings, label: 'Settings', path: '/customer/settings' }
   ]
@@ -202,16 +202,57 @@ function Sidebar({ userType }: SidebarProps) {
       {!isCollapsed && (
         <div className="p-6 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center space-x-3">
-            <Avatar
-              src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-              className="w-12 h-12"
-            />
+            <motion.div
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              whileTap={{ scale: 0.95 }}
+              className="relative"
+            >
+              {userType === 'dealer' ? (
+                <Avatar
+                  src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+                  className="w-12 h-12 border-2 border-pink-300"
+                  fallback="👨"
+                />
+              ) : (
+                <div className="w-12 h-12 rounded-full border-2 border-pink-300 overflow-hidden bg-gradient-to-br from-purple-100 to-pink-100">
+                  <img 
+                    src="/images/avatar-girl-braids.png" 
+                    alt="Profile" 
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      console.error('Avatar yüklenemedi!');
+                      e.currentTarget.style.display = 'none';
+                    }}
+                  />
+                </div>
+              )}
+              {userType === 'customer' && (
+                <motion.div
+                  className="absolute -bottom-1 -right-1 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full p-1"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    rotate: [0, 10, -10, 0]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity
+                  }}
+                >
+                  <Award className="w-3 h-3 text-white" />
+                </motion.div>
+              )}
+            </motion.div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-gray-900 dark:text-white truncate">
-                {userType === 'dealer' ? 'Sarah Johnson' : 'Ahmet Yılmaz'}
+                {userType === 'dealer' ? 'Sarah Johnson' : 'Didar Mıhçı'}
               </p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
-                {userType === 'dealer' ? 'Admin' : 'Gold Member'}
+              <p className="text-xs text-gray-500 dark:text-gray-400 truncate flex items-center gap-1">
+                {userType === 'dealer' ? 'Admin' : (
+                  <>
+                    <span className="text-yellow-500">✨</span>
+                    <span className="font-semibold">Gold Member</span>
+                  </>
+                )}
               </p>
             </div>
           </div>

@@ -16,7 +16,6 @@ import LeaderboardPage from './pages/badges/LeaderboardPage'
 import TVShowBadgesPage from './pages/badges/TVShowBadgesPage'
 import LeagueSystemPage from './pages/badges/LeagueSystemPage'
 import LiveLeaderboardPage from './pages/customer/LiveLeaderboardPage'
-import VIPClubPage from './pages/customer/VIPClubPage'
 import StatsDashboardPage from './pages/customer/StatsDashboardPage'
 import DonationPage from './pages/customer/DonationPage'
 import SSPGoodnessLeaderboard from './pages/customer/SSPGoodnessLeaderboard'
@@ -26,15 +25,11 @@ import CustomerAnalyticsPage from './pages/customer/AnalyticsPage'
 import EnhancedAnalyticsPage from './pages/customer/EnhancedAnalyticsPage'
 import GoalsPage from './pages/customer/GoalsPage'
 import ProfileCustomizationPage from './pages/customer/ProfileCustomizationPage'
-import AchievementsPage from './pages/customer/AchievementsPage'
 import RewardStorePage from './pages/customer/RewardStorePage'
 import QuestsPage from './pages/customer/QuestsPage'
 import ActivityLogPage from './pages/customer/ActivityLogPage'
 import EnhancedNotificationsPage from './pages/customer/EnhancedNotificationsPage'
 import TrendsPage from './pages/customer/TrendsPage'
-import EventsPage from './pages/customer/EventsPage'
-import BusinessTrackingPage from './pages/customer/BusinessTrackingPage'
-import MiniGamesPage from './pages/customer/MiniGamesPage'
 import CustomerScannerPage from './pages/customer/ScannerPage'
 import CustomerNotificationsPage from './pages/customer/NotificationsPage'
 import CustomerSettingsPage from './pages/customer/SettingsPage'
@@ -42,6 +37,11 @@ import ReceiptsPage from './pages/customer/ReceiptsPage'
 import ReceiptAnalyticsPage from './pages/customer/ReceiptAnalyticsPage'
 import RewardPoolPage from './pages/customer/RewardPoolPage'
 import SurpriseGiftBoxPage from './pages/customer/SurpriseGiftBoxPage'
+import AIAssistantPage from './pages/customer/AIAssistantPage'
+import ARBadgeScannerPage from './pages/customer/ARBadgeScannerPage'
+import MapExplorerPage from './pages/customer/MapExplorerPage'
+import AITrainerPage from './pages/customer/AITrainerPage'
+import DracarysTestPage from './pages/customer/DracarysTestPage'
 import UsersPage from './pages/dealer/UsersPage'
 import QRCodesPage from './pages/dealer/QRCodesPage'
 import CommentsPage from './pages/dealer/CommentsPage'
@@ -53,13 +53,13 @@ import SettingsPage from './pages/dealer/SettingsPage'
 import TestDashboard from './pages/dashboard/TestDashboard'
 
 function App() {
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     // Simulate app loading
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 1500)
+    }, 2000)
 
     return () => clearTimeout(timer)
   }, [])
@@ -73,7 +73,7 @@ function App() {
       <Preloader 
         isLoading={isLoading} 
         onComplete={handlePreloaderComplete}
-        duration={1500}
+        duration={2000}
       />
       
       {!isLoading && (
@@ -101,16 +101,12 @@ function App() {
         <Route path="/customer/analytics" element={<CustomerAnalyticsPage />} />
         <Route path="/customer/enhanced-analytics" element={<EnhancedAnalyticsPage />} />
         <Route path="/customer/goals" element={<GoalsPage />} />
-        <Route path="/customer/profile-customize" element={<ProfileCustomizationPage />} />
-        <Route path="/customer/achievements" element={<AchievementsPage />} />
+        <Route path="/customer/profile-customization" element={<ProfileCustomizationPage />} />
         <Route path="/customer/reward-store" element={<RewardStorePage />} />
         <Route path="/customer/quests" element={<QuestsPage />} />
         <Route path="/customer/activity-log" element={<ActivityLogPage />} />
         <Route path="/customer/enhanced-notifications" element={<EnhancedNotificationsPage />} />
         <Route path="/customer/trends" element={<TrendsPage />} />
-        <Route path="/customer/events" element={<EventsPage />} />
-        <Route path="/customer/business-tracking" element={<BusinessTrackingPage />} />
-        <Route path="/customer/mini-games" element={<MiniGamesPage />} />
         <Route path="/customer/scanner" element={<CustomerScannerPage />} />
         <Route path="/customer/notifications" element={<CustomerNotificationsPage />} />
         <Route path="/customer/settings" element={<CustomerSettingsPage />} />
@@ -118,10 +114,14 @@ function App() {
         <Route path="/customer/receipt-analytics" element={<ReceiptAnalyticsPage />} />
         <Route path="/customer/reward-pool" element={<RewardPoolPage />} />
         <Route path="/customer/surprise-gifts" element={<SurpriseGiftBoxPage />} />
+        <Route path="/customer/ai-assistant" element={<AIAssistantPage />} />
+        <Route path="/customer/ar-scanner" element={<ARBadgeScannerPage />} />
+        <Route path="/customer/map-explorer" element={<MapExplorerPage />} />
+        <Route path="/customer/ai-trainer" element={<AITrainerPage />} />
+        <Route path="/customer/dracarys-test" element={<DracarysTestPage />} />
         <Route path="/customer/badges" element={<BadgesPage />} />
         <Route path="/customer/leaderboard" element={<LeaderboardPage />} />
         <Route path="/customer/live-leaderboard" element={<LiveLeaderboardPage />} />
-        <Route path="/customer/vip-club" element={<VIPClubPage />} />
         <Route path="/customer/stats-dashboard" element={<StatsDashboardPage />} />
         <Route path="/customer/donations" element={<DonationPage />} />
         <Route path="/customer/ssp-leaderboard" element={<SSPGoodnessLeaderboard />} />

@@ -716,7 +716,7 @@ function RewardPoolPage() {
                         <div className="flex items-center gap-2">
                           <History className="w-4 h-4" />
                           <span>Geçmiş</span>
-                          <Badge content={drawHistory.length} color="danger" size="sm" />
+                          <Badge color="danger" size="sm">{drawHistory.length}</Badge>
                         </div>
                       }
                     />

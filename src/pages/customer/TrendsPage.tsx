@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Card, CardBody, Chip, Tabs, Tab, Progress } from '@nextui-org/react'
-import { TrendingUp, MapPin, Star, Users, Flame, Sparkles, Coffee, ShoppingBag } from 'lucide-react'
+import { Card, CardBody, Chip, Tabs, Tab, Progress, Button } from '@nextui-org/react'
+import { TrendingUp, MapPin, Star, Users, Flame, Sparkles, Coffee, ShoppingBag, Heart, Bell, BellOff, Eye, Navigation } from 'lucide-react'
 import Sidebar from '../../components/dashboard/Sidebar'
 import Header from '../../components/dashboard/Header'
 
@@ -18,8 +18,78 @@ interface TrendItem {
   image?: string
 }
 
+interface TrackedBusiness {
+  id: string
+  name: string
+  category: string
+  location: string
+  rating: number
+  following: boolean
+  notifications: boolean
+  hasNewUpdate: boolean
+  distance: string
+  discount?: number
+  campaign?: string
+  checkIns: number
+}
+
 function TrendsPage() {
-  const [selectedTab, setSelectedTab] = useState('businesses')
+  const [selectedTab, setSelectedTab] = useState('trends')
+  
+  // Takip edilen işletmeler
+  const [trackedBusinesses, setTrackedBusinesses] = useState<TrackedBusiness[]>([
+    {
+      id: '1',
+      name: 'Starbucks Kadıköy',
+      category: 'Kafe',
+      location: 'Kadıköy, İstanbul',
+      rating: 4.8,
+      following: true,
+      notifications: true,
+      hasNewUpdate: true,
+      distance: '1.2 km',
+      campaign: 'Her 3. kahve hediye!',
+      discount: 15,
+      checkIns: 12
+    },
+    {
+      id: '2',
+      name: 'Mado Beyoğlu',
+      category: 'Restoran',
+      location: 'Beyoğlu, İstanbul',
+      rating: 4.6,
+      following: true,
+      notifications: false,
+      hasNewUpdate: false,
+      distance: '3.5 km',
+      checkIns: 8
+    },
+    {
+      id: '3',
+      name: 'CarrefourSA Nişantaşı',
+      category: 'Market',
+      location: 'Şişli, İstanbul',
+      rating: 4.5,
+      following: true,
+      notifications: true,
+      hasNewUpdate: true,
+      distance: '2.1 km',
+      discount: 10,
+      checkIns: 15
+    }
+  ])
+
+  const toggleNotifications = (id: string) => {
+    setTrackedBusinesses(prev => prev.map(b => 
+      b.id === id ? { ...b, notifications: !b.notifications } : b
+    ))
+  }
+
+  const toggleFollow = (id: string) => {
+    setTrackedBusinesses(prev => prev.map(b => 
+      b.id === id ? { ...b, following: !b.following } : b
+    ))
+  }
 
   // Mock data
   const trendingBusinesses: TrendItem[] = [
@@ -92,8 +162,8 @@ function TrendsPage() {
       
       <div className="flex-1 flex flex-col overflow-hidden">
         <Header 
-          title="📈 Trend Analizi" 
-          subtitle="Popüler işletmeler ve trendleri keşfet"
+          title="📈 Analiz & Takip" 
+          subtitle="Trendleri keşfet, favori işletmelerini takip et"
           userType="customer" 
         />
         
@@ -175,17 +245,16 @@ function TrendsPage() {
                     cursor: "bg-gradient-to-r from-purple-500 to-pink-500"
                   }}
                 >
-                  <Tab key="businesses" title="🔥 Trend İşletmeler" />
+                  <Tab key="trends" title="🔥 Trendler" />
+                  <Tab key="tracking" title="💝 Takip Ettiklerim" />
                   <Tab key="categories" title="📊 Kategoriler" />
-                  <Tab key="users" title="⭐ Yükselen Yıldızlar" />
-                  <Tab key="topics" title="💬 Hot Topics" />
                   <Tab key="cities" title="🌍 Şehirler" />
                 </Tabs>
               </CardBody>
             </Card>
 
             {/* Content */}
-            {selectedTab === 'businesses' && (
+            {selectedTab === 'trends' && (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {trendingBusinesses.map((business, index) => (
                   <motion.div
@@ -232,6 +301,101 @@ function TrendsPage() {
                           <div className="flex items-center justify-between text-sm">
                             <span className="text-gray-600 dark:text-gray-400">Ziyaretçi</span>
                             <span className="font-bold">{business.visitors}</span>
+                          </div>
+                        </div>
+                      </CardBody>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            )}
+
+            {selectedTab === 'tracking' && (
+              <div className="space-y-4">
+                {trackedBusinesses.map((business, index) => (
+                  <motion.div
+                    key={business.id}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <Card className="hover:shadow-lg transition-all">
+                      <CardBody className="p-6">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-4 flex-1">
+                            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center text-3xl">
+                              {business.category === 'Kafe' ? '☕' : business.category === 'Restoran' ? '🍽️' : '🛒'}
+                            </div>
+                            
+                            <div className="flex-1">
+                              <div className="flex items-center gap-2 mb-1">
+                                <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+                                  {business.name}
+                                </h3>
+                                {business.hasNewUpdate && (
+                                  <Chip size="sm" className="bg-gradient-to-r from-red-500 to-orange-500 text-white">
+                                    YENİ
+                                  </Chip>
+                                )}
+                              </div>
+                              
+                              <div className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                                <div className="flex items-center gap-1">
+                                  <MapPin className="w-4 h-4" />
+                                  {business.distance}
+                                </div>
+                                <div className="flex items-center gap-1">
+                                  <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                                  {business.rating}
+                                </div>
+                                <div className="flex items-center gap-1">
+                                  <Eye className="w-4 h-4" />
+                                  {business.checkIns} check-in
+                                </div>
+                              </div>
+                              
+                              {business.campaign && (
+                                <div className="mt-2">
+                                  <Chip size="sm" variant="flat" color="success" startContent={<Sparkles className="w-3 h-3" />}>
+                                    {business.campaign}
+                                  </Chip>
+                                </div>
+                              )}
+                              
+                              {business.discount && (
+                                <div className="mt-2">
+                                  <Chip size="sm" className="bg-gradient-to-r from-orange-500 to-red-500 text-white">
+                                    %{business.discount} İndirim
+                                  </Chip>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                          
+                          <div className="flex flex-col gap-2">
+                            <Button
+                              isIconOnly
+                              variant={business.notifications ? "solid" : "flat"}
+                              color={business.notifications ? "warning" : "default"}
+                              onClick={() => toggleNotifications(business.id)}
+                            >
+                              {business.notifications ? <Bell className="w-4 h-4" /> : <BellOff className="w-4 h-4" />}
+                            </Button>
+                            <Button
+                              isIconOnly
+                              variant={business.following ? "solid" : "flat"}
+                              color={business.following ? "danger" : "default"}
+                              onClick={() => toggleFollow(business.id)}
+                            >
+                              <Heart className={`w-4 h-4 ${business.following ? 'fill-current' : ''}`} />
+                            </Button>
+                            <Button
+                              isIconOnly
+                              variant="flat"
+                              color="primary"
+                            >
+                              <Navigation className="w-4 h-4" />
+                            </Button>
                           </div>
                         </div>
                       </CardBody>

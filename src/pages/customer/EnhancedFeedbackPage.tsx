@@ -492,7 +492,7 @@ function EnhancedFeedbackPage() {
                         <div className="flex items-start gap-4">
                           {/* Business Logo */}
                           <div className="flex-shrink-0">
-                            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center text-3xl">
+                            <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center text-5xl shadow-lg">
                               {feedback.businessLogo}
                             </div>
                           </div>
@@ -556,7 +556,7 @@ function EnhancedFeedbackPage() {
                             {feedback.photos && feedback.photos.length > 0 && (
                               <div className="flex gap-2 mb-3">
                                 {feedback.photos.map((photo, idx) => (
-                                  <div key={idx} className="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center text-2xl">
+                                  <div key={idx} className="w-20 h-20 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-xl flex items-center justify-center text-4xl shadow-md">
                                     {photo}
                                   </div>
                                 ))}

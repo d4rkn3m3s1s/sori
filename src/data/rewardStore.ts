@@ -145,49 +145,68 @@ export const REWARD_STORE: Reward[] = [
     gradient: 'from-red-500 to-orange-600',
     purchased: false
   },
-
-  // COUPONS
   {
-    id: 'coffee-coupon-10',
-    name: '%10 Kahve İndirimi',
-    description: 'Tüm kahve işletmelerinde geçerli',
-    icon: '☕',
-    type: 'coupon',
-    price: 200,
-    stock: 50,
-    limited: true,
-    rarity: 'common',
-    color: '#92400E',
-    gradient: 'from-amber-700 to-orange-600',
+    id: 'cosmic-frame',
+    name: '🌟 Kozmik Çerçeve',
+    description: 'Parlayan yıldız efekti',
+    icon: '🌟',
+    type: 'avatar',
+    price: 1200,
+    rarity: 'legendary',
+    color: '#FFD700',
+    gradient: 'from-yellow-300 via-purple-400 to-indigo-600',
     purchased: false,
     featured: true
   },
   {
-    id: 'restaurant-coupon-15',
-    name: '%15 Restoran İndirimi',
-    description: 'Seçili restoranlarda geçerli',
-    icon: '🍽️',
-    type: 'coupon',
-    price: 300,
-    stock: 30,
-    limited: true,
-    rarity: 'rare',
-    color: '#DC2626',
-    gradient: 'from-red-600 to-rose-600',
+    id: 'diamond-frame',
+    name: '💎 Elmas Çerçeve',
+    description: 'Parlayan elmas animasyonu',
+    icon: '💎',
+    type: 'avatar',
+    price: 950,
+    rarity: 'epic',
+    color: '#00CED1',
+    gradient: 'from-cyan-300 to-blue-500',
+    purchased: false
+  },
+
+  // EXCLUSIVE THEMES
+  {
+    id: 'dracarys-theme',
+    name: '🐉 Dracarys Teması',
+    description: 'Game of Thrones özel ejderha teması',
+    icon: '🐉',
+    type: 'theme',
+    price: 1500,
+    rarity: 'legendary',
+    color: '#FF4500',
+    gradient: 'from-red-600 via-orange-500 to-yellow-500',
+    purchased: false,
+    featured: true
+  },
+  {
+    id: 'neon-cyberpunk-theme',
+    name: '⚡ Neon Cyberpunk',
+    description: 'Futuristik neon renkler',
+    icon: '⚡',
+    type: 'theme',
+    price: 900,
+    rarity: 'epic',
+    color: '#00FFFF',
+    gradient: 'from-cyan-400 via-purple-500 to-pink-500',
     purchased: false
   },
   {
-    id: 'shopping-coupon-20',
-    name: '%20 Alışveriş İndirimi',
-    description: 'Partner marketlerde kullan',
-    icon: '🛍️',
-    type: 'coupon',
-    price: 400,
-    stock: 20,
-    limited: true,
-    rarity: 'rare',
-    color: '#7C3AED',
-    gradient: 'from-purple-600 to-pink-600',
+    id: 'aurora-theme',
+    name: '🌌 Aurora Borealis',
+    description: 'Kuzey ışıkları teması',
+    icon: '🌌',
+    type: 'theme',
+    price: 850,
+    rarity: 'epic',
+    color: '#00FF7F',
+    gradient: 'from-green-300 via-blue-400 to-purple-500',
     purchased: false
   },
 
@@ -226,6 +245,30 @@ export const REWARD_STORE: Reward[] = [
     rarity: 'rare',
     color: '#8B5CF6',
     gradient: 'from-purple-500 to-pink-500',
+    purchased: false
+  },
+  {
+    id: 'custom-profile-music',
+    name: '🎵 Profil Müziği',
+    description: 'Profiline özel müzik ekle',
+    icon: '🎵',
+    type: 'feature',
+    price: 600,
+    rarity: 'epic',
+    color: '#EC4899',
+    gradient: 'from-pink-500 to-rose-600',
+    purchased: false
+  },
+  {
+    id: 'animated-avatar',
+    name: '🎬 Hareketli Avatar',
+    description: 'GIF avatar kullanma hakkı',
+    icon: '🎬',
+    type: 'feature',
+    price: 750,
+    rarity: 'epic',
+    color: '#8B5CF6',
+    gradient: 'from-purple-600 to-indigo-600',
     purchased: false
   },
 
@@ -286,6 +329,7 @@ export const REWARD_CATEGORIES = {
 export const calculateTotalSpent = (rewards: Reward[]) => {
   return rewards.filter(r => r.purchased).reduce((sum, r) => sum + r.price, 0)
 }
+
 
 
 

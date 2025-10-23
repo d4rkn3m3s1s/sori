@@ -116,7 +116,8 @@ export function useBadgeSystem(userId: string) {
       activity: unlockedBadges.filter(b => b.category === 'activity').length,
       behavior: unlockedBadges.filter(b => b.category === 'behavior').length,
       brand: unlockedBadges.filter(b => b.category === 'brand').length,
-      special: unlockedBadges.filter(b => b.category === 'special').length
+      special: unlockedBadges.filter(b => b.category === 'special').length,
+      mysterious: unlockedBadges.filter(b => b.category === 'mysterious').length
     }
 
     // Find favorite category
@@ -178,7 +179,7 @@ export function useBadgeSystem(userId: string) {
     const mockLeaderboard: LeaderboardEntry[] = [
       {
         userId: '1',
-        username: 'Ahmet Yılmaz',
+        username: 'Didar Mıhçı',
         avatar: 'https://i.pravatar.cc/150?u=1',
         totalBadges: 15,
         totalPoints: 1250,

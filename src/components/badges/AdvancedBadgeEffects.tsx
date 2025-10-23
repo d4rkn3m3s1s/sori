@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 
 interface AdvancedBadgeEffectsProps {
   badgeId: string
-  rarity: 'common' | 'rare' | 'epic' | 'legendary'
+  rarity: 'common' | 'rare' | 'epic' | 'legendary' | 'mythical'
   isUnlocked: boolean
   children: React.ReactNode
 }

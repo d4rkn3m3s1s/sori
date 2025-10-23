@@ -23,10 +23,10 @@ function ParticleBackground() {
               }
             },
             color: {
-              value: ['#667eea', '#764ba2', '#f093fb', '#f5576c', '#4facfe', '#00f2fe']
+              value: ['#8B5CF6', '#EC4899', '#3B82F6', '#10B981', '#F59E0B']
             },
             shape: {
-              type: 'circle',
+              type: ['circle', 'edge'],
               stroke: {
                 width: 0,
                 color: '#000000'
@@ -34,36 +34,36 @@ function ParticleBackground() {
             },
             opacity: {
               value: 0.5,
-              random: false,
+              random: true,
               anim: {
-                enable: false,
+                enable: true,
                 speed: 1,
-                opacity_min: 0.1,
+                opacity_min: 0.2,
                 sync: false
               }
             },
             size: {
-              value: 3,
+              value: 4,
               random: true,
               anim: {
-                enable: false,
-                speed: 40,
-                size_min: 0.1,
+                enable: true,
+                speed: 2,
+                size_min: 1,
                 sync: false
               }
             },
             line_linked: {
               enable: true,
               distance: 150,
-              color: '#667eea',
+              color: '#8B5CF6',
               opacity: 0.4,
               width: 1
             },
             move: {
               enable: true,
-              speed: 6,
+              speed: 3.5,
               direction: 'none',
-              random: false,
+              random: true,
               straight: false,
               out_mode: 'out',
               bounce: false,
@@ -79,7 +79,7 @@ function ParticleBackground() {
             events: {
               onhover: {
                 enable: true,
-                mode: 'repulse'
+                mode: 'grab'
               },
               onclick: {
                 enable: true,
@@ -89,27 +89,13 @@ function ParticleBackground() {
             },
             modes: {
               grab: {
-                distance: 400,
+                distance: 180,
                 line_linked: {
-                  opacity: 1
+                  opacity: 0.8
                 }
               },
-              bubble: {
-                distance: 400,
-                size: 40,
-                duration: 2,
-                opacity: 8,
-                speed: 3
-              },
-              repulse: {
-                distance: 200,
-                duration: 0.4
-              },
               push: {
-                particles_nb: 4
-              },
-              remove: {
-                particles_nb: 2
+                particles_nb: 5
               }
             }
           },
@@ -117,10 +103,24 @@ function ParticleBackground() {
         })
       }
     }
-    document.head.appendChild(script)
+    
+    // Script zaten var mı kontrol et
+    const existingScript = document.querySelector('script[src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"]')
+    if (!existingScript) {
+      document.head.appendChild(script)
+    } else {
+      // Script zaten varsa direkt çalıştır
+      if (window.particlesJS) {
+        script.onload?.({} as Event)
+      }
+    }
 
     return () => {
-      document.head.removeChild(script)
+      // Canvas'ı temizle
+      const canvas = document.querySelector('#particles-js canvas')
+      if (canvas) {
+        canvas.remove()
+      }
     }
   }, [])
 

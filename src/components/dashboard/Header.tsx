@@ -237,18 +237,33 @@ function Header({ title = 'Dashboard', subtitle, userType = 'customer' }: Header
           {/* User Menu */}
           <Dropdown placement="bottom-end">
             <DropdownTrigger>
-              <Avatar
-                as="button"
-                className="transition-transform"
-                src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-                size="sm"
-              />
+              {userType === 'customer' ? (
+                <button className="transition-transform hover:scale-105">
+                  <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-purple-300">
+                    <img 
+                      src="/images/avatar-girl-braids.png" 
+                      alt="Profile" 
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        console.error('Header avatar yüklenemedi!');
+                      }}
+                    />
+                  </div>
+                </button>
+              ) : (
+                <Avatar
+                  as="button"
+                  className="transition-transform"
+                  src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+                  size="sm"
+                />
+              )}
             </DropdownTrigger>
             <DropdownMenu aria-label="Profile Actions" variant="flat">
               <DropdownItem key="profile" className="h-14 gap-2" textValue="Profile">
                 <p className="font-semibold">Signed in as</p>
                 <p className="font-semibold">
-                  {userType === 'dealer' ? 'sarah@company.com' : 'ahmet@email.com'}
+                  {userType === 'dealer' ? 'sarah@company.com' : 'didar@email.com'}
                 </p>
               </DropdownItem>
               

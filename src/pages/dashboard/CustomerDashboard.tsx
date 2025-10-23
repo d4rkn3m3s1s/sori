@@ -270,7 +270,7 @@ function CustomerDashboard() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
                     <motion.div 
-                      className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center cursor-pointer hover-bounce"
+                      className="relative w-16 h-16 cursor-pointer"
                       whileHover={{ scale: 1.1, rotate: 10 }}
                       whileTap={{ scale: 0.9 }}
                       onClick={() => {
@@ -278,11 +278,30 @@ function CustomerDashboard() {
                         fireworksConfetti()
                       }}
                     >
-                      <span className="text-2xl hover-wiggle">👋</span>
+                      <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-pink-300 shadow-lg">
+                        <img 
+                          src="https://api.dicebear.com/7.x/adventurer/svg?seed=girl-3d&backgroundColor=65c3f5&eyes=variant06&mouth=variant06&hair=variant23"
+                          alt="Ahmet"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <motion.div 
+                        className="absolute -bottom-1 -right-1 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full w-5 h-5 flex items-center justify-center shadow-lg"
+                        animate={{
+                          scale: [1, 1.2, 1],
+                          rotate: [0, 360]
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity
+                        }}
+                      >
+                        <span className="text-xs">👋</span>
+                      </motion.div>
                     </motion.div>
                     <div>
                       <h2 className="text-xl font-bold text-gray-900 dark:text-white">
-                        Welcome back, Ahmet!
+                        Welcome back, Ahmet! 🌟
                       </h2>
                       <p className="text-gray-600 dark:text-gray-400">
                         Your feedback journey continues
@@ -290,11 +309,11 @@ function CustomerDashboard() {
                       <div className="flex items-center space-x-4 mt-2">
                         <div className="flex items-center space-x-2">
                           <Award className="w-4 h-4 text-yellow-500" />
-                          <span className="text-sm text-gray-600 dark:text-gray-400">Gold Member</span>
+                          <span className="text-sm font-semibold text-yellow-600 dark:text-yellow-400">✨ Gold Member</span>
                         </div>
                         <div className="flex items-center space-x-2">
                           <Zap className="w-4 h-4 text-blue-500" />
-                          <span className="text-sm text-gray-600 dark:text-gray-400">10 day streak</span>
+                          <span className="text-sm text-gray-600 dark:text-gray-400">10 day streak 🔥</span>
                         </div>
                       </div>
                     </div>

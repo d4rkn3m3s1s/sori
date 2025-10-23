@@ -4,11 +4,11 @@ import { Card, CardBody, Button, Chip, Progress, Modal, ModalContent, ModalHeade
 import { 
   Droplet, Heart, TreePine, Award, Star, TrendingUp, Trophy,
   ArrowLeft, Sparkles, Check, Gift, Users, Target, PartyPopper,
-  Smile, MessageCircle, ThumbsUp, Crown
+  MessageCircle, ThumbsUp, Crown
 } from 'lucide-react'
 import Sidebar from '../../components/dashboard/Sidebar'
 import Header from '../../components/dashboard/Header'
-import TreeGrowthSystem from '../../components/donation/TreeGrowthSystem'
+import MultiGrowthSystem from '../../components/donation/MultiGrowthSystem'
 import { getRandomSlogan, SSP_SLOGANS } from '../../data/socialResponsibility'
 import { useNavigate } from 'react-router-dom'
 import confetti from 'canvas-confetti'
@@ -40,11 +40,6 @@ function DonationPage() {
   const [donationMessage, setDonationMessage] = useState('')
   const [hearts, setHearts] = useState<Array<{id: number, x: number, y: number}>>([])
   const [currentSlogan, setCurrentSlogan] = useState(getRandomSlogan())
-  const [recentDonations, setRecentDonations] = useState<Array<{name: string, amount: string, time: string}>>([
-    { name: 'Ayşe K.', amount: '1x Su Bağışı', time: '2 dakika önce' },
-    { name: 'Mehmet Y.', amount: '2x Mama Bağışı', time: '5 dakika önce' },
-    { name: 'Zeynep S.', amount: '3x Fidan Bağışı', time: '8 dakika önce' },
-  ])
 
   // Rotating slogan effect
   useEffect(() => {
@@ -103,198 +98,63 @@ function DonationPage() {
   const donations: Donation[] = [
     {
       id: 'water',
-      title: 'Su Bağışı',
-      description: 'Susuz kalan bölgelere temiz su ulaştırın',
+      title: '💧 50 Damla - 1 Su Bağışı',
+      description: 'Bir damla da senden olsun. Birike birike bir hayat olsun. 💙',
       icon: Droplet,
       emoji: '💧',
       color: 'blue',
-      gradient: 'from-blue-400 to-cyan-500',
+      gradient: 'from-blue-400 via-cyan-400 to-blue-500',
       pointCost: 5000,
       realValue: '1 kişinin 1 aylık su ihtiyacı',
-      impact: 'Bir aile 30 gün temiz suya kavuşur',
+      impact: 'Bir damla daha hayat oldu! Bir aile 30 gün temiz suya kavuşur 💙',
       donated: 847,
       goal: 1000,
-      categories: ['Temel İhtiyaç', 'Acil']
+      categories: ['50 Damla', 'Temel İhtiyaç', 'Popüler']
     },
     {
       id: 'animal-food',
-      title: 'Mama Bağışı',
-      description: 'Sokak hayvanlarına mama desteği',
+      title: '🐾 30 Pati - 1 Mama Bağışı',
+      description: 'Sevgi paylaştıkça çoğalır, patiler paylaştıkça doyar. Bir pati kadar iyiliğin olsun! 🐱🐶',
       icon: Heart,
       emoji: '🐾',
       color: 'pink',
-      gradient: 'from-pink-400 to-red-500',
+      gradient: 'from-pink-400 via-rose-400 to-red-500',
       pointCost: 3000,
       realValue: '10 kg kedi/köpek maması',
-      impact: '20 hayvan 1 hafta beslenebilir',
+      impact: 'Bir dostun karnı seninle doydu! Minik dostların seni bekliyor 🐱🐶',
       donated: 1243,
       goal: 2000,
-      categories: ['Hayvan Hakları', 'Popüler']
+      categories: ['30 Pati', 'Hayvan Hakları', 'Favori']
     },
     {
       id: 'tree',
-      title: 'Fidan Bağışı',
-      description: 'Yeşil bir gelecek için fidan dikin',
+      title: '🌳 20 Tohum - 1 Fidan Bağışı',
+      description: 'Sabırla büyüyen iyilik fidan olur. Bir yorumla toprağa nefes ver. Bir tohum büyük bir ormana dönüşebilir! 🌱',
       icon: TreePine,
       emoji: '🌳',
       color: 'green',
-      gradient: 'from-green-400 to-emerald-500',
+      gradient: 'from-green-400 via-emerald-400 to-teal-500',
       pointCost: 2500,
       realValue: '5 adet meyve fidanı',
-      impact: 'Yılda 100 kg CO2 emilimi',
+      impact: 'Senin katkınla 1 fidan dikildi! Yılda 100 kg CO2 emilimi 🌍',
       donated: 2156,
       goal: 5000,
-      categories: ['Çevre', 'Uzun Vadeli']
+      categories: ['20 Tohum', 'Çevre', 'Trend']
     },
     {
-      id: 'water-bulk',
-      title: 'Toplu Su Bağışı',
-      description: 'Bir köye su kuyusu açın',
-      icon: Droplet,
-      emoji: '💦',
-      color: 'cyan',
-      gradient: 'from-cyan-400 to-blue-600',
-      pointCost: 50000,
-      realValue: '1 su kuyusu',
-      impact: 'Bir köy kalıcı temiz suya kavuşur',
-      donated: 3,
-      goal: 10,
-      categories: ['Temel İhtiyaç', 'Kalıcı Etki']
-    },
-    {
-      id: 'animal-shelter',
-      title: 'Barınak Desteği',
-      description: 'Hayvan barınağına tam destek',
-      icon: Heart,
-      emoji: '🏠',
-      color: 'purple',
-      gradient: 'from-purple-400 to-pink-500',
-      pointCost: 10000,
-      realValue: '1 aylık barınak gideri',
-      impact: '50 hayvan 1 ay barınır ve beslenir',
-      donated: 124,
-      goal: 200,
-      categories: ['Hayvan Hakları', 'Kalıcı Etki']
-    },
-    {
-      id: 'forest',
-      title: 'Orman Bağışı',
-      description: 'Bir orman alanı oluşturun',
-      icon: TreePine,
-      emoji: '🌲',
-      color: 'emerald',
-      gradient: 'from-emerald-400 to-green-600',
-      pointCost: 25000,
-      realValue: '100 adet karışık fidan',
-      impact: '1000 m² yeşil alan, yılda 2 ton CO2',
-      donated: 45,
-      goal: 100,
-      categories: ['Çevre', 'Prestij']
-    },
-    {
-      id: 'stationary',
-      title: 'Kırtasiye Bağışı',
-      description: 'Okuma yazması olmayan çocuklara kırtasiye desteği',
+      id: 'education',
+      title: '✏️ 15 Kalem - 1 Eğitim Bağışı',
+      description: 'Bir kalem, bin hayal. Kutundan çıkan iyilik, bir çocuğun geleceğini yazar! 📚',
       icon: Gift,
-      emoji: '📚',
-      color: 'indigo',
-      gradient: 'from-indigo-400 to-purple-500',
-      pointCost: 2000,
-      realValue: '1 öğrenci için tam set kırtasiye',
-      impact: '1 öğrenci 1 dönem eğitime devam edebilir',
+      emoji: '✏️',
+      color: 'purple',
+      gradient: 'from-purple-400 via-violet-400 to-indigo-500',
+      pointCost: 4000,
+      realValue: 'Tam set okul malzemesi',
+      impact: 'Bir çocuğun kalemi seninle yazdı! 1 öğrenci tüm yıl eğitime devam eder 🎓',
       donated: 567,
       goal: 1000,
-      categories: ['Eğitim', 'Çocuk']
-    },
-    {
-      id: 'school-bag',
-      title: 'Okul Çantası Bağışı',
-      description: 'İhtiyaç sahibi öğrencilere okul çantası',
-      icon: Gift,
-      emoji: '🎒',
-      color: 'violet',
-      gradient: 'from-violet-400 to-purple-600',
-      pointCost: 4000,
-      realValue: '1 dolu okul çantası (defter, kalem, vs.)',
-      impact: 'Bir çocuk okula hazır başlar',
-      donated: 234,
-      goal: 500,
-      categories: ['Eğitim', 'Çocuk']
-    },
-    {
-      id: 'medicine',
-      title: 'İlaç Bağışı',
-      description: 'Maddi durumu iyi olmayanlara ilaç desteği',
-      icon: Heart,
-      emoji: '💊',
-      color: 'red',
-      gradient: 'from-red-400 to-pink-500',
-      pointCost: 6000,
-      realValue: '1 aylık kronik ilaç ihtiyacı',
-      impact: 'Bir hasta 30 gün tedavisine devam edebilir',
-      donated: 189,
-      goal: 300,
-      categories: ['Sağlık', 'Acil']
-    },
-    {
-      id: 'wheelchair',
-      title: 'Tekerlekli Sandalye',
-      description: 'Hareket kısıtlılığı olan bireylere destek',
-      icon: Heart,
-      emoji: '♿',
-      color: 'sky',
-      gradient: 'from-sky-400 to-blue-500',
-      pointCost: 15000,
-      realValue: '1 tekerlekli sandalye',
-      impact: 'Bir engelli birey hareket özgürlüğü kazanır',
-      donated: 23,
-      goal: 50,
-      categories: ['Sağlık', 'Kalıcı Etki']
-    },
-    {
-      id: 'food-package',
-      title: 'Gıda Kolisi',
-      description: 'Aç kalan ailelere gıda paketi',
-      icon: Gift,
-      emoji: '🍲',
-      color: 'orange',
-      gradient: 'from-orange-400 to-red-500',
-      pointCost: 3500,
-      realValue: '1 ailenin 1 haftalık gıda ihtiyacı',
-      impact: '4 kişilik aile 7 gün tok kalır',
-      donated: 892,
-      goal: 1500,
-      categories: ['Temel İhtiyaç', 'Acil']
-    },
-    {
-      id: 'blanket',
-      title: 'Battaniye Bağışı',
-      description: 'Soğukta kalanlara sıcaklık',
-      icon: Heart,
-      emoji: '🛏️',
-      color: 'amber',
-      gradient: 'from-amber-400 to-orange-500',
-      pointCost: 1500,
-      realValue: '2 adet kaliteli battaniye',
-      impact: 'Bir aile kışı sıcak geçirir',
-      donated: 445,
-      goal: 800,
-      categories: ['Temel İhtiyaç', 'Mevsimsel']
-    },
-    {
-      id: 'scholarship',
-      title: 'Burs Desteği',
-      description: 'Eğitimine devam edemeyen öğrencilere burs',
-      icon: Award,
-      emoji: '🎓',
-      color: 'teal',
-      gradient: 'from-teal-400 to-cyan-500',
-      pointCost: 20000,
-      realValue: '1 öğrencinin 6 aylık eğitim masrafı',
-      impact: 'Bir öğrenci okulu bırakmaz',
-      donated: 67,
-      goal: 150,
-      categories: ['Eğitim', 'Uzun Vadeli']
+      categories: ['15 Kalem', 'Eğitim', 'Özel'],
     }
   ]
 
@@ -374,12 +234,6 @@ function DonationPage() {
       setUserPoints(userPoints - totalCost)
       setTotalDonated(totalDonated + totalCost)
       
-      // Yeni bağışı recent donations'a ekle
-      setRecentDonations(prev => [
-        { name: 'Siz', amount: `${donationAmount}x ${selectedDonation.title}`, time: 'Az önce' },
-        ...prev.slice(0, 4)
-      ])
-
       // Yeni bağışı my donations'a ekle
       const newDonation = {
         id: Date.now().toString(),
@@ -433,8 +287,110 @@ function DonationPage() {
           userType="customer" 
         />
         
-        <main className="flex-1 overflow-y-auto p-6">
-          <div className="max-w-7xl mx-auto space-y-6">
+        <main className="flex-1 overflow-y-auto p-6 relative overflow-hidden">
+          {/* Floating Background Animations - Reduced for Performance */}
+          {[...Array(4)].map((_, i) => (
+            <motion.div
+              key={`float-bg-${i}`}
+              className="absolute text-3xl pointer-events-none opacity-10"
+              style={{
+                left: `${(i + 1) * 20}%`,
+                top: `${(i * 25)}%`,
+                willChange: 'transform',
+              }}
+              animate={{
+                y: [0, -60, 0],
+                opacity: [0.08, 0.15, 0.08],
+              }}
+              transition={{
+                duration: 20 + i * 5,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            >
+              {['🌱', '💧', '🐾', '✏️'][i]}
+            </motion.div>
+          ))}
+          
+          <div className="max-w-7xl mx-auto space-y-6 relative z-10">
+            
+            {/* Hero Banner - SIRA DIŞI! */}
+            <motion.div
+              initial={{ opacity: 0, y: -30, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.8, type: "spring" }}
+            >
+              <Card className="relative overflow-hidden bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500">
+                {/* Simplified Background Pattern */}
+                <div className="absolute inset-0 opacity-10" style={{
+                  backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,0.3) 35px, rgba(255,255,255,0.3) 70px)',
+                }} />
+                
+                <CardBody className="p-4 sm:p-6 relative z-10">
+                  <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div className="flex items-center gap-4">
+                      <motion.div
+                        animate={{
+                          scale: [1, 1.2, 1],
+                          rotate: [0, 10, -10, 0],
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                        }}
+                        className="text-5xl"
+                      >
+                        💝
+                      </motion.div>
+                      <div className="text-white">
+                        <motion.h2 
+                          className="text-2xl md:text-3xl font-bold mb-1"
+                          animate={{
+                            backgroundPosition: ['0%', '100%', '0%'],
+                          }}
+                          transition={{
+                            duration: 5,
+                            repeat: Infinity,
+                          }}
+                        >
+                          Küçük bir adım senden, büyük bir etki bizden.
+                        </motion.h2>
+                        <p className="text-sm md:text-base opacity-90">
+                          Her puan, her yorum gerçek bir iyiliğe dönüşür ✨
+                        </p>
+                      </div>
+                    </div>
+                    
+                    {/* Animated Stats */}
+                    <div className="flex gap-3">
+                      {[
+                        { emoji: '🌳', count: '2,156', label: 'Fidan' },
+                        { emoji: '💧', count: '847', label: 'Su' },
+                        { emoji: '🐾', count: '1,243', label: 'Mama' }
+                      ].map((stat, idx) => (
+                        <motion.div
+                          key={idx}
+                          className="bg-white/20 backdrop-blur-sm rounded-xl px-3 py-2 text-center min-w-[70px]"
+                          animate={{
+                            y: [0, -5, 0],
+                            scale: [1, 1.05, 1],
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: idx * 0.3,
+                          }}
+                        >
+                          <div className="text-2xl mb-1">{stat.emoji}</div>
+                          <div className="text-lg font-bold text-white">{stat.count}</div>
+                          <div className="text-xs opacity-90 text-white">{stat.label}</div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                </CardBody>
+              </Card>
+            </motion.div>
             
             {/* Back Button & SSP Leaderboard */}
             <div className="flex items-center justify-between flex-wrap gap-3">
@@ -488,64 +444,168 @@ function DonationPage() {
               </motion.div>
             </AnimatePresence>
 
-            {/* User Stats */}
+            {/* User Stats - ENHANCED WITH ANIMATIONS! */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-                <Card className="bg-gradient-to-br from-yellow-400 to-orange-500">
-                  <CardBody className="p-6">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }} 
+                animate={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.03, y: -5 }}
+              >
+                <Card className="bg-gradient-to-br from-yellow-400 to-orange-500 relative overflow-hidden">
+                  {/* Simplified Sparkle - Performance Optimized */}
+                  <div className="absolute text-2xl pointer-events-none opacity-20" style={{
+                    left: '50%',
+                    top: '50%',
+                    transform: 'translate(-50%, -50%)',
+                  }}>
+                    ⭐
+                  </div>
+                  <CardBody className="p-6 relative z-10">
                     <div className="flex items-center justify-between text-white">
                       <div>
                         <p className="text-sm opacity-90">Kullanılabilir Puan</p>
-                        <p className="text-4xl font-bold">{userPoints.toLocaleString()}</p>
+                        <motion.p 
+                          className="text-4xl font-bold"
+                          animate={{
+                            scale: [1, 1.05, 1],
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                          }}
+                        >
+                          {userPoints.toLocaleString()}
+                        </motion.p>
                       </div>
-                      <Star className="w-12 h-12 opacity-20" />
+                      <motion.div
+                        animate={{
+                          rotate: [0, 360],
+                          scale: [1, 1.2, 1],
+                        }}
+                        transition={{
+                          duration: 4,
+                          repeat: Infinity,
+                        }}
+                      >
+                        <Star className="w-12 h-12 opacity-40" />
+                      </motion.div>
                     </div>
                   </CardBody>
                 </Card>
               </motion.div>
 
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
-                <Card className="bg-gradient-to-br from-green-400 to-emerald-500">
-                  <CardBody className="p-6">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ delay: 0.1 }}
+                whileHover={{ scale: 1.03, y: -5 }}
+              >
+                <Card className="bg-gradient-to-br from-green-400 to-emerald-500 relative overflow-hidden">
+                  {/* Simplified Heart - Performance Optimized */}
+                  <div className="absolute text-2xl pointer-events-none opacity-20" style={{
+                    left: '50%',
+                    top: '50%',
+                    transform: 'translate(-50%, -50%)',
+                  }}>
+                    💚
+                  </div>
+                  <CardBody className="p-6 relative z-10">
                     <div className="flex items-center justify-between text-white">
                       <div>
                         <p className="text-sm opacity-90">Toplam Bağış</p>
-                        <p className="text-4xl font-bold">{totalDonated.toLocaleString()}</p>
+                        <motion.p 
+                          className="text-4xl font-bold"
+                          animate={{
+                            scale: [1, 1.05, 1],
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: 0.5,
+                          }}
+                        >
+                          {totalDonated.toLocaleString()}
+                        </motion.p>
                         <p className="text-xs opacity-75">puan</p>
                       </div>
-                      <Gift className="w-12 h-12 opacity-20" />
+                      <motion.div
+                        animate={{
+                          scale: [1, 1.3, 1],
+                          rotate: [0, 10, -10, 0],
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                        }}
+                      >
+                        <Gift className="w-12 h-12 opacity-40" />
+                      </motion.div>
                     </div>
                   </CardBody>
                 </Card>
               </motion.div>
 
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-                <Card className="bg-gradient-to-br from-purple-400 to-pink-500">
-                  <CardBody className="p-6">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ delay: 0.2 }}
+                whileHover={{ scale: 1.03, y: -5 }}
+              >
+                <Card className="bg-gradient-to-br from-purple-400 to-pink-500 relative overflow-hidden">
+                  {/* Simplified Crown - Performance Optimized */}
+                  <div className="absolute text-2xl pointer-events-none opacity-20" style={{
+                    left: '50%',
+                    top: '50%',
+                    transform: 'translate(-50%, -50%)',
+                  }}>
+                    👑
+                  </div>
+                  <CardBody className="p-6 relative z-10">
                     <div className="flex items-center justify-between text-white">
                       <div>
                         <p className="text-sm opacity-90">Etki Seviyesi</p>
-                        <p className="text-4xl font-bold">
-                          {totalDonated > 100000 ? 'Efsane' :
-                           totalDonated > 50000 ? 'Kahraman' :
-                           totalDonated > 20000 ? 'Yıldız' :
-                           totalDonated > 5000 ? 'Destekçi' : 'Başlangıç'}
-                        </p>
+                        <motion.p 
+                          className="text-4xl font-bold"
+                          animate={{
+                            scale: [1, 1.08, 1],
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: 1,
+                          }}
+                        >
+                          {totalDonated > 100000 ? '👑 Efsane' :
+                           totalDonated > 50000 ? '🦸 Kahraman' :
+                           totalDonated > 20000 ? '⭐ Yıldız' :
+                           totalDonated > 5000 ? '💪 Destekçi' : '🌱 Başlangıç'}
+                        </motion.p>
                       </div>
-                      <Award className="w-12 h-12 opacity-20" />
+                      <motion.div
+                        animate={{
+                          rotate: [0, 15, -15, 0],
+                          scale: [1, 1.2, 1],
+                        }}
+                        transition={{
+                          duration: 3.5,
+                          repeat: Infinity,
+                        }}
+                      >
+                        <Award className="w-12 h-12 opacity-40" />
+                      </motion.div>
                     </div>
                   </CardBody>
                 </Card>
               </motion.div>
             </div>
 
-            {/* Tree Growth System - Fidan Yetiştirme Sistemi */}
+            {/* Multi Growth System - Tüm Bağış Türleri İçin Yetiştirme Sistemi */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              <TreeGrowthSystem />
+              <MultiGrowthSystem />
             </motion.div>
 
             {/* Info Banner - Geliştirilmiş */}
@@ -555,10 +615,9 @@ function DonationPage() {
               transition={{ delay: 0.4 }}
             >
               <Card className="bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-500 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer" />
                 <CardBody className="p-4 sm:p-6 md:p-8 relative z-10">
                   <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 text-white">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/20 backdrop-blur rounded-2xl flex items-center justify-center flex-shrink-0 animate-bounce">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/20 backdrop-blur rounded-2xl flex items-center justify-center flex-shrink-0">
                       <PartyPopper className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                     </div>
                     <div className="flex-1 text-center md:text-left">
@@ -591,59 +650,6 @@ function DonationPage() {
               </Card>
             </motion.div>
 
-            {/* Recent Donations */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-            >
-              <Card className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20">
-                <CardBody className="p-4 sm:p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                      <ThumbsUp className="w-4 h-4 sm:w-5 sm:h-5 text-purple-500" />
-                      Son Bağışlar
-                    </h3>
-                    <Chip color="secondary" variant="flat" size="sm">
-                      Canlı
-                    </Chip>
-                  </div>
-                  <Divider className="mb-4" />
-                  <div className="space-y-3">
-                    <AnimatePresence>
-                      {recentDonations.map((donation, index) => (
-                        <motion.div
-                          key={index}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: 20 }}
-                          transition={{ delay: index * 0.1 }}
-                          className="flex items-center gap-3 p-3 bg-white dark:bg-gray-800 rounded-lg"
-                        >
-                          <div className="w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center text-white font-bold">
-                            {donation.name.charAt(0)}
-                          </div>
-                          <div className="flex-1">
-                            <p className="font-semibold text-gray-900 dark:text-white text-sm">
-                              {donation.name}
-                            </p>
-                            <p className="text-xs text-gray-600 dark:text-gray-400">
-                              {donation.amount}
-                            </p>
-                          </div>
-                          <div className="text-right">
-                            <Chip size="sm" variant="flat" color="success">
-                              {donation.time}
-                            </Chip>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </AnimatePresence>
-                  </div>
-                </CardBody>
-              </Card>
-            </motion.div>
-
             {/* Donation Cards */}
             <div>
               <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
@@ -662,14 +668,27 @@ function DonationPage() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
-                      whileHover={{ scale: 1.03 }}
+                      whileHover={{ 
+                        scale: 1.05,
+                        y: -10,
+                        rotateY: 5,
+                      }}
+                      className="relative"
                     >
+                      {/* Simplified Mini Emoji - Performance Optimized */}
+                      <div className="absolute text-2xl pointer-events-none z-20 -top-3 right-4 opacity-70">
+                        {donation.emoji}
+                      </div>
+                      
                       <Card 
-                        isPressable 
-                        onPress={() => canAfford && setSelectedDonation(donation)}
-                        className={`h-full ${!canAfford ? 'opacity-60' : ''}`}
+                        className={`h-full ${!canAfford ? 'opacity-60' : ''} relative overflow-hidden`}
                       >
-                        <CardBody className="p-6">
+                        {/* Simplified Corner Decoration - Performance Optimized */}
+                        <div className="absolute top-3 right-3 text-xl pointer-events-none opacity-50">
+                          ✨
+                        </div>
+                        
+                        <CardBody className="p-6 relative z-10">
                           {/* Icon and Badge */}
                           <div className="flex items-start justify-between mb-4">
                             <div className={`w-16 h-16 bg-gradient-to-br ${donation.gradient} rounded-2xl flex items-center justify-center text-3xl shadow-lg`}>
@@ -717,25 +736,45 @@ function DonationPage() {
                           </div>
 
                           {/* Progress */}
-                          <div className="mb-4">
+                          <div className="mb-4 relative">
                             <div className="flex items-center justify-between mb-2">
-                              <span className="text-xs text-gray-600 dark:text-gray-400">
+                              <motion.span 
+                                className="text-xs text-gray-600 dark:text-gray-400 flex items-center gap-1"
+                                animate={{
+                                  x: [0, 2, 0],
+                                }}
+                                transition={{
+                                  duration: 2,
+                                  repeat: Infinity,
+                                }}
+                              >
+                                <TrendingUp className="w-3 h-3" />
                                 Topluluk İlerlemesi
-                              </span>
-                              <span className="text-xs font-bold text-gray-900 dark:text-white">
+                              </motion.span>
+                              <motion.span 
+                                className="text-xs font-bold text-gray-900 dark:text-white"
+                                animate={{
+                                  scale: [1, 1.1, 1],
+                                }}
+                                transition={{
+                                  duration: 2,
+                                  repeat: Infinity,
+                                }}
+                              >
                                 {donation.donated} / {donation.goal}
-                              </span>
+                              </motion.span>
                             </div>
                             <Progress
                               value={progress}
                               className="h-2"
+                              aria-label={`${donation.title} bağış ilerlemesi: ${donation.donated} / ${donation.goal}`}
                               classNames={{
                                 indicator: `bg-gradient-to-r ${donation.gradient}`
                               }}
                             />
                           </div>
 
-                          {/* Button */}
+                          {/* Button - Performance Optimized */}
                           <Button
                             color="primary"
                             className={`w-full bg-gradient-to-r ${donation.gradient} text-white font-bold`}
@@ -743,7 +782,7 @@ function DonationPage() {
                             isDisabled={!canAfford}
                             onPress={() => setSelectedDonation(donation)}
                           >
-                            Bağış Yap
+                            💝 Bağış Yap
                           </Button>
                         </CardBody>
                       </Card>
@@ -960,15 +999,14 @@ function DonationPage() {
                 <div className="space-y-6">
                   {/* Amount Selector */}
                   <div>
-                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 block">
-                      Bağış Miktarı
-                    </label>
                     <Input
                       type="number"
                       value={donationAmount.toString()}
                       onChange={(e) => setDonationAmount(Math.max(1, parseInt(e.target.value) || 1))}
                       min={1}
                       size="lg"
+                      aria-label="Bağış miktarı"
+                      label="Bağış Miktarı"
                       endContent={
                         <span className="text-gray-500">adet</span>
                       }
@@ -1241,11 +1279,11 @@ function DonationPage() {
                 </Button>
               </motion.div>
 
-              {/* Decorative elements */}
-              <div className="absolute top-4 right-4 text-4xl animate-spin-slow">⭐</div>
-              <div className="absolute bottom-4 left-4 text-3xl animate-bounce">💝</div>
-              <div className="absolute top-1/4 left-4 text-2xl animate-pulse">✨</div>
-              <div className="absolute bottom-1/4 right-4 text-2xl animate-pulse delay-75">💫</div>
+              {/* Simplified Decorative elements - Performance Optimized */}
+              <div className="absolute top-4 right-4 text-3xl opacity-40">⭐</div>
+              <div className="absolute bottom-4 left-4 text-2xl opacity-40">💝</div>
+              <div className="absolute top-1/4 left-4 text-xl opacity-30">✨</div>
+              <div className="absolute bottom-1/4 right-4 text-xl opacity-30">💫</div>
             </div>
           </ModalBody>
         </ModalContent>
@@ -1291,11 +1329,26 @@ function DonationPage() {
                     </p>
                     
                     <div className="bg-white/50 dark:bg-gray-800/50 rounded-xl p-6 border-2 border-yellow-400">
+                      <div className="flex items-center justify-center gap-4 mb-4">
+                        <div className="relative">
+                          <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-pink-300 shadow-lg">
+                            <img 
+                              src="https://api.dicebear.com/7.x/adventurer/svg?seed=girl-3d&backgroundColor=65c3f5&eyes=variant06&mouth=variant06&hair=variant23"
+                              alt="Ahmet Yılmaz"
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full w-8 h-8 flex items-center justify-center shadow-lg border-2 border-white">
+                            <Award className="w-4 h-4 text-white" />
+                          </div>
+                        </div>
+                      </div>
                       <p className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
                         Ahmet Yılmaz
                       </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        QR-tex Kullanıcısı
+                      <p className="text-sm font-semibold text-yellow-600 dark:text-yellow-400 flex items-center justify-center gap-1">
+                        <span>✨</span>
+                        <span>QR-tex Gold Member</span>
                       </p>
                     </div>
 
@@ -1391,32 +1444,8 @@ function DonationPage() {
         </ModalContent>
       </Modal>
 
-      {/* Custom CSS Animations */}
+      {/* Simplified CSS - Performance Optimized */}
       <style>{`
-        @keyframes shimmer {
-          0% {
-            transform: translateX(-100%);
-          }
-          100% {
-            transform: translateX(100%);
-          }
-        }
-        .animate-shimmer {
-          animation: shimmer 3s infinite;
-        }
-        
-        @keyframes spin-slow {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-        .animate-spin-slow {
-          animation: spin-slow 8s linear infinite;
-        }
-        
         .delay-75 {
           animation-delay: 0.75s;
         }

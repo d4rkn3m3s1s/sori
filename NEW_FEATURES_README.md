@@ -293,3 +293,9 @@ Dashboard → "Hızlı Aksiyonlar" → "Hedefler"
 
 
 
+
+
+
+
+
+

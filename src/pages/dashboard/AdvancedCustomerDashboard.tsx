@@ -14,7 +14,7 @@ import {
   Bell, Download, Filter, RefreshCw, Maximize2, Minimize2,
   Plus, ChevronRight, Sparkles, Crown, Rocket, TrendingDown,
   Coffee, ShoppingBag, MapPin, Check, X, Info, AlertCircle,
-  User, Palette
+  User, Palette, Bot, Camera, Brain
 } from 'lucide-react'
 import Sidebar from '../../components/dashboard/Sidebar'
 import Header from '../../components/dashboard/Header'
@@ -832,6 +832,105 @@ function AdvancedCustomerDashboard() {
                 </Card>
               </motion.div>
 
+              {/* AI Assistant */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35 }}
+                whileHover={{ scale: 1.05 }}
+                className="cursor-pointer"
+                onClick={() => navigate('/customer/ai-assistant')}
+              >
+                <Card className="bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 hover:shadow-2xl transition-shadow">
+                  <CardBody className="p-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm animate-bounce">
+                        <Bot className="w-7 h-7 text-white" />
+                      </div>
+                      <Chip size="sm" className="bg-white/20 text-white font-bold animate-pulse">
+                        AI
+                      </Chip>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      🤖 AI Asistan
+                    </h3>
+                    <p className="text-white/90 text-sm mb-4">
+                      Sorularına anında yanıt al, yardım için her zaman hazır!
+                    </p>
+                    <div className="flex items-center text-white/80 text-xs">
+                      <Sparkles className="w-4 h-4 mr-1" />
+                      <span>7/24 destek, akıllı yanıtlar, hızlı çözümler</span>
+                    </div>
+                  </CardBody>
+                </Card>
+              </motion.div>
+
+              {/* AR Badge Scanner */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.36 }}
+                whileHover={{ scale: 1.05 }}
+                className="cursor-pointer"
+                onClick={() => navigate('/customer/ar-scanner')}
+              >
+                <Card className="bg-gradient-to-br from-cyan-500 via-blue-500 to-indigo-600 hover:shadow-2xl transition-shadow">
+                  <CardBody className="p-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                        <Camera className="w-7 h-7 text-white animate-pulse" />
+                      </div>
+                      <Chip size="sm" className="bg-white/20 text-white font-bold">
+                        AR
+                      </Chip>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      📸 AR Rozet Tarayıcı
+                    </h3>
+                    <p className="text-white/90 text-sm mb-4">
+                      Gerçek dünyada rozetleri keşfet, Pokemon GO gibi!
+                    </p>
+                    <div className="flex items-center text-white/80 text-xs">
+                      <Sparkles className="w-4 h-4 mr-1" />
+                      <span>Kamera ile tara, rozet avla, ödüller kazan</span>
+                    </div>
+                  </CardBody>
+                </Card>
+              </motion.div>
+
+              {/* AI Trainer */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.37 }}
+                whileHover={{ scale: 1.05 }}
+                className="cursor-pointer"
+                onClick={() => navigate('/customer/ai-trainer')}
+              >
+                <Card className="bg-gradient-to-br from-pink-500 via-rose-500 to-red-500 hover:shadow-2xl transition-shadow">
+                  <CardBody className="p-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm animate-bounce">
+                        <Brain className="w-7 h-7 text-white" />
+                      </div>
+                      <Chip size="sm" className="bg-white/20 text-white font-bold animate-pulse">
+                        AI
+                      </Chip>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      🧠 AI Kişisel Trainer
+                    </h3>
+                    <p className="text-white/90 text-sm mb-4">
+                      Sana özel görevler, motivasyon ve performans analizi!
+                    </p>
+                    <div className="flex items-center text-white/80 text-xs">
+                      <Sparkles className="w-4 h-4 mr-1" />
+                      <span>Akıllı öneriler, alışkanlık analizi, ilerleme</span>
+                    </div>
+                  </CardBody>
+                </Card>
+              </motion.div>
+
               {/* Enhanced Analytics */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -905,7 +1004,7 @@ function AdvancedCustomerDashboard() {
                 transition={{ delay: 0.6 }}
                 whileHover={{ scale: 1.05 }}
                 className="cursor-pointer"
-                onClick={() => navigate('/customer/profile-customize')}
+                onClick={() => navigate('/customer/profile-customization')}
               >
                 <Card className="bg-gradient-to-br from-orange-500 to-red-500 hover:shadow-2xl transition-shadow">
                   <CardBody className="p-6">

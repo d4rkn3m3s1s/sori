@@ -39,7 +39,7 @@ interface UnlockedReward {
 
 function SurpriseGiftBoxPage() {
   const navigate = useNavigate()
-  const { triggerConfetti } = useConfetti()
+  const { fireConfetti } = useConfetti()
   
   const [selectedBox, setSelectedBox] = useState<GiftBox | null>(null)
   const [showOpenModal, setShowOpenModal] = useState(false)
@@ -70,31 +70,31 @@ function SurpriseGiftBoxPage() {
   const giftBoxes: GiftBox[] = [
     {
       id: 'starter',
-      name: 'Başlangıç Kutusu',
-      icon: '🎁',
+      name: '🌟 Yıldız Kutusu',
+      icon: '⭐',
       rarity: 'common',
       pointsCost: 50,
       possibleRewards: ['10-50 Puan', 'Küçük İndirim Kuponu', 'Bronz Rozet'],
-      color: '#9CA3AF',
-      gradient: 'from-gray-400 to-gray-600',
+      color: '#FFD700',
+      gradient: 'from-yellow-400 via-yellow-500 to-amber-500',
       unlocked: true,
-      description: 'Her zaman erişilebilir temel hediye kutusu'
+      description: 'Her zaman erişilebilir temel hediye kutusu. Küçük sürprizler içerir!'
     },
     {
       id: 'bronze',
-      name: 'Bronz Kutu',
-      icon: '📦',
+      name: '🔥 Alev Kutusu',
+      icon: '🔥',
       rarity: 'common',
       pointsCost: 100,
       possibleRewards: ['50-100 Puan', 'Orta İndirim Kuponu', 'Gümüş Rozet'],
-      color: '#CD7F32',
-      gradient: 'from-orange-400 to-orange-600',
+      color: '#FF6B35',
+      gradient: 'from-orange-500 via-red-500 to-pink-500',
       unlocked: true,
-      description: 'İyi şanslar içeren bronz seviye kutu'
+      description: 'Ateşli ödüller içeren sıcak kutu!'
     },
     {
       id: 'silver',
-      name: 'Gümüş Kutu',
+      name: '💎 Kristal Kutusu',
       icon: '💎',
       rarity: 'rare',
       pointsCost: 200,
@@ -298,7 +298,7 @@ function SurpriseGiftBoxPage() {
       setOpenedBoxes(prev => [...prev, selectedBox.id])
       
       // Confetti efekti
-      triggerConfetti()
+      fireConfetti()
     }, 2000)
   }
 
