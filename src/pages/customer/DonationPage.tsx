@@ -314,76 +314,145 @@ function DonationPage() {
           
           <div className="max-w-7xl mx-auto space-y-6 relative z-10">
             
-            {/* Hero Banner - SIRA DIŞI! */}
+            {/* Hero Banner - ULTRA MODERN! */}
             <motion.div
               initial={{ opacity: 0, y: -30, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.8, type: "spring" }}
             >
-              <Card className="relative overflow-hidden bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500">
-                {/* Simplified Background Pattern */}
-                <div className="absolute inset-0 opacity-10" style={{
-                  backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,0.3) 35px, rgba(255,255,255,0.3) 70px)',
+              <Card className="relative overflow-hidden border-2 border-white/20 shadow-2xl">
+                {/* Animated Gradient Background */}
+                <motion.div 
+                  className="absolute inset-0 z-0"
+                  animate={{
+                    background: [
+                      'linear-gradient(135deg, #10b981 0%, #059669 50%, #14b8a6 100%)',
+                      'linear-gradient(135deg, #14b8a6 0%, #10b981 50%, #059669 100%)',
+                      'linear-gradient(135deg, #059669 0%, #14b8a6 50%, #10b981 100%)',
+                      'linear-gradient(135deg, #10b981 0%, #059669 50%, #14b8a6 100%)',
+                    ]
+                  }}
+                  transition={{
+                    duration: 10,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                />
+                
+                {/* Floating Orbs */}
+                <div className="absolute inset-0 z-0 overflow-hidden">
+                  {[...Array(3)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute rounded-full"
+                      style={{
+                        width: `${150 + i * 50}px`,
+                        height: `${150 + i * 50}px`,
+                        background: 'radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%)',
+                        left: `${20 + i * 30}%`,
+                        top: `${-20 + i * 10}%`,
+                      }}
+                      animate={{
+                        y: [0, -20, 0],
+                        x: [0, 15, 0],
+                        scale: [1, 1.1, 1],
+                        opacity: [0.3, 0.5, 0.3]
+                      }}
+                      transition={{
+                        duration: 5 + i * 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    />
+                  ))}
+                </div>
+
+                {/* Pattern Overlay */}
+                <div className="absolute inset-0 opacity-5 z-0" style={{
+                  backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,0.5) 35px, rgba(255,255,255,0.5) 70px)',
                 }} />
                 
-                <CardBody className="p-4 sm:p-6 relative z-10">
-                  <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                    <div className="flex items-center gap-4">
+                <CardBody className="p-6 sm:p-8 relative z-10">
+                  <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div className="flex items-center gap-6">
                       <motion.div
                         animate={{
-                          scale: [1, 1.2, 1],
-                          rotate: [0, 10, -10, 0],
+                          scale: [1, 1.15, 1],
+                          rotate: [0, 5, -5, 0],
                         }}
                         transition={{
-                          duration: 2,
+                          duration: 3,
                           repeat: Infinity,
+                          ease: "easeInOut"
                         }}
-                        className="text-5xl"
+                        className="text-6xl md:text-7xl filter drop-shadow-lg"
                       >
                         💝
                       </motion.div>
                       <div className="text-white">
                         <motion.h2 
-                          className="text-2xl md:text-3xl font-bold mb-1"
-                          animate={{
-                            backgroundPosition: ['0%', '100%', '0%'],
-                          }}
-                          transition={{
-                            duration: 5,
-                            repeat: Infinity,
-                          }}
+                          className="text-2xl md:text-4xl font-bold mb-2 drop-shadow-md"
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.3 }}
                         >
                           Küçük bir adım senden, büyük bir etki bizden.
                         </motion.h2>
-                        <p className="text-sm md:text-base opacity-90">
+                        <motion.p 
+                          className="text-sm md:text-lg opacity-95 font-medium"
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.5 }}
+                        >
                           Her puan, her yorum gerçek bir iyiliğe dönüşür ✨
-                        </p>
+                        </motion.p>
                       </div>
                     </div>
                     
-                    {/* Animated Stats */}
-                    <div className="flex gap-3">
+                    {/* Animated Stats - Enhanced */}
+                    <div className="flex gap-4">
                       {[
-                        { emoji: '🌳', count: '2,156', label: 'Fidan' },
-                        { emoji: '💧', count: '847', label: 'Su' },
-                        { emoji: '🐾', count: '1,243', label: 'Mama' }
+                        { emoji: '🌳', count: '2,156', label: 'Fidan', color: 'from-green-400 to-emerald-400' },
+                        { emoji: '💧', count: '847', label: 'Su', color: 'from-blue-400 to-cyan-400' },
+                        { emoji: '🐾', count: '1,243', label: 'Mama', color: 'from-orange-400 to-amber-400' }
                       ].map((stat, idx) => (
                         <motion.div
                           key={idx}
-                          className="bg-white/20 backdrop-blur-sm rounded-xl px-3 py-2 text-center min-w-[70px]"
-                          animate={{
-                            y: [0, -5, 0],
-                            scale: [1, 1.05, 1],
+                          className="group relative bg-white/25 hover:bg-white/35 backdrop-blur-md rounded-2xl px-4 py-3 text-center min-w-[85px] cursor-pointer transition-all duration-300 border border-white/30"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ 
+                            opacity: 1, 
+                            y: 0,
+                          }}
+                          whileHover={{ 
+                            scale: 1.08,
+                            y: -5,
                           }}
                           transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            delay: idx * 0.3,
+                            delay: idx * 0.1,
                           }}
                         >
-                          <div className="text-2xl mb-1">{stat.emoji}</div>
-                          <div className="text-lg font-bold text-white">{stat.count}</div>
-                          <div className="text-xs opacity-90 text-white">{stat.label}</div>
+                          {/* Glow effect on hover */}
+                          <motion.div
+                            className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl`}
+                          />
+                          
+                          <motion.div 
+                            className="text-3xl mb-1 filter drop-shadow-md"
+                            animate={{
+                              scale: [1, 1.15, 1],
+                              rotate: [0, 5, -5, 0]
+                            }}
+                            transition={{
+                              duration: 3,
+                              repeat: Infinity,
+                              delay: idx * 0.4,
+                            }}
+                          >
+                            {stat.emoji}
+                          </motion.div>
+                          <div className="text-xl font-bold text-white drop-shadow-md">{stat.count}</div>
+                          <div className="text-xs font-medium opacity-90 text-white">{stat.label}</div>
                         </motion.div>
                       ))}
                     </div>
@@ -444,28 +513,53 @@ function DonationPage() {
               </motion.div>
             </AnimatePresence>
 
-            {/* User Stats - ENHANCED WITH ANIMATIONS! */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* User Stats - ULTRA MODERN! */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }} 
                 animate={{ opacity: 1, y: 0 }}
-                whileHover={{ scale: 1.03, y: -5 }}
+                className="group"
               >
-                <Card className="bg-gradient-to-br from-yellow-400 to-orange-500 relative overflow-hidden">
-                  {/* Simplified Sparkle - Performance Optimized */}
-                  <div className="absolute text-2xl pointer-events-none opacity-20" style={{
-                    left: '50%',
-                    top: '50%',
-                    transform: 'translate(-50%, -50%)',
-                  }}>
+                <Card className="relative overflow-hidden border-2 border-white/20 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300">
+                  {/* Animated Gradient Background */}
+                  <motion.div 
+                    className="absolute inset-0"
+                    style={{
+                      background: 'linear-gradient(135deg, #fbbf24 0%, #f97316 100%)'
+                    }}
+                    whileHover={{
+                      scale: 1.05,
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  
+                  {/* Floating Icon */}
+                  <motion.div 
+                    className="absolute text-5xl pointer-events-none"
+                    style={{
+                      left: '50%',
+                      top: '50%',
+                      transform: 'translate(-50%, -50%)',
+                    }}
+                    animate={{
+                      scale: [1, 1.15, 1],
+                      opacity: [0.1, 0.2, 0.1],
+                      rotate: [0, 10, -10, 0]
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                    }}
+                  >
                     ⭐
-                  </div>
+                  </motion.div>
+
                   <CardBody className="p-6 relative z-10">
                     <div className="flex items-center justify-between text-white">
                       <div>
-                        <p className="text-sm opacity-90">Kullanılabilir Puan</p>
+                        <p className="text-sm opacity-90 font-medium mb-1">Kullanılabilir Puan</p>
                         <motion.p 
-                          className="text-4xl font-bold"
+                          className="text-4xl font-bold drop-shadow-lg"
                           animate={{
                             scale: [1, 1.05, 1],
                           }}
@@ -476,18 +570,23 @@ function DonationPage() {
                         >
                           {userPoints.toLocaleString()}
                         </motion.p>
+                        <p className="text-xs opacity-75 font-medium mt-1">puan</p>
                       </div>
                       <motion.div
+                        className="bg-white/20 backdrop-blur-sm rounded-full p-3"
                         animate={{
                           rotate: [0, 360],
-                          scale: [1, 1.2, 1],
+                          scale: [1, 1.1, 1],
                         }}
                         transition={{
                           duration: 4,
                           repeat: Infinity,
                         }}
+                        whileHover={{
+                          scale: 1.15,
+                        }}
                       >
-                        <Star className="w-12 h-12 opacity-40" />
+                        <Star className="w-8 h-8" />
                       </motion.div>
                     </div>
                   </CardBody>
@@ -498,23 +597,45 @@ function DonationPage() {
                 initial={{ opacity: 0, y: 20 }} 
                 animate={{ opacity: 1, y: 0 }} 
                 transition={{ delay: 0.1 }}
-                whileHover={{ scale: 1.03, y: -5 }}
+                className="group"
               >
-                <Card className="bg-gradient-to-br from-green-400 to-emerald-500 relative overflow-hidden">
-                  {/* Simplified Heart - Performance Optimized */}
-                  <div className="absolute text-2xl pointer-events-none opacity-20" style={{
-                    left: '50%',
-                    top: '50%',
-                    transform: 'translate(-50%, -50%)',
-                  }}>
+                <Card className="relative overflow-hidden border-2 border-white/20 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300">
+                  <motion.div 
+                    className="absolute inset-0"
+                    style={{
+                      background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)'
+                    }}
+                    whileHover={{
+                      scale: 1.05,
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  
+                  <motion.div 
+                    className="absolute text-5xl pointer-events-none"
+                    style={{
+                      left: '50%',
+                      top: '50%',
+                      transform: 'translate(-50%, -50%)',
+                    }}
+                    animate={{
+                      scale: [1, 1.2, 1],
+                      opacity: [0.1, 0.2, 0.1],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                    }}
+                  >
                     💚
-                  </div>
+                  </motion.div>
+
                   <CardBody className="p-6 relative z-10">
                     <div className="flex items-center justify-between text-white">
                       <div>
-                        <p className="text-sm opacity-90">Toplam Bağış</p>
+                        <p className="text-sm opacity-90 font-medium mb-1">Toplam Bağış</p>
                         <motion.p 
-                          className="text-4xl font-bold"
+                          className="text-4xl font-bold drop-shadow-lg"
                           animate={{
                             scale: [1, 1.05, 1],
                           }}
@@ -526,19 +647,23 @@ function DonationPage() {
                         >
                           {totalDonated.toLocaleString()}
                         </motion.p>
-                        <p className="text-xs opacity-75">puan</p>
+                        <p className="text-xs opacity-75 font-medium mt-1">puan</p>
                       </div>
                       <motion.div
+                        className="bg-white/20 backdrop-blur-sm rounded-full p-3"
                         animate={{
-                          scale: [1, 1.3, 1],
+                          scale: [1, 1.2, 1],
                           rotate: [0, 10, -10, 0],
                         }}
                         transition={{
                           duration: 3,
                           repeat: Infinity,
                         }}
+                        whileHover={{
+                          scale: 1.15,
+                        }}
                       >
-                        <Gift className="w-12 h-12 opacity-40" />
+                        <Gift className="w-8 h-8" />
                       </motion.div>
                     </div>
                   </CardBody>
@@ -549,23 +674,46 @@ function DonationPage() {
                 initial={{ opacity: 0, y: 20 }} 
                 animate={{ opacity: 1, y: 0 }} 
                 transition={{ delay: 0.2 }}
-                whileHover={{ scale: 1.03, y: -5 }}
+                className="group"
               >
-                <Card className="bg-gradient-to-br from-purple-400 to-pink-500 relative overflow-hidden">
-                  {/* Simplified Crown - Performance Optimized */}
-                  <div className="absolute text-2xl pointer-events-none opacity-20" style={{
-                    left: '50%',
-                    top: '50%',
-                    transform: 'translate(-50%, -50%)',
-                  }}>
+                <Card className="relative overflow-hidden border-2 border-white/20 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300">
+                  <motion.div 
+                    className="absolute inset-0"
+                    style={{
+                      background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)'
+                    }}
+                    whileHover={{
+                      scale: 1.05,
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  
+                  <motion.div 
+                    className="absolute text-5xl pointer-events-none"
+                    style={{
+                      left: '50%',
+                      top: '50%',
+                      transform: 'translate(-50%, -50%)',
+                    }}
+                    animate={{
+                      scale: [1, 1.15, 1],
+                      opacity: [0.1, 0.2, 0.1],
+                      rotate: [0, -15, 15, 0]
+                    }}
+                    transition={{
+                      duration: 3.5,
+                      repeat: Infinity,
+                    }}
+                  >
                     👑
-                  </div>
+                  </motion.div>
+
                   <CardBody className="p-6 relative z-10">
                     <div className="flex items-center justify-between text-white">
                       <div>
-                        <p className="text-sm opacity-90">Etki Seviyesi</p>
+                        <p className="text-sm opacity-90 font-medium mb-1">Etki Seviyesi</p>
                         <motion.p 
-                          className="text-4xl font-bold"
+                          className="text-3xl font-bold drop-shadow-lg"
                           animate={{
                             scale: [1, 1.08, 1],
                           }}
@@ -582,16 +730,20 @@ function DonationPage() {
                         </motion.p>
                       </div>
                       <motion.div
+                        className="bg-white/20 backdrop-blur-sm rounded-full p-3"
                         animate={{
                           rotate: [0, 15, -15, 0],
-                          scale: [1, 1.2, 1],
+                          scale: [1, 1.1, 1],
                         }}
                         transition={{
                           duration: 3.5,
                           repeat: Infinity,
                         }}
+                        whileHover={{
+                          scale: 1.15,
+                        }}
                       >
-                        <Award className="w-12 h-12 opacity-40" />
+                        <Award className="w-8 h-8" />
                       </motion.div>
                     </div>
                   </CardBody>
@@ -608,39 +760,75 @@ function DonationPage() {
               <MultiGrowthSystem />
             </motion.div>
 
-            {/* Info Banner - Geliştirilmiş */}
+            {/* Info Banner - Ultra Modern & Responsive */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.4 }}
             >
-              <Card className="bg-gradient-to-br from-blue-500 via-cyan-500 to-teal-500 relative overflow-hidden">
-                <CardBody className="p-4 sm:p-6 md:p-8 relative z-10">
-                  <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 text-white">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/20 backdrop-blur rounded-2xl flex items-center justify-center flex-shrink-0">
-                      <PartyPopper className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
-                    </div>
+              <Card className="relative overflow-hidden border-2 border-white/20 backdrop-blur-md shadow-2xl">
+                {/* Animated Gradient Background */}
+                <motion.div 
+                  className="absolute inset-0"
+                  animate={{
+                    background: [
+                      'linear-gradient(135deg, #3b82f6 0%, #06b6d4 50%, #14b8a6 100%)',
+                      'linear-gradient(135deg, #14b8a6 0%, #3b82f6 50%, #06b6d4 100%)',
+                      'linear-gradient(135deg, #06b6d4 0%, #14b8a6 50%, #3b82f6 100%)',
+                      'linear-gradient(135deg, #3b82f6 0%, #06b6d4 50%, #14b8a6 100%)',
+                    ]
+                  }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                  }}
+                />
+
+                <CardBody className="p-5 sm:p-7 md:p-9 relative z-10">
+                  <div className="flex flex-col md:flex-row items-center gap-5 md:gap-7 text-white">
+                    <motion.div 
+                      className="w-20 h-20 sm:w-24 sm:h-24 bg-white/25 backdrop-blur-md rounded-3xl flex items-center justify-center flex-shrink-0 border-2 border-white/40"
+                      animate={{
+                        rotate: [0, 10, -10, 0],
+                        scale: [1, 1.1, 1]
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity
+                      }}
+                    >
+                      <PartyPopper className="w-10 h-10 sm:w-12 sm:h-12 text-white drop-shadow-lg" />
+                    </motion.div>
                     <div className="flex-1 text-center md:text-left">
-                      <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 md:mb-3 flex flex-wrap items-center justify-center md:justify-start gap-2">
-                        <Sparkles className="w-5 h-5 md:w-6 md:h-6" />
+                      <motion.h3 
+                        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 flex flex-wrap items-center justify-center md:justify-start gap-2 drop-shadow-md"
+                        animate={{
+                          scale: [1, 1.02, 1]
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity
+                        }}
+                      >
+                        <Sparkles className="w-6 h-6 md:w-7 md:h-7" />
                         Puanlarınız Gerçek Değişim Yaratıyor!
-                        <Sparkles className="w-5 h-5 md:w-6 md:h-6" />
-                      </h3>
-                      <p className="text-sm sm:text-base md:text-lg lg:text-xl opacity-95 leading-relaxed">
+                        <Sparkles className="w-6 h-6 md:w-7 md:h-7" />
+                      </motion.h3>
+                      <p className="text-sm sm:text-base md:text-lg lg:text-xl opacity-95 leading-relaxed font-medium mb-4">
                         QR-tex olarak kazandığınız her puan, doğrudan sosyal sorumluluk projelerine dönüşüyor. 
-                        Bağışlarınız <span className="font-bold underline">%100 şeffaflıkla</span> yerine ulaşıyor ve gerçek etki yaratıyor! 💝
+                        Bağışlarınız <span className="font-bold underline decoration-2">%100 şeffaflıkla</span> yerine ulaşıyor ve gerçek etki yaratıyor! 💝
                       </p>
-                      <div className="flex flex-wrap gap-2 md:gap-3 mt-3 md:mt-4 justify-center md:justify-start">
-                        <Chip size="sm" className="bg-white/20 text-white font-bold text-xs sm:text-sm">
-                          <Check className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                      <div className="flex flex-wrap gap-2 md:gap-3 justify-center md:justify-start">
+                        <Chip size="md" className="bg-white/25 text-white font-bold text-xs sm:text-sm backdrop-blur-sm border border-white/30">
+                          <Check className="w-4 h-4 mr-1" />
                           %100 Şeffaf
                         </Chip>
-                        <Chip size="sm" className="bg-white/20 text-white font-bold text-xs sm:text-sm">
-                          <Heart className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                        <Chip size="md" className="bg-white/25 text-white font-bold text-xs sm:text-sm backdrop-blur-sm border border-white/30">
+                          <Heart className="w-4 h-4 mr-1" />
                           Gerçek Etki
                         </Chip>
-                        <Chip size="sm" className="bg-white/20 text-white font-bold text-xs sm:text-sm">
-                          <Star className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                        <Chip size="md" className="bg-white/25 text-white font-bold text-xs sm:text-sm backdrop-blur-sm border border-white/30">
+                          <Star className="w-4 h-4 mr-1" />
                           Onaylı Projeler
                         </Chip>
                       </div>
@@ -665,37 +853,75 @@ function DonationPage() {
                   return (
                     <motion.div
                       key={donation.id}
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
+                      transition={{ delay: index * 0.1, type: "spring", bounce: 0.4 }}
                       whileHover={{ 
-                        scale: 1.05,
-                        y: -10,
-                        rotateY: 5,
+                        scale: 1.03,
+                        y: -8,
                       }}
-                      className="relative"
+                      className="relative group"
                     >
-                      {/* Simplified Mini Emoji - Performance Optimized */}
-                      <div className="absolute text-2xl pointer-events-none z-20 -top-3 right-4 opacity-70">
+                      {/* Floating Badge */}
+                      <motion.div 
+                        className="absolute text-3xl pointer-events-none z-30 -top-4 -right-2 drop-shadow-lg"
+                        animate={{
+                          y: [0, -10, 0],
+                          rotate: [0, 10, -10, 0]
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          delay: index * 0.2
+                        }}
+                      >
                         {donation.emoji}
-                      </div>
+                      </motion.div>
                       
                       <Card 
-                        className={`h-full ${!canAfford ? 'opacity-60' : ''} relative overflow-hidden`}
+                        className={`h-full ${!canAfford ? 'opacity-60' : ''} relative overflow-hidden border-2 backdrop-blur-md shadow-xl hover:shadow-2xl transition-all duration-300`}
+                        style={{
+                          borderColor: canAfford ? 'rgba(255, 255, 255, 0.3)' : 'rgba(200, 200, 200, 0.2)',
+                          background: 'rgba(255, 255, 255, 0.05)'
+                        }}
                       >
-                        {/* Simplified Corner Decoration - Performance Optimized */}
-                        <div className="absolute top-3 right-3 text-xl pointer-events-none opacity-50">
+                        {/* Gradient Overlay on Hover */}
+                        <motion.div
+                          className={`absolute inset-0 bg-gradient-to-br ${donation.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
+                        />
+                        
+                        {/* Sparkle Corner */}
+                        <motion.div 
+                          className="absolute top-4 right-4 text-2xl pointer-events-none opacity-40 group-hover:opacity-70 transition-opacity"
+                          animate={{
+                            scale: [1, 1.2, 1],
+                            rotate: [0, 180, 360]
+                          }}
+                          transition={{
+                            duration: 4,
+                            repeat: Infinity,
+                          }}
+                        >
                           ✨
-                        </div>
+                        </motion.div>
                         
                         <CardBody className="p-6 relative z-10">
                           {/* Icon and Badge */}
-                          <div className="flex items-start justify-between mb-4">
-                            <div className={`w-16 h-16 bg-gradient-to-br ${donation.gradient} rounded-2xl flex items-center justify-center text-3xl shadow-lg`}>
+                          <div className="flex items-start justify-between mb-5">
+                            <motion.div 
+                              className={`w-18 h-18 bg-gradient-to-br ${donation.gradient} rounded-2xl flex items-center justify-center text-4xl shadow-lg border-2 border-white/30`}
+                              whileHover={{
+                                scale: 1.1,
+                                rotate: [0, -10, 10, 0],
+                              }}
+                              transition={{
+                                duration: 0.5
+                              }}
+                            >
                               {donation.emoji}
-                            </div>
+                            </motion.div>
                             {!canAfford && (
-                              <Chip size="sm" color="danger" variant="flat">
+                              <Chip size="sm" color="danger" variant="flat" className="font-semibold">
                                 Yetersiz Puan
                               </Chip>
                             )}
@@ -1171,7 +1397,7 @@ function DonationPage() {
         ))}
       </AnimatePresence>
 
-      {/* Success Modal - Geliştirilmiş */}
+      {/* Success Modal - ULTRA CELEBRATION! */}
       <Modal 
         isOpen={showSuccessModal} 
         onClose={() => {
@@ -1182,28 +1408,100 @@ function DonationPage() {
         size="2xl"
         className="bg-transparent"
       >
-        <ModalContent className="bg-gradient-to-br from-green-400 via-emerald-500 to-teal-500">
-          <ModalBody className="p-8">
+        <ModalContent className="relative overflow-hidden">
+          {/* Animated Gradient Background */}
+          <motion.div
+            className="absolute inset-0"
+            animate={{
+              background: [
+                'linear-gradient(135deg, #10b981 0%, #059669 50%, #14b8a6 100%)',
+                'linear-gradient(135deg, #14b8a6 0%, #10b981 50%, #059669 100%)',
+                'linear-gradient(135deg, #059669 0%, #14b8a6 50%, #10b981 100%)',
+                'linear-gradient(135deg, #10b981 0%, #059669 50%, #14b8a6 100%)',
+              ]
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+            }}
+          />
+          
+          {/* Floating Celebration Elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {[...Array(6)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute text-4xl"
+                style={{
+                  left: `${10 + i * 15}%`,
+                  top: `${20 + (i % 3) * 30}%`,
+                }}
+                animate={{
+                  y: [0, -30, 0],
+                  rotate: [0, 360],
+                  scale: [0.8, 1.2, 0.8],
+                  opacity: [0.4, 1, 0.4]
+                }}
+                transition={{
+                  duration: 3 + i * 0.5,
+                  repeat: Infinity,
+                  delay: i * 0.3
+                }}
+              >
+                {['🎉', '✨', '💝', '🎊', '⭐', '🌟'][i]}
+              </motion.div>
+            ))}
+          </div>
+
+          <ModalBody className="p-10 relative z-10">
             <div className="text-center text-white">
-              {/* Animated Success Icon */}
+              {/* Giant Success Icon with Burst Effect */}
               <motion.div
                 initial={{ scale: 0, rotate: -180 }}
-                animate={{ scale: 1, rotate: 0 }}
-                transition={{ type: "spring", duration: 0.8 }}
-                className="w-24 h-24 mx-auto mb-6 bg-white/20 backdrop-blur rounded-full flex items-center justify-center"
+                animate={{ 
+                  scale: 1, 
+                  rotate: 0,
+                }}
+                transition={{ type: "spring", bounce: 0.6, duration: 1 }}
+                className="relative inline-block mb-6"
               >
-                <Check className="w-12 h-12 text-white" />
+                <motion.div
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    boxShadow: [
+                      '0 0 0 0px rgba(255, 255, 255, 0.7)',
+                      '0 0 0 20px rgba(255, 255, 255, 0)',
+                      '0 0 0 0px rgba(255, 255, 255, 0)',
+                    ]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                  }}
+                  className="w-32 h-32 mx-auto bg-white/30 backdrop-blur-xl rounded-full flex items-center justify-center border-4 border-white/50"
+                >
+                  <Check className="w-16 h-16 text-white drop-shadow-2xl" strokeWidth={3} />
+                </motion.div>
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
+                transition={{ delay: 0.4, type: "spring" }}
               >
-                <h2 className="text-4xl font-bold mb-3">
-                  🎉 Harika!
-                </h2>
-                <h3 className="text-2xl font-bold mb-4">
+                <motion.h2 
+                  className="text-5xl font-bold mb-4 drop-shadow-lg"
+                  animate={{
+                    scale: [1, 1.05, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                  }}
+                >
+                  🎉 Muhteşem! 🎉
+                </motion.h2>
+                <h3 className="text-3xl font-bold mb-5 drop-shadow-md">
                   Bağışınız Başarıyla Gerçekleşti!
                 </h3>
                 <p className="text-xl opacity-95 mb-6">
@@ -1213,56 +1511,82 @@ function DonationPage() {
 
               {selectedDonation && (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.5 }}
-                  className="bg-white/20 backdrop-blur rounded-2xl p-6 mb-6"
+                  initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ delay: 0.5, type: "spring" }}
+                  className="bg-white/25 backdrop-blur-xl rounded-3xl p-8 mb-6 border-2 border-white/40 shadow-2xl"
                 >
-                  <div className="flex items-center justify-center gap-4 mb-4">
-                    <div className={`w-16 h-16 bg-gradient-to-br ${selectedDonation.gradient} rounded-xl flex items-center justify-center text-3xl`}>
+                  <div className="flex items-center justify-center gap-5 mb-5">
+                    <motion.div 
+                      className={`w-20 h-20 bg-gradient-to-br ${selectedDonation.gradient} rounded-2xl flex items-center justify-center text-4xl shadow-xl border-2 border-white/50`}
+                      animate={{
+                        rotate: [0, -10, 10, 0],
+                        scale: [1, 1.1, 1]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity
+                      }}
+                    >
                       {selectedDonation.emoji}
-                    </div>
+                    </motion.div>
                     <div className="text-left">
-                      <p className="text-2xl font-bold">
+                      <p className="text-3xl font-bold drop-shadow-md">
                         {donationAmount}x {selectedDonation.title}
                       </p>
-                      <p className="text-sm opacity-90">
-                        {selectedDonation.pointCost * donationAmount} puan kullanıldı
+                      <p className="text-base opacity-95 font-medium mt-1">
+                        ✨ {selectedDonation.pointCost * donationAmount} puan kullanıldı
                       </p>
                     </div>
                   </div>
                   
-                  <Divider className="my-4 bg-white/30" />
+                  <Divider className="my-5 bg-white/50" />
                   
-                  <div className="flex items-start gap-3">
-                    <Sparkles className="w-6 h-6 flex-shrink-0 mt-1" />
+                  <motion.div 
+                    className="flex items-start gap-4 bg-white/15 rounded-2xl p-4"
+                    initial={{ scale: 0.95 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.7 }}
+                  >
+                    <motion.div
+                      animate={{
+                        rotate: [0, 360],
+                        scale: [1, 1.2, 1]
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity
+                      }}
+                    >
+                      <Sparkles className="w-7 h-7 flex-shrink-0 mt-1" />
+                    </motion.div>
                     <div className="text-left">
-                      <p className="font-bold text-lg mb-1">Yaratacağınız Etki:</p>
-                      <p className="text-base opacity-95">
+                      <p className="font-bold text-xl mb-2 drop-shadow-sm">Yaratacağınız Etki:</p>
+                      <p className="text-lg opacity-95 leading-relaxed">
                         {selectedDonation.impact}
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
                 </motion.div>
               )}
 
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.7 }}
-                className="space-y-3"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 }}
+                className="space-y-4"
               >
                 <Button
                   size="lg"
-                  className="w-full bg-white text-green-600 font-bold text-lg"
+                  className="w-full bg-white text-green-600 font-bold text-xl py-7 shadow-2xl hover:scale-105 transition-transform"
                   onPress={() => {
                     setShowSuccessModal(false)
                     setSelectedDonation(null)
                     setDonationAmount(1)
                   }}
-                  startContent={<ThumbsUp className="w-5 h-5" />}
+                  startContent={<ThumbsUp className="w-6 h-6" />}
                 >
-                  Harika! Anladım
+                  Harika! Anladım 🎉
                 </Button>
                 
                 <Button

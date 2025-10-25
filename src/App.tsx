@@ -1,4 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
+import { MotionConfig, useReducedMotion } from 'framer-motion'
+import { AnimationProvider, useAnimationLevel } from './contexts/AnimationContext'
+import AnimationSwitch from './components/ui/AnimationSwitch'
 import { useState, useEffect } from 'react'
 import Preloader from './components/ui/Preloader'
 import LandingPage from './pages/LandingPage'
@@ -52,8 +55,9 @@ import SecurityPage from './pages/dealer/SecurityPage'
 import SettingsPage from './pages/dealer/SettingsPage'
 import TestDashboard from './pages/dashboard/TestDashboard'
 
-function App() {
+function AppInner() {
   const [isLoading, setIsLoading] = useState(true)
+  const { isReduced } = useAnimationLevel()
 
   useEffect(() => {
     // Simulate app loading
@@ -77,8 +81,12 @@ function App() {
       />
       
       {!isLoading && (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
-          <Routes>
+        <MotionConfig reducedMotion={isReduced ? 'always' : 'never'}>
+          <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 relative">
+            <div className="fixed bottom-4 right-4 z-[100] w-[240px] pointer-events-auto">
+              <AnimationSwitch />
+            </div>
+            <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/dealer/login" element={<DealerLogin />} />
         <Route path="/dealer/register" element={<DealerRegister />} />
@@ -128,10 +136,19 @@ function App() {
         <Route path="/customer/tv-badges" element={<TVShowBadgesPage />} />
         <Route path="/customer/league" element={<LeagueSystemPage />} />
         <Route path="/test" element={<TestDashboard />} />
-          </Routes>
-        </div>
+            </Routes>
+          </div>
+        </MotionConfig>
       )}
     </>
+  )
+}
+
+function App() {
+  return (
+    <AnimationProvider>
+      <AppInner />
+    </AnimationProvider>
   )
 }
 

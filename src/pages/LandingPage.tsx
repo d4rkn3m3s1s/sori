@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Button, Card, CardBody, Input, Chip, Modal, ModalContent, ModalHeader, ModalBody } from '@nextui-org/react'
 import { useNavigate } from 'react-router-dom'
+import { useAnimationLevel } from '../contexts/AnimationContext'
 import { useState, useEffect } from 'react'
 import { ThemeToggle } from '../components/ui/ThemeToggle'
 import { 
@@ -74,6 +75,7 @@ function CounterAnimation({ value, suffix }: { value: number; suffix: string }) 
 
 function LandingPage() {
   const navigate = useNavigate()
+  const { isReduced } = useAnimationLevel()
   const [email, setEmail] = useState('')
   const [isSubscribed, setIsSubscribed] = useState(false)
   // Removed heavy scroll animations for performance
@@ -1235,10 +1237,10 @@ function LandingPage() {
             
             <motion.h2 
               className="text-3xl sm:text-4xl font-bold mb-4"
-              animate={{
+              animate={isReduced ? undefined : {
                 backgroundPosition: ['0%', '100%', '0%'],
               }}
-              transition={{
+              transition={isReduced ? undefined : {
                 duration: 5,
                 repeat: Infinity,
               }}
@@ -1266,57 +1268,48 @@ function LandingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ 
-                  y: -10,
-                  scale: 1.02,
-                  rotateY: 5,
+                whileHover={isReduced ? undefined : { 
+                  y: -6,
+                  scale: 1.01,
                 }}
-                animate={{
-                  y: [0, -5, 0],
+                animate={isReduced ? undefined : {
+                  y: [0, -3, 0],
                 }}
-                transition={{
-                  y: {
-                    duration: 3,
-                    repeat: Infinity,
-                    delay: index * 0.2,
-                  }
-                }}
-                className={`${plan.popular ? 'md:-mt-4' : ''} relative`}
+                // tek transition objesi: y anim'i burada
+                {...(!isReduced && {
+                  transition: {
+                    duration: 0.5,
+                    delay: index * 0.1,
+                  } as any
+                })}
+                className={`${plan.popular ? 'md:-mt-4' : ''} relative group`}
               >
                 {/* Floating Testimonial Bubbles - SIRA DIŞI! */}
-                {index === 1 && [...Array(3)].map((_, i) => (
+                {!isReduced && index === 1 && [...Array(2)].map((_, i) => (
                   <motion.div
                     key={`bubble-${i}`}
-                    className="absolute text-xs bg-white dark:bg-gray-800 px-2 py-1 rounded-full shadow-lg pointer-events-none z-30"
+                    className="absolute text-xs bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-2 py-1 rounded-full shadow-md pointer-events-none z-5"
                     style={{
-                      left: `${-20 + i * 50}%`,
-                      top: `${20 + i * 25}%`,
+                      left: i === 0 ? '-10%' : '110%',
+                      top: `${30 + i * 30}%`,
                     }}
-                    animate={{
-                      y: [0, -15, 0],
-                      x: [0, 10, 0],
-                      opacity: [0.7, 1, 0.7],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      delay: i * 0.5,
-                    }}
+                    animate={{ y: [0, -8, 0], opacity: [0.6, 0.9, 0.6] }}
+                    transition={{ duration: 3, repeat: Infinity, delay: i * 0.6 }}
                   >
-                    {['⭐⭐⭐⭐⭐', '🔥 Harika!', '💯 Süper'][i]}
+                    {['🔥 Harika!', '⭐⭐⭐⭐⭐'][i]}
                   </motion.div>
                 ))}
                 
                 {/* Special Ribbon for First Plan - SIRA DIŞI! */}
-                {index === 0 && (
+                {!isReduced && index === 0 && (
                   <motion.div
-                    className="absolute -top-2 -left-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-20"
+                    className="absolute -top-4 -left-4 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-xl z-40"
                     animate={{
                       rotate: [-5, 5, -5],
-                      scale: [1, 1.1, 1],
+                      scale: [1, 1.05, 1],
                     }}
                     transition={{
-                      duration: 2,
+                      duration: 2.5,
                       repeat: Infinity,
                     }}
                   >
@@ -1325,15 +1318,15 @@ function LandingPage() {
                 )}
                 
                 {/* Special Ribbon for Last Plan - SIRA DIŞI! */}
-                {index === 2 && (
+                {!isReduced && index === 2 && (
                   <motion.div
-                    className="absolute -top-2 -right-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-20"
+                    className="absolute -top-4 -right-4 bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-xl z-40"
                     animate={{
                       rotate: [5, -5, 5],
-                      scale: [1, 1.1, 1],
+                      scale: [1, 1.05, 1],
                     }}
                     transition={{
-                      duration: 2,
+                      duration: 2.5,
                       repeat: Infinity,
                     }}
                   >
@@ -1342,6 +1335,7 @@ function LandingPage() {
                 )}
                 
                 {/* Sparkle Burst on Hover - SIRA DIŞI! */}
+                {!isReduced && (
                 <motion.div
                   className="absolute inset-0 pointer-events-none"
                   whileHover="hover"
@@ -1351,7 +1345,7 @@ function LandingPage() {
                     hover: { opacity: 1 },
                   }}
                 >
-                  {[...Array(12)].map((_, i) => (
+                  {[...Array(8)].map((_, i) => (
                     <motion.div
                       key={`spark-${i}`}
                       className="absolute text-2xl"
@@ -1378,52 +1372,44 @@ function LandingPage() {
                     </motion.div>
                   ))}
                 </motion.div>
+                )}
                 <Card 
-                  className={`relative overflow-hidden ${
+                  className={`relative overflow-visible rounded-2xl backdrop-blur-md ${
                     plan.popular 
-                      ? 'glass border-3 border-purple-500 shadow-2xl shadow-purple-500/30' 
-                      : 'glass border-white/20 shadow-xl'
-                  } transition-all duration-300`}
+                      ? 'border-2 border-purple-400/40 shadow-2xl shadow-purple-500/20' 
+                      : 'border-2 border-white/30 dark:border-white/20 shadow-xl'
+                  } transition-all duration-300 group-hover:shadow-2xl`}
                   style={{
                     background: plan.popular 
-                      ? 'linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%)'
-                      : 'rgba(255, 255, 255, 0.7)'
+                      ? 'rgba(139, 92, 246, 0.08)'
+                      : 'rgba(255, 255, 255, 0.08)'
                   }}
                 >
-                  {plan.popular && (
+                  <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
+                    background: 'radial-gradient(1000px 200px at 50% -20%, rgba(139,92,246,0.15), transparent)'
+                  }} />
+                  {(plan.popular && !isReduced) && (
                     <motion.div 
-                      className="absolute top-0 right-0 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 text-white text-xs font-bold px-4 py-1 rounded-bl-lg shadow-lg z-20"
+                      className="absolute top-0 right-0 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl shadow-2xl z-40"
                       animate={{
-                        scale: [1, 1.05, 1],
-                        boxShadow: [
-                          '0 4px 6px rgba(139, 92, 246, 0.3)',
-                          '0 10px 15px rgba(236, 72, 153, 0.5)',
-                          '0 4px 6px rgba(139, 92, 246, 0.3)',
-                        ],
+                        scale: [1, 1.03, 1],
                       }}
                       transition={{
                         duration: 2,
                         repeat: Infinity,
                       }}
                     >
-                      <motion.span
-                        animate={{
-                          opacity: [1, 0.8, 1],
-                        }}
-                        transition={{
-                          duration: 1.5,
-                          repeat: Infinity,
-                        }}
-                      >
+                      <span className="drop-shadow-lg">
                         ⭐ EN POPÜLER ⭐
-                      </motion.span>
+                      </span>
                     </motion.div>
                   )}
                   
-                  <CardBody className="p-8">
+                  <CardBody className="p-8 relative z-10">
                     {/* Corner Decorations - SIRA DIŞI! */}
+                    {!isReduced && (
                     <motion.div
-                      className="absolute top-4 left-4 text-3xl pointer-events-none"
+                      className="absolute top-4 left-4 text-3xl pointer-events-none z-0 opacity-40"
                       animate={{
                         rotate: [0, 20, 0],
                         scale: [1, 1.2, 1],
@@ -1436,9 +1422,11 @@ function LandingPage() {
                     >
                       {['🎨', '🚀', '💎'][index]}
                     </motion.div>
+                    )}
                     
+                    {!isReduced && (
                     <motion.div
-                      className="absolute bottom-4 right-4 text-2xl pointer-events-none opacity-20"
+                      className="absolute bottom-4 right-4 text-2xl pointer-events-none opacity-20 z-0"
                       animate={{
                         rotate: [0, -360],
                       }}
@@ -1450,19 +1438,20 @@ function LandingPage() {
                     >
                       {['🌟', '⚡', '✨'][index]}
                     </motion.div>
+                    )}
                     
                     {/* Floating Mini Emojis Inside Card - SIRA DIŞI! */}
-                    {[...Array(5)].map((_, i) => (
+                    {(!isReduced ? [...Array(3)] : []).map((_, i) => (
                       <motion.div
                         key={`mini-emoji-${i}`}
-                        className="absolute text-xs pointer-events-none opacity-30"
+                        className="absolute text-xs pointer-events-none opacity-20 z-0"
                         style={{
                           left: `${20 + i * 15}%`,
-                          top: `${30 + Math.random() * 40}%`,
+                          top: `${30 + i * 10}%`,
                         }}
                         animate={{
                           y: [0, -20, 0],
-                          opacity: [0.2, 0.4, 0.2],
+                          opacity: [0.15, 0.25, 0.15],
                           rotate: [0, 180, 360],
                         }}
                         transition={{
@@ -1471,7 +1460,7 @@ function LandingPage() {
                           delay: i * 0.3,
                         }}
                       >
-                        {['💫', '⭐', '✨', '🌟', '💥'][i]}
+                        {['💫', '⭐', '✨'][i]}
                       </motion.div>
                     ))}
                     
@@ -1484,12 +1473,11 @@ function LandingPage() {
                     />
                     
                     <motion.div 
-                      className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${plan.color} mb-4 relative`}
-                      animate={{
-                        scale: [1, 1.1, 1],
-                        rotate: [0, 5, -5, 0],
+                      className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${plan.color} mb-4 relative z-10`}
+                      animate={isReduced ? undefined : {
+                        scale: [1, 1.06, 1],
                       }}
-                      transition={{
+                      transition={isReduced ? undefined : {
                         duration: 4,
                         repeat: Infinity,
                         delay: index * 0.3,
@@ -1497,38 +1485,30 @@ function LandingPage() {
                     >
                       <Sparkles className="w-6 h-6 text-white" />
                       {/* Icon Glow */}
+                      {!isReduced && (
                       <motion.div
                         className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/40 to-transparent"
-                        animate={{
-                          opacity: [0.3, 0.7, 0.3],
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                        }}
+                        animate={{ opacity: [0.3, 0.7, 0.3] }}
+                        transition={{ duration: 2, repeat: Infinity }}
                       />
+                      )}
                     </motion.div>
                     
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 relative z-10">
                       {plan.name}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm mb-6">
+                    <p className="text-gray-600 dark:text-gray-400 text-sm mb-6 relative z-10">
                       {plan.description}
                     </p>
                     
                     <motion.div 
-                      className="mb-6"
-                      whileHover={{ scale: 1.05 }}
+                      className="mb-6 relative z-10"
+                      whileHover={isReduced ? undefined : { scale: 1.03 }}
                     >
                       <motion.span 
                         className="text-5xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent inline-block"
-                        animate={{
-                          backgroundPosition: ['0%', '100%', '0%'],
-                        }}
-                        transition={{
-                          duration: 5,
-                          repeat: Infinity,
-                        }}
+                        animate={isReduced ? undefined : { backgroundPosition: ['0%', '100%', '0%'] }}
+                        transition={isReduced ? undefined : { duration: 5, repeat: Infinity }}
                       >
                         {plan.price}
                       </motion.span>
@@ -1537,7 +1517,7 @@ function LandingPage() {
                       </span>
                     </motion.div>
                     
-                    <ul className="space-y-3 mb-8">
+                    <ul className="space-y-3 mb-8 relative z-10">
                       {plan.features.map((feature, idx) => (
                         <motion.li
                           key={idx}
@@ -1545,21 +1525,17 @@ function LandingPage() {
                           whileInView={{ opacity: 1, x: 0 }}
                           viewport={{ once: true }}
                           transition={{ delay: idx * 0.05 }}
-                          whileHover={{ x: 5, scale: 1.02 }}
-                          className="flex items-start space-x-3 group cursor-pointer"
+                          whileHover={isReduced ? undefined : { x: 3, scale: 1.01 }}
+                          className="flex items-start space-x-3 group cursor-pointer relative z-10"
                         >
+                          {!isReduced && (
                           <motion.div
-                            animate={{
-                              scale: [1, 1.2, 1],
-                            }}
-                            transition={{
-                              duration: 2,
-                              repeat: Infinity,
-                              delay: idx * 0.2,
-                            }}
+                            animate={{ scale: [1, 1.12, 1] }}
+                            transition={{ duration: 2, repeat: Infinity, delay: idx * 0.2 }}
                           >
                             <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 group-hover:text-green-400 transition-colors" />
                           </motion.div>
+                          )}
                           <span className="text-gray-700 dark:text-gray-300 text-sm group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
                             {feature}
                           </span>
