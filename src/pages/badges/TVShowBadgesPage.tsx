@@ -348,7 +348,15 @@ function TVShowBadgesPage() {
                                     w-16 h-16 rounded-full flex items-center justify-center text-3xl flex-shrink-0
                                     bg-gradient-to-br ${badge.gradient}
                                   `}>
-                                    {badge.icon}
+                                    {badge.svgPath ? (
+                                      <img 
+                                        src={badge.svgPath} 
+                                        alt={badge.name}
+                                        className="w-12 h-12 object-contain"
+                                      />
+                                    ) : (
+                                      badge.icon
+                                    )}
                                   </div>
                                   
                                   <div className="flex-1 min-w-0">
@@ -425,7 +433,15 @@ function TVShowBadgesPage() {
                                   shadow-lg
                                   ${isHovered ? 'animate-bounce' : ''}
                                 `}>
-                                  {badge.icon}
+                                  {badge.svgPath ? (
+                                    <img 
+                                      src={badge.svgPath} 
+                                      alt={badge.name}
+                                      className="w-16 h-16 object-contain"
+                                    />
+                                  ) : (
+                                    badge.icon
+                                  )}
                                 </div>
 
                                 {/* Badge Info */}
@@ -526,7 +542,15 @@ function TVShowBadgesPage() {
                     bg-gradient-to-br ${selectedBadge?.gradient}
                     shadow-lg animate-pulse
                   `}>
-                    {selectedBadge?.icon}
+                    {selectedBadge?.svgPath ? (
+                      <img 
+                        src={selectedBadge.svgPath} 
+                        alt={selectedBadge.name}
+                        className="w-12 h-12 object-contain"
+                      />
+                    ) : (
+                      selectedBadge?.icon
+                    )}
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold">{selectedBadge?.name}</h2>

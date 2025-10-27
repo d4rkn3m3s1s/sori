@@ -10,7 +10,8 @@ import CustomerLogin from './pages/auth/CustomerLogin'
 import DealerRegister from './pages/auth/DealerRegister'
 import CustomerRegister from './pages/auth/CustomerRegister'
 import DealerDashboard from './pages/dashboard/DealerDashboard'
-import CustomerDashboard from './pages/dashboard/AdvancedCustomerDashboard'
+import CustomerDashboard from './pages/dashboard/CustomerDashboard'
+import AdvancedCustomerDashboard from './pages/dashboard/AdvancedCustomerDashboard'
 import FeedbackPage from './pages/dealer/FeedbackPage'
 import AnalyticsPage from './pages/dealer/AnalyticsPage'
 import AIInsightsPage from './pages/dealer/AIInsightsPage'
@@ -105,6 +106,7 @@ function AppInner() {
         <Route path="/customer/login" element={<CustomerLogin />} />
         <Route path="/customer/register" element={<CustomerRegister />} />
         <Route path="/customer/dashboard" element={<CustomerDashboard />} />
+        <Route path="/customer/dashboard-v2" element={<AdvancedCustomerDashboard />} />
         <Route path="/customer/feedback" element={<EnhancedCustomerFeedbackPage />} />
         <Route path="/customer/analytics" element={<CustomerAnalyticsPage />} />
         <Route path="/customer/enhanced-analytics" element={<EnhancedAnalyticsPage />} />
@@ -112,6 +114,7 @@ function AppInner() {
         <Route path="/customer/profile-customization" element={<ProfileCustomizationPage />} />
         <Route path="/customer/reward-store" element={<RewardStorePage />} />
         <Route path="/customer/quests" element={<QuestsPage />} />
+        <Route path="/quests" element={<QuestsPage />} />
         <Route path="/customer/activity-log" element={<ActivityLogPage />} />
         <Route path="/customer/enhanced-notifications" element={<EnhancedNotificationsPage />} />
         <Route path="/customer/trends" element={<TrendsPage />} />

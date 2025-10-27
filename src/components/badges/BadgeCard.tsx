@@ -116,7 +116,18 @@ function BadgeCard({
 
           {/* Badge icon */}
           <div className={`${iconSizes[size]} mb-2 ${badge.unlocked ? '' : 'grayscale'} flex items-center justify-center`}>
-            {badge.id === 'dracarys' && badge.unlocked ? (
+            {badge.svgPath && badge.unlocked ? (
+              <div className="relative w-16 h-16 flex items-center justify-center">
+                <img 
+                  src={badge.svgPath} 
+                  alt={badge.name}
+                  className={`w-full h-full object-contain ${badge.id === 'dracarys' ? 'animate-pulse' : ''}`}
+                />
+                {badge.id === 'dracarys' && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 opacity-30 rounded-full blur-md"></div>
+                )}
+              </div>
+            ) : badge.id === 'dracarys' && badge.unlocked ? (
               <div className="relative">
                 <div className="text-4xl animate-pulse">🐉</div>
                 <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 opacity-30 rounded-full blur-md"></div>

@@ -287,85 +287,19 @@ function DonationPage() {
           userType="customer" 
         />
         
-        <main className="flex-1 overflow-y-auto p-6 relative overflow-hidden">
-          {/* Floating Background Animations - Reduced for Performance */}
-          {[...Array(4)].map((_, i) => (
-            <motion.div
-              key={`float-bg-${i}`}
-              className="absolute text-3xl pointer-events-none opacity-10"
-              style={{
-                left: `${(i + 1) * 20}%`,
-                top: `${(i * 25)}%`,
-                willChange: 'transform',
-              }}
-              animate={{
-                y: [0, -60, 0],
-                opacity: [0.08, 0.15, 0.08],
-              }}
-              transition={{
-                duration: 20 + i * 5,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-            >
-              {['🌱', '💧', '🐾', '✏️'][i]}
-            </motion.div>
-          ))}
-          
-          <div className="max-w-7xl mx-auto space-y-6 relative z-10">
+        <main className="flex-1 overflow-y-auto p-6">
+          <div className="max-w-7xl mx-auto space-y-6">
             
-            {/* Hero Banner - ULTRA MODERN! */}
-            <motion.div
-              initial={{ opacity: 0, y: -30, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.8, type: "spring" }}
-            >
+            {/* Hero Banner - Clean & Professional */}
+            <div>
               <Card className="relative overflow-hidden border-2 border-white/20 shadow-2xl">
-                {/* Animated Gradient Background */}
-                <motion.div 
+                {/* Static Gradient Background */}
+                <div 
                   className="absolute inset-0 z-0"
-                  animate={{
-                    background: [
-                      'linear-gradient(135deg, #10b981 0%, #059669 50%, #14b8a6 100%)',
-                      'linear-gradient(135deg, #14b8a6 0%, #10b981 50%, #059669 100%)',
-                      'linear-gradient(135deg, #059669 0%, #14b8a6 50%, #10b981 100%)',
-                      'linear-gradient(135deg, #10b981 0%, #059669 50%, #14b8a6 100%)',
-                    ]
-                  }}
-                  transition={{
-                    duration: 10,
-                    repeat: Infinity,
-                    ease: "linear"
+                  style={{
+                    background: 'linear-gradient(135deg, #10b981 0%, #059669 50%, #14b8a6 100%)'
                   }}
                 />
-                
-                {/* Floating Orbs */}
-                <div className="absolute inset-0 z-0 overflow-hidden">
-                  {[...Array(3)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute rounded-full"
-                      style={{
-                        width: `${150 + i * 50}px`,
-                        height: `${150 + i * 50}px`,
-                        background: 'radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%)',
-                        left: `${20 + i * 30}%`,
-                        top: `${-20 + i * 10}%`,
-                      }}
-                      animate={{
-                        y: [0, -20, 0],
-                        x: [0, 15, 0],
-                        scale: [1, 1.1, 1],
-                        opacity: [0.3, 0.5, 0.3]
-                      }}
-                      transition={{
-                        duration: 5 + i * 2,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                    />
-                  ))}
-                </div>
 
                 {/* Pattern Overlay */}
                 <div className="absolute inset-0 opacity-5 z-0" style={{
@@ -375,98 +309,46 @@ function DonationPage() {
                 <CardBody className="p-6 sm:p-8 relative z-10">
                   <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                     <div className="flex items-center gap-6">
-                      <motion.div
-                        animate={{
-                          scale: [1, 1.15, 1],
-                          rotate: [0, 5, -5, 0],
-                        }}
-                        transition={{
-                          duration: 3,
-                          repeat: Infinity,
-                          ease: "easeInOut"
-                        }}
-                        className="text-6xl md:text-7xl filter drop-shadow-lg"
-                      >
+                      <div className="text-6xl md:text-7xl filter drop-shadow-lg">
                         💝
-                      </motion.div>
+                      </div>
                       <div className="text-white">
-                        <motion.h2 
-                          className="text-2xl md:text-4xl font-bold mb-2 drop-shadow-md"
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.3 }}
-                        >
+                        <h2 className="text-2xl md:text-4xl font-bold mb-2 drop-shadow-md">
                           Küçük bir adım senden, büyük bir etki bizden.
-                        </motion.h2>
-                        <motion.p 
-                          className="text-sm md:text-lg opacity-95 font-medium"
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.5 }}
-                        >
+                        </h2>
+                        <p className="text-sm md:text-lg opacity-95 font-medium">
                           Her puan, her yorum gerçek bir iyiliğe dönüşür ✨
-                        </motion.p>
+                        </p>
                       </div>
                     </div>
                     
-                    {/* Animated Stats - Enhanced */}
+                    {/* Stats - Clean */}
                     <div className="flex gap-4">
                       {[
                         { emoji: '🌳', count: '2,156', label: 'Fidan', color: 'from-green-400 to-emerald-400' },
                         { emoji: '💧', count: '847', label: 'Su', color: 'from-blue-400 to-cyan-400' },
                         { emoji: '🐾', count: '1,243', label: 'Mama', color: 'from-orange-400 to-amber-400' }
                       ].map((stat, idx) => (
-                        <motion.div
+                        <div
                           key={idx}
-                          className="group relative bg-white/25 hover:bg-white/35 backdrop-blur-md rounded-2xl px-4 py-3 text-center min-w-[85px] cursor-pointer transition-all duration-300 border border-white/30"
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ 
-                            opacity: 1, 
-                            y: 0,
-                          }}
-                          whileHover={{ 
-                            scale: 1.08,
-                            y: -5,
-                          }}
-                          transition={{
-                            delay: idx * 0.1,
-                          }}
+                          className="relative bg-white/25 backdrop-blur-md rounded-2xl px-4 py-3 text-center min-w-[85px] border border-white/30"
                         >
-                          {/* Glow effect on hover */}
-                          <motion.div
-                            className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl`}
-                          />
-                          
-                          <motion.div 
-                            className="text-3xl mb-1 filter drop-shadow-md"
-                            animate={{
-                              scale: [1, 1.15, 1],
-                              rotate: [0, 5, -5, 0]
-                            }}
-                            transition={{
-                              duration: 3,
-                              repeat: Infinity,
-                              delay: idx * 0.4,
-                            }}
-                          >
+                          <div className="text-3xl mb-1 filter drop-shadow-md">
                             {stat.emoji}
-                          </motion.div>
+                          </div>
                           <div className="text-xl font-bold text-white drop-shadow-md">{stat.count}</div>
                           <div className="text-xs font-medium opacity-90 text-white">{stat.label}</div>
-                        </motion.div>
+                        </div>
                       ))}
                     </div>
                   </div>
                 </CardBody>
               </Card>
-            </motion.div>
+            </div>
             
             {/* Back Button & SSP Leaderboard */}
             <div className="flex items-center justify-between flex-wrap gap-3">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-              >
+              <div>
                 <Button
                   variant="light"
                   startContent={<ArrowLeft className="w-4 h-4" />}
@@ -474,12 +356,9 @@ function DonationPage() {
                 >
                   Dashboard'a Dön
                 </Button>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-              >
+              <div>
                 <Button
                   color="success"
                   variant="shadow"
@@ -488,30 +367,22 @@ function DonationPage() {
                 >
                   💚 İyilik Liderlik Tablosu
                 </Button>
-              </motion.div>
+              </div>
             </div>
 
-            {/* Rotating Slogan Banner */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentSlogan.text}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.5 }}
-              >
-                <Card className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500">
-                  <CardBody className="p-4">
-                    <div className="flex items-center justify-center gap-3 text-white">
-                      <div className="text-3xl">{currentSlogan.icon}</div>
-                      <h3 className="text-xl md:text-2xl font-bold text-center">
-                        {currentSlogan.text}
-                      </h3>
-                    </div>
-                  </CardBody>
-                </Card>
-              </motion.div>
-            </AnimatePresence>
+            {/* Slogan Banner */}
+            <div>
+              <Card className="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500">
+                <CardBody className="p-4">
+                  <div className="flex items-center justify-center gap-3 text-white">
+                    <div className="text-3xl">{currentSlogan.icon}</div>
+                    <h3 className="text-xl md:text-2xl font-bold text-center">
+                      {currentSlogan.text}
+                    </h3>
+                  </div>
+                </CardBody>
+              </Card>
+            </div>
 
             {/* User Stats - ULTRA MODERN! */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -576,14 +447,14 @@ function DonationPage() {
                         className="bg-white/20 backdrop-blur-sm rounded-full p-3"
                         animate={{
                           rotate: [0, 360],
-                          scale: [1, 1.1, 1],
                         }}
                         transition={{
-                          duration: 4,
+                          duration: 8,
                           repeat: Infinity,
+                          ease: "linear"
                         }}
                         whileHover={{
-                          scale: 1.15,
+                          scale: 1.05,
                         }}
                       >
                         <Star className="w-8 h-8" />
@@ -606,7 +477,7 @@ function DonationPage() {
                       background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)'
                     }}
                     whileHover={{
-                      scale: 1.05,
+                      scale: 1.02,
                     }}
                     transition={{ duration: 0.3 }}
                   />
@@ -619,12 +490,13 @@ function DonationPage() {
                       transform: 'translate(-50%, -50%)',
                     }}
                     animate={{
-                      scale: [1, 1.2, 1],
-                      opacity: [0.1, 0.2, 0.1],
+                      scale: [1, 1.08, 1],
+                      opacity: [0.08, 0.15, 0.08],
                     }}
                     transition={{
-                      duration: 3,
+                      duration: 5,
                       repeat: Infinity,
+                      ease: "easeInOut"
                     }}
                   >
                     💚
@@ -732,15 +604,15 @@ function DonationPage() {
                       <motion.div
                         className="bg-white/20 backdrop-blur-sm rounded-full p-3"
                         animate={{
-                          rotate: [0, 15, -15, 0],
-                          scale: [1, 1.1, 1],
+                          rotate: [0, 5, -5, 0],
                         }}
                         transition={{
-                          duration: 3.5,
+                          duration: 5,
                           repeat: Infinity,
+                          ease: "easeInOut"
                         }}
                         whileHover={{
-                          scale: 1.15,
+                          scale: 1.05,
                         }}
                       >
                         <Award className="w-8 h-8" />
@@ -760,27 +632,27 @@ function DonationPage() {
               <MultiGrowthSystem />
             </motion.div>
 
-            {/* Info Banner - Ultra Modern & Responsive */}
+            {/* Info Banner - Professional & Responsive */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.4 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, ease: "easeOut" }}
             >
               <Card className="relative overflow-hidden border-2 border-white/20 backdrop-blur-md shadow-2xl">
-                {/* Animated Gradient Background */}
+                {/* Subtle Gradient Background */}
                 <motion.div 
                   className="absolute inset-0"
                   animate={{
                     background: [
                       'linear-gradient(135deg, #3b82f6 0%, #06b6d4 50%, #14b8a6 100%)',
                       'linear-gradient(135deg, #14b8a6 0%, #3b82f6 50%, #06b6d4 100%)',
-                      'linear-gradient(135deg, #06b6d4 0%, #14b8a6 50%, #3b82f6 100%)',
                       'linear-gradient(135deg, #3b82f6 0%, #06b6d4 50%, #14b8a6 100%)',
                     ]
                   }}
                   transition={{
-                    duration: 8,
+                    duration: 12,
                     repeat: Infinity,
+                    ease: "easeInOut"
                   }}
                 />
 
@@ -789,12 +661,12 @@ function DonationPage() {
                     <motion.div 
                       className="w-20 h-20 sm:w-24 sm:h-24 bg-white/25 backdrop-blur-md rounded-3xl flex items-center justify-center flex-shrink-0 border-2 border-white/40"
                       animate={{
-                        rotate: [0, 10, -10, 0],
-                        scale: [1, 1.1, 1]
+                        rotate: [0, 3, -3, 0],
                       }}
                       transition={{
-                        duration: 4,
-                        repeat: Infinity
+                        duration: 6,
+                        repeat: Infinity,
+                        ease: "easeInOut"
                       }}
                     >
                       <PartyPopper className="w-10 h-10 sm:w-12 sm:h-12 text-white drop-shadow-lg" />

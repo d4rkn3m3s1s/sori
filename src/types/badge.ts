@@ -3,6 +3,7 @@ export interface Badge {
   name: string
   description: string
   icon: string
+  svgPath?: string   // SVG dosya yolu (örn: '/images/badges/sherlock.svg')
   category: 'activity' | 'behavior' | 'brand' | 'special' | 'mysterious'
   subcategory?: string
   requirement: {

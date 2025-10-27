@@ -26,6 +26,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Sheldon Cooper',
     description: 'Analitik zeka ve her zaman farklı bakış açısı. Bilgiyi çok seven ve her daim kullanan kullanıcılar.',
     icon: '🧪',
+    svgPath: '/images/badges/tbbt demo 1.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -44,6 +45,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Chandler Bing',
     description: 'Keskin espri anlayışı olan. Mizahı üstün olan ve yorumlarını buna göre yapan kullanıcılar.',
     icon: '😄',
+    svgPath: '/images/badges/friends demo 2.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -62,6 +64,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Michael Scott',
     description: 'Fazla mizah ve samimiyet. Sürprizlerle dolu olan kullanıcılar için.',
     icon: '📋',
+    svgPath: '/images/badges/the office demo 2.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -82,6 +85,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Eleven',
     description: 'Fedakar, gizemli. Arkadaşlarıyla vakit geçirmeyi çok seven ve yorumlarını buna göre yapan kullanıcıları temsil eder.',
     icon: '⚡',
+    svgPath: '/images/badges/stranger things demo2.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -100,6 +104,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Geralt of Rivia',
     description: 'Sessiz ama güçlü. Kısa ama etkili yorumlarıyla dikkat çeken kullanıcıları temsil eder.',
     icon: '⚔️',
+    svgPath: '/images/badges/witcher.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -136,6 +141,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Tyrion Lannister',
     description: 'Zekâsı ve keskin diliyle öne çıkar. Akıllı tespitleriyle sohbetlere yön veren kullanıcıları simgeler.',
     icon: '🍷',
+    svgPath: '/images/badges/got tyrion lannister.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -172,6 +178,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Ragnar Lothbrok',
     description: 'Cesur, yenilikçi ve lider ruhlu. Farklı deneyimleri cesurca paylaşarak diğerlerine yol gösteren kullanıcıları simgeler.',
     icon: '⚔️',
+    svgPath: '/images/badges/vikings.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -190,6 +197,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Dean Winchester',
     description: 'Cesur, eğlenceli, sadık ve koruyucu. Destekleyici yaklaşımıyla topluluğa güven veren kullanıcıları simgeler.',
     icon: '🔫',
+    svgPath: '/images/badges/supernatural demo 2.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -228,6 +236,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Walter White',
     description: 'Stratejik, planlı. Kriz anında rahatça çözüm bulan kullanıcılar için.',
     icon: '🧪',
+    svgPath: '/images/badges/breaking bad demo 2.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -264,6 +273,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Tommy Shelby',
     description: 'Soğukkanlı ve planlı. Yorumlarına yön veren ve öne çıkan kullanıcıları temsil eder.',
     icon: '🎩',
+    svgPath: '/images/badges/peaky blinders demo2.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -282,6 +292,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Kraliçe Elizabeth',
     description: 'Ciddi, sorumluluk sahibi. Düzenli, istikrarlı kullanıcılar.',
     icon: '👑',
+    svgPath: '/images/badges/the crown.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -300,6 +311,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Jack Pearson',
     description: 'Aile odaklı, destekleyici. Samimi ve pozitif yorumlar yapan kullanıcılar.',
     icon: '❤️',
+    svgPath: '/images/badges/this is us.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -318,6 +330,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Sherlock Holmes',
     description: 'Analitik, gözlemci. Detaycı yorum yapan kullanıcılar.',
     icon: '🔍',
+    svgPath: '/images/badges/sherlock.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -336,6 +349,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'El Profesor',
     description: 'Planlı, stratejik ve soğukkanlı. Düşünülmüş ve faydalı yorumlarıyla herkesin işini kolaylaştıran kullanıcıları simgeler.',
     icon: '🎭',
+    svgPath: '/images/badges/la casa de papel.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -372,6 +386,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Michael Scofield',
     description: 'Stratejik Zeka. Her yorumunu planlı yapan, mantık zinciri kuran kullanıcılar.',
     icon: '🧩',
+    svgPath: '/images/badges/prison break.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -392,6 +407,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Joe Goldberg',
     description: 'Takıntılı ama analitik ve gözlemci. En küçük detayları baya farklı yaklaşımlarla yakalayan ve dikkatli değerlendirmeleriyle fark yaratan kullanıcıları simgeler.',
     icon: '📖',
+    svgPath: '/images/badges/you.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -410,6 +426,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Villanelle',
     description: 'Karizmatik, kurnaz ve sıra dışı. Kendine has tarzıyla topluluğa farklı bir enerji katan kullanıcıları simgeler.',
     icon: '💅',
+    svgPath: '/images/badges/killing eve.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -428,6 +445,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Pablo Escobar',
     description: 'Karizmatik, güçlü ve korkusuz. İddialı yorumlarıyla dikkatleri üzerine çeken kullanıcıları simgeler.',
     icon: '💰',
+    svgPath: '/images/badges/narcos.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -446,6 +464,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Jonas Kahnwald',
     description: 'Derin düşünceli ve sorgulayıcı. Merak uyandıran yorumlarıyla tartışmalara yeni boyut katan kullanıcıları simgeler.',
     icon: '⏰',
+    svgPath: '/images/badges/dark demo1.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -482,6 +501,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Rick Sanchez',
     description: 'Çılgın, dahi ve kaotik. Sıra dışı çözümleriyle toplulukta farklılık yaratan kullanıcıları simgeler.',
     icon: '🧪',
+    svgPath: '/images/badges/rick and morty.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -500,6 +520,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Frank Underwood',
     description: 'Stratejik ve güçlü. İnce hesaplarıyla tartışmaları yönlendiren kullanıcıları simgeler.',
     icon: '🏛️',
+    svgPath: '/images/badges/house of card.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -518,6 +539,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Carrie Mathison',
     description: 'Sezgileri güçlü ve cesur. İçgüdüleriyle doğru noktaları yakalayan kullanıcıları simgeler.',
     icon: '🕵️',
+    svgPath: '/images/badges/homeland.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -556,6 +578,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Spartacus',
     description: 'Mücadeleci, adalet arayışı. Eleştirilerinde net olan kullanıcılar.',
     icon: '⚔️',
+    svgPath: '/images/badges/spartacus.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -574,6 +597,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Julius Caesar',
     description: 'Lider, stratejik. Topluluk içinde öne çıkan kullanıcılar.',
     icon: '🏛️',
+    svgPath: '/images/badges/ROME.svg',
     category: 'behavior',
     requirement: {
       type: 'behavior_pattern',
@@ -594,6 +618,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Wednesday Addams',
     description: 'Karanlık, bağımsızlık. Alışılmışın dışında yorumlar yapan kullanıcıları temsil eder.',
     icon: '🖤',
+    svgPath: '/images/badges/wednesday.svg',
     category: 'special',
     requirement: {
       type: 'special_action',
@@ -612,6 +637,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'The Doctor',
     description: 'Zaman yolcusu, bilge ve maceraperest. Keşfetmeyi seven kullanıcıları simgeler.',
     icon: '⏳',
+    svgPath: '/images/badges/doctor who demo1.svg',
     category: 'special',
     requirement: {
       type: 'special_action',
@@ -630,6 +656,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Castiel',
     description: 'Gizemli, bilge ve koruyucu. Dinginliğiyle ortamı dengeleyen kullanıcıları simgeler.',
     icon: '😇',
+    svgPath: '/images/badges/supernatural castiel demo.svg',
     category: 'special',
     requirement: {
       type: 'special_action',
@@ -648,6 +675,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Dexter Morgan',
     description: 'Çift yönlü, soğukkanlı ve planlı. Sakin yaklaşımıyla karmaşık durumları bile netleştiren kullanıcıları simgeler.',
     icon: '🔪',
+    svgPath: '/images/badges/dexter demo1.svg',
     category: 'special',
     requirement: {
       type: 'special_action',
@@ -666,6 +694,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Elliot Alderson',
     description: 'Gizemli, içe kapanık. Ani ama çarpıcı yorum yapan kullanıcılar.',
     icon: '🎭',
+    svgPath: '/images/badges/mr robot.svg',
     category: 'special',
     requirement: {
       type: 'special_action',
@@ -684,6 +713,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'John Locke',
     description: 'İnançlı, keşifçi. Yeni fikirler deneyen kullanıcılar.',
     icon: '🏝️',
+    svgPath: '/images/badges/LOST.svg',
     category: 'special',
     requirement: {
       type: 'special_action',
@@ -702,6 +732,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Hannibal Lecter',
     description: 'Zarif ama keskin. Yorumlarını çok incelikli yapan kullanıcılar.',
     icon: '🍷',
+    svgPath: '/images/badges/hannibal.svg',
     category: 'special',
     requirement: {
       type: 'special_action',
@@ -720,6 +751,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Crowley',
     description: 'Kaotik ama eğlenceli. Beklenmedik, sürpriz dolu yorum yapan kullanıcılar.',
     icon: '😈',
+    svgPath: '/images/badges/good omens.svg',
     category: 'special',
     requirement: {
       type: 'special_action',
@@ -738,6 +770,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Dr. House',
     description: 'Alaycı, keskin zeka. Gerçekçi ve eleştirel yorum yapan kullanıcılar.',
     icon: '💊',
+    svgPath: '/images/badges/house md.svg',
     category: 'special',
     requirement: {
       type: 'special_action',
@@ -940,6 +973,7 @@ export const TV_SHOW_BADGES: Badge[] = [
     name: 'Tetikçi',
     description: 'Konu açılır açılmaz ilk hamleyi yapan hızlı oyuncu.',
     icon: '⚡',
+    svgPath: '/images/badges/TETİKÇİ.svg',
     category: 'behavior',
     requirement: { type: 'behavior_pattern', value: 'first_responder' },
     rarity: 'common',
@@ -1305,4 +1339,3 @@ export const GENRE_STATS = {
 }
 
 export const TOTAL_TV_BADGES = TV_SHOW_BADGES.length
-
