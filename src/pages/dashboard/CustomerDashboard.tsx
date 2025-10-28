@@ -939,7 +939,7 @@ function CustomerDashboard() {
                           <p className="text-2xl font-bold mb-1">{stat.value}</p>
                           <div className="flex items-center gap-1">
                             {stat.changeType === 'positive' && <TrendingUp className="w-3 h-3" />}
-                            {stat.changeType === 'negative' && <TrendingDown className="w-3 h-3" />}
+                            {stat.changeType !== 'positive' && stat.changeType !== 'neutral' && <TrendingDown className="w-3 h-3" />}
                             <span className="text-xs font-medium opacity-90">{stat.change}</span>
                           </div>
                         </div>
